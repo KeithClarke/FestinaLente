@@ -1,0 +1,38 @@
+<apex:page controller="PdfController" showHeader="false" sidebar="false" standardStylesheets="false" renderAs="{!format}">
+
+<head>
+
+<link href="{!$Resource.PdfCss}" rel="stylesheet" type="text/css"/>
+ 
+<style>
+@page {
+  size: A4 {!layout};
+}
+@page {
+    @bottom-right {
+        content: "Private Lessons {!formattedFrom} - {!formattedTo} Page " counter(page) " of " counter(pages);
+        font-family: sans-serif;
+        font-size: 80%;
+    }
+}
+</style>
+ 
+</head>
+
+  <h1>Festina Lente Riding School</h1>
+  <h2>Private Lessons {!formattedFrom} - {!formattedTo}</h2>
+  
+  <apex:repeat value="{!privateLessons}" var="table">
+  <div>&nbsp;</div>
+  <table style="page-break-inside: avoid">
+      <apex:repeat value="{!table.rows}" var="row">
+      <tr>
+          <apex:repeat value="{!row.cells}" var="cell">
+          <apex:outputText escape="false" value="{!cell.html}"/>
+          </apex:repeat>
+      </tr>
+      </apex:repeat>
+  </table>
+  </apex:repeat>
+  
+</apex:page>

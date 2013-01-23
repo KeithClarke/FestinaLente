@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>*</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexComponent</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>Contact.Age__c</members>
+        <members>Contact.ColourCode__c</members>
+        <members>Contact.Notes__c</members>
+        <members>Contact.PreferredHorse__c</members>
+        <members>Contact.Weight__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>AvailableDate__c</members>
+        <members>BookedDate__c</members>
+        <members>Booking__c</members>
+        <members>Class__c</members>
+        <members>Filter__c</members>
+        <members>Horse__c</members>
+        <members>Printing__c</members>
+        <members>Range__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>Images</members>
+        <members>Images/Logo.png</members>
+        <name>Document</name>
+    </types>
+    <types>
+        <members>AvailableDate__c-Available Date Layout</members>
+        <members>BookedDate__c-Booked Date Layout</members>
+        <members>Booking__c-Booking Layout</members>
+        <members>Class__c-Class Layout</members>
+        <members>Contact-Contact Client Layout</members>
+        <members>Contact-Contact Coach Layout</members>
+        <members>Filter__c-Filter Layout</members>
+        <members>Horse__c-Horse Layout</members>
+        <members>Printing__c-Printing Layout</members>
+        <members>Range__c-Range Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>StaticResource</name>
+    </types>
+    <version>25.0</version>
+</Package>

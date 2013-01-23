@@ -1,0 +1,43 @@
+<apex:page controller="GenerateAvailableDatesController" tabStyle="Class__c" id="p">
+
+<style type="text/css">
+a.flActionLink {
+    color: #015ba7;
+    text-decoration: none;
+}
+</style>
+
+    <apex:sectionHeader title="Generate Available Dates" subtitle="{!clazz.Name}"/>
+    <apex:form id="f">
+        <apex:pageMessages />
+        <apex:pageBlock id="pb" mode="edit">
+            <apex:pageBlockButtons >
+                <apex:commandButton styleClass="flActionLink" value="Generate All {!clazz.DayOfWeek__c}s" action="{!generate}"/>
+                <apex:commandButton styleClass="flActionLink" value="Cancel" action="{!cancel}" immediate="true"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="1" title="Class Detail">
+                <apex:outputField value="{!clazz.Name}"/>
+                <apex:outputField value="{!clazz.Type__c}"/>
+                <apex:outputField value="{!clazz.DayOfWeek__c}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="2" id="pbs" title="Available Dates Range">
+                <apex:inputField styleClass="flActionLink" value="{!range.From__c}" required="true" id="from"/>
+                <apex:inputField styleClass="flActionLink" value="{!range.To__c}" required="true" id="to"/>
+                <apex:outputText />
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Select Weeks Later</apex:outputLabel>
+                    <c:ToDateLinksPanelGrid fromDateFieldId="p:f:pb:pbs:from" toDateFieldId="p:f:pb:pbs:to"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    
+<script type="text/javascript">
+
+// Stop date popup appearing every time
+function setFocusOnLoad() {
+}
+
+</script>
+
+</apex:page>

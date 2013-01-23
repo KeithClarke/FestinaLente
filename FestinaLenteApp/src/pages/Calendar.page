@@ -1,0 +1,180 @@
+<apex:page tabStyle="Calendar__tab" controller="CalendarController" action="{!init}" id="p">
+
+<link href="{!URLFOR($Resource.FullCalendarZip,'fullcalendar-1.5.4/fullcalendar/fullcalendar.css')}" rel="stylesheet" type="text/css"/>
+<link href="{!URLFOR($Resource.FullCalendarZip,'fullcalendar-1.5.4/fullcalendar/fullcalendar.print.css')}" rel="stylesheet" type="text/css" media="print"/>
+
+<script src="{!URLFOR($Resource.FullCalendarZip, 'fullcalendar-1.5.4/jquery/jquery-1.8.1.min.js')}" type="text/javascript" language="javascript"></script>
+<script src="{!URLFOR($Resource.FullCalendarZip, 'fullcalendar-1.5.4/fullcalendar/fullcalendar.min.js')}" type="text/javascript" language="javascript"></script>
+
+<script src="{!URLFOR($Resource.QTip)}" type="text/javascript" language="javascript"></script>
+
+    <apex:sectionHeader title="Calendar"/>
+    
+    <!-- Breadcrumb links; moved into place by jQuery -->
+    <apex:outputPanel layout="block" styleClass="ptBreadcrumb" rendered="{! backs.size > 0}">
+        <apex:variable var="separate" value="{! (false)}"/>
+        <apex:outputText >&nbsp;&#171;&nbsp;Back to:&nbsp;&nbsp;</apex:outputText>
+        <apex:repeat value="{!backs}" var="b">
+            <apex:outputText rendered="{!separate}">,&nbsp;&nbsp;</apex:outputText>
+            <apex:outputLink value="/{!b.id}">{!b.name}</apex:outputLink>
+            <apex:variable var="separate" value="{! (true)}"/>
+        </apex:repeat>
+    </apex:outputPanel>
+
+    <!-- Filtering fields -->
+    <apex:form id="f">
+        <apex:pageBlock mode="edit" id="pb">
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Refresh Calendar" action="{!refresh}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection id="pbs">
+            
+                <apex:inputField value="{!filter.Client__c}"/>
+                <apex:inputField value="{!filter.Coach__c}"/>
+                <apex:inputField value="{!filter.Horse__c}"/>
+                <apex:inputField value="{!filter.Booking__c}"/>
+                <apex:inputField value="{!filter.Class__c}"/>
+                <apex:outputText />
+                <apex:inputField value="{!filter.ShowAvailable__c}" id="showAvailable"/>
+                <apex:inputField value="{!filter.ShowBooked__c}" id="showBooked"/>
+                
+                <apex:inputHidden value="{!filter.ViewName__c}" id="viewName"/>
+                <apex:inputHidden value="{!filter.ViewStart__c}" id="viewStartDate"/>
+                
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+
+    <!-- Calendar is rendered here by the fullcalendar Javascript -->
+    <apex:pageBlock >
+        <div id='calendar'/>
+    </apex:pageBlock>
+
+<script type="text/javascript" language="javascript">
+
+$(document).ready(function() {
+
+    // Move breadcrumb
+    $('.bPageTitle').append($('.ptBreadcrumb'));
+    
+    // Style "Show" labels
+    $('[for*="p:f:pb:pbs:showAvailable"]')
+            .css('background-color', '#6699ff')
+            .css('color', 'white')
+            .css('padding', '3px')
+            .css('border-radius', '3px')
+            ;
+    $('[for*="p:f:pb:pbs:showBooked"]')
+            .css('background-color', '#ff6699')
+            .css('color', 'white')
+            .css('padding', '3px')
+            .css('border-radius', '3px')
+            ;
+            
+    var formViewName = $('#p\\:f\\:pb\\:pbs\\:viewName');
+    var formViewStart = $('#p\\:f\\:pb\\:pbs\\:viewStartDate');
+    
+    // Writing and reading as text in d/m/y format
+    var toDateString = function(d) {
+        return d ? d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear() : null;
+    }
+    var toDateObject = function(s) {
+        var parts = s.split("/");
+        return parts.length == 3 ? new Date(parts[2], parts[1] - 1, parts[0]) : null;
+    }
+    
+    // Defaults to today unless the form has aleady been posted in which case defaults to the posted start date
+    var initialDate = formViewStart.val() ? toDateObject(formViewStart.val()) : new Date();
+    
+    // These preserve the selection when mon/week/day switch is used
+    var selectedStartDate = null;
+    var selectedEndDate = null;
+    var selectedAllDay = null;
+    var viewName = null;
+    var inFunction = false;
+
+    // Setup calendar
+    var calendar = $('#calendar');
+    calendar.fullCalendar({
+    
+        // General config
+        header: {
+            left: 'title',
+            center: 'month,agendaWeek,agendaDay',
+            right: 'prevYear prev,today,next nextYear'
+        },
+        firstDay: 1,
+        defaultView: formViewName.val() ? formViewName.val() : 'agendaWeek',
+        allDayDefault: false,
+        allDaySlot: false,
+        aspectRatio: 2.5,
+        minTime: 8,
+        maxTime: 21,
+        columnFormat: {
+            month: 'ddd',
+            week: 'ddd, MMM d',
+            day: 'ddd, MMM d'
+        },
+        selectable: true,
+    
+        // Start date
+        year: initialDate.getFullYear(),
+        month: initialDate.getMonth(),
+        date: initialDate.getDate(),
+        
+        // Preserve the selection
+        select: function(startDate, endDate, allDay, jsEvent, view) {
+            selectedStartDate = startDate;
+            selectedEndDate = endDate;
+            selectedAllDay = allDay;
+        },
+        viewDisplay: function(view) {
+        
+            // Keep selection in form fields so any page refresh will preserve them
+            formViewName.val(view.name);
+            formViewStart.val(toDateString(view.start));
+
+            if (view.name != viewName) {
+                if (selectedStartDate) {
+                    // Use boolean to avoid infinite loop
+                    if (!inFunction) {
+                        inFunction = true;
+                        calendar.fullCalendar('gotoDate', selectedStartDate);
+                        calendar.fullCalendar('select', selectedStartDate, selectedEndDate, selectedAllDay);
+                        inFunction = false;
+                    }
+                }
+
+            } else {
+                selectedStartDate = null;
+                selectedEndDate = null;
+                selectedAllDay = null;
+            }
+            viewName = view.name;
+        },
+        
+        // Tooltip popup
+        eventRender: function(event, element) {
+            element.qtip({
+                content: event.tooltip,
+                position: {
+                    corner: {
+                        target: 'center',
+                        tooltip: 'topRight'
+                    }
+                },
+                style: {
+                    name: 'light',
+                    tip: 'topRight'
+                }
+            });
+        },
+        
+        // Large block of JSON created by the controller
+        events:
+{!events}
+    });
+});
+</script>
+
+</apex:page>

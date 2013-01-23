@@ -1,0 +1,135 @@
+<apex:page tabStyle="Printing__tab" controller="PrintingController" id="p">
+
+<style type="text/css">
+a.flActionLink {
+    color: #015ba7;
+    text-decoration: none;
+}
+span.flActionSpacer {
+    color: #999999;
+}
+</style>
+
+    <apex:sectionHeader title="Printing"/>
+    <apex:form id="f">
+        <apex:pageBlock id="pb" mode="edit">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Open" onclick="flOpenSelected()"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Type" columns="2" id="type">
+                <apex:inputField value="{!printing.Type__c}" id="type"/>
+                <apex:inputField value="{!printing.Layout__c}" id="layout"/>
+                <apex:outputText />
+                <apex:inputField value="{!printing.Format__c}" id="format"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Dates" columns="2" id="dates">
+                <apex:inputField value="{!printing.From__c}" required="true" id="from"/>
+                <apex:inputField value="{!printing.To__c}" required="true" id="to"/>
+                <apex:outputText />
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Select Weeks Later</apex:outputLabel>
+                     <c:ToDateLinksPanelGrid fromDateFieldId="p:f:pb:dates:from" toDateFieldId="p:f:pb:dates:to"/>
+                 </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Days" columns="1" id="days">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel />
+                    <apex:outputPanel layout="block">
+                        <apex:outputLink styleClass="flActionLink" value="#" onclick="flCheck('all')">All</apex:outputLink>
+                        <apex:outputText styleClass="flActionSpacer" escape="false" value="&nbsp;|&nbsp;"/>
+                        <apex:outputLink styleClass="flActionLink" value="#"  onclick="flCheck('none')">None</apex:outputLink>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                <apex:inputField value="{!printing.Monday__c}" id="monday"/>
+                <apex:inputField value="{!printing.Tuesday__c}" id="tuesday"/>
+                <apex:inputField value="{!printing.Wednesday__c}" id="wednesday"/>
+                <apex:inputField value="{!printing.Thursday__c}" id="thursday"/>
+                <apex:inputField value="{!printing.Friday__c}" id="friday"/>
+                <apex:inputField value="{!printing.Saturday__c}" id="saturday"/>
+                <apex:inputField value="{!printing.Sunday__c}" id="sunday"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+
+<script type="text/javascript">
+
+// Avoid date popup on page load
+function setFocusOnLoad() {
+}
+
+function flOpenSelected() {
+    var type = document.getElementById('p:f:pb:type:type');
+    if (type.value == 'Private Lesson Timetable') {
+        flOpenPage('/apex/PrivateLessonPdf');
+    } else if (type.value == 'Term Riding Timetable') {
+        flOpenPage('/apex/TermRidingPdf');
+    }
+    return false;
+}
+
+function flOpenPage(page) {
+
+    var from = document.getElementById('p:f:pb:dates:from').value;
+    var to = document.getElementById('p:f:pb:dates:to').value;
+    
+    // Need dates to open page
+    if (from == null || from == '' || to == null || to == '') {
+        return;
+    }
+    
+    var layout = document.getElementById('p:f:pb:type:layout').value;
+    var format = document.getElementById('p:f:pb:type:format').value;
+    
+    var days = [];
+    if (document.getElementById('p:f:pb:days:monday').checked) {
+        days.push('Monday');
+    }
+    if (document.getElementById('p:f:pb:days:tuesday').checked) {
+        days.push('Tuesday');
+    }
+    if (document.getElementById('p:f:pb:days:wednesday').checked) {
+        days.push('Wednesday');
+    }
+    if (document.getElementById('p:f:pb:days:thursday').checked) {
+        days.push('Thursday');
+    }
+    if (document.getElementById('p:f:pb:days:friday').checked) {
+        days.push('Friday');
+    }
+    if (document.getElementById('p:f:pb:days:saturday').checked) {
+        days.push('Saturday');
+    }
+    if (document.getElementById('p:f:pb:days:sunday').checked) {
+        days.push('Sunday');
+    }
+    
+    var url = page;
+    url += '?format=' + encodeURIComponent(format)
+    url += '&layout=' + encodeURIComponent(layout)
+    url += '&from=' + encodeURIComponent(from);
+    url += '&to=' + encodeURIComponent(to);
+    url += '&days=' + days.join(",")
+    
+    window.open(url, '_blank');
+}
+
+function flCheck(algorithm) {
+
+    var container = document.getElementById("p:f:pb:days");
+    var inputs = container.getElementsByTagName("input");
+    for (var i = 0; i < inputs.length; i++) { 
+        var input = inputs.item(i);
+        if (input.type == "checkbox") {
+            if (algorithm == 'all') {
+                input.checked = true;
+            } else if (algorithm == 'none') {
+                input.checked = false;
+            }
+        }
+    }
+    return false;
+}
+
+</script>
+
+</apex:page>

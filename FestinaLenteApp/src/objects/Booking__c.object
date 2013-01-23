@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>AvailableDatesBooked__c</fullName>
+        <externalId>false</externalId>
+        <label>Available Dates Booked</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>AvailableDates__c</fullName>
+        <externalId>false</externalId>
+        <formula>Class__r.AvailableDateCount__c</formula>
+        <label>Available Dates</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BookedDates__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&apos;/apex/EditBookedDates?bookingId=&apos; + Id + &apos;&amp;retURL=/&apos; + Class__r.Id, &apos;Edit&apos;, &quot;_self&quot;)</formula>
+        <label>Booked Dates</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ClassCoach__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(Class__r.Coach__r.Id, Class__r.Coach__r.FirstName + &apos; &apos; + Class__r.Coach__r.LastName, &quot;_self&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Class Coach</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ClassType__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT( Class__r.Type__c )</formula>
+        <label>Class Type</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Class__c</fullName>
+        <externalId>false</externalId>
+        <label>Class</label>
+        <referenceTo>Class__c</referenceTo>
+        <relationshipLabel>Bookings</relationshipLabel>
+        <relationshipName>Bookings</relationshipName>
+        <relationshipOrder>1</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Client__c</fullName>
+        <externalId>false</externalId>
+        <label>Client</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Bookings</relationshipLabel>
+        <relationshipName>Bookings</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>EarliestBookedDate__c</fullName>
+        <externalId>false</externalId>
+        <label>Earliest Booked Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>LatestBookedDate__c</fullName>
+        <externalId>false</externalId>
+        <label>Latest Booked Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>Notes</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PreferredHorse__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(Client__r.PreferredHorse__r.Id, Client__r.PreferredHorse__r.Name, &quot;_self&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Preferred Horse</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Booking</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Client__c</columns>
+        <columns>PreferredHorse__c</columns>
+        <columns>Class__c</columns>
+        <columns>ClassType__c</columns>
+        <columns>ClassCoach__c</columns>
+        <columns>EarliestBookedDate__c</columns>
+        <columns>LatestBookedDate__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>B-{000000}</displayFormat>
+        <label>Booking Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Bookings</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Client__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>PreferredHorse__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Class__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ClassType__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ClassCoach__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>EarliestBookedDate__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>LatestBookedDate__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Client__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>PreferredHorse__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Class__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ClassType__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ClassCoach__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>EarliestBookedDate__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>LatestBookedDate__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Client__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>PreferredHorse__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Class__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ClassType__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ClassCoach__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>EarliestBookedDate__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>LatestBookedDate__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Client__c</searchFilterFields>
+        <searchFilterFields>PreferredHorse__c</searchFilterFields>
+        <searchFilterFields>Class__c</searchFilterFields>
+        <searchFilterFields>ClassType__c</searchFilterFields>
+        <searchFilterFields>ClassCoach__c</searchFilterFields>
+        <searchFilterFields>EarliestBookedDate__c</searchFilterFields>
+        <searchFilterFields>LatestBookedDate__c</searchFilterFields>
+        <searchResultsAdditionalFields>Client__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PreferredHorse__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Class__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ClassType__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ClassCoach__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>EarliestBookedDate__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>LatestBookedDate__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <webLinks>
+        <fullName>Calendar</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Calendar</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/Calendar?bookingId={!Booking__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>DeleteSelectedBookings</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Delete Selected Bookings</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&apos;/soap/ajax/26.0/connection.js&apos;)}
+{!REQUIRESCRIPT(&apos;/soap/ajax/26.0/apex.js&apos;)}
+
+var ids = {!GETRECORDIDS( $ObjectType.Booking__c)};
+if (ids.length &gt; 0) {
+    if (confirm(&apos;Are you sure you want to delete the selected Booking(s)?&apos;)) {
+        sforce.apex.execute(&apos;Actions&apos;, &apos;deleteBookings&apos;, {ids: ids});
+        window.location.reload();
+    }
+} else {
+    alert(&apos;Select at least one Booking first using the checkboxes.&apos;);
+}</url>
+    </webLinks>
+</CustomObject>

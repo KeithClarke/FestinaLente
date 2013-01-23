@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Age__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (
+    MONTH(TODAY()) &gt; MONTH(Birthdate),
+    YEAR(TODAY()) - YEAR(Birthdate), 
+    IF (AND(MONTH(TODAY()) = MONTH(Birthdate), DAY(TODAY()) &gt;= DAY(Birthdate)),
+        YEAR(TODAY()) - YEAR(Birthdate),
+        (YEAR(TODAY()) - YEAR(Birthdate)) - 1)
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Age</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ColourCode__c</fullName>
+        <externalId>false</externalId>
+        <label>Colour Code</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Aqua</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Blue</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Fuchsia</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Gray</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Green</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Lime</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Maroon</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Navy</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Olive</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Purple</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Red</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Silver</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Teal</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Yellow</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>Notes</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PreferredHorse__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Preferred Horse</label>
+        <referenceTo>Horse__c</referenceTo>
+        <relationshipLabel>Preferring Clients</relationshipLabel>
+        <relationshipName>Clients</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Weight__c</fullName>
+        <externalId>false</externalId>
+        <label>Weight</label>
+        <picklist>
+            <picklistValues>
+                <fullName>5 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>10 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>15 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>20 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>25 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>30 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>35 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>40 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>45 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>50 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>55 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>60 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>65 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>70 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>75 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>80 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>85 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>90 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>95 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>100 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>105 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>110 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>115 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>120 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>125 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>130 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>135 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>140 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>145 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>150 kg</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+</CustomObject>

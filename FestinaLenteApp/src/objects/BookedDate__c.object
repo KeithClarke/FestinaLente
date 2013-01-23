@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>AvailableDateIdBookingId__c</fullName>
+        <description>To simplify uniqueness check</description>
+        <externalId>false</externalId>
+        <formula>AvailableDate__r.Id + Booking__r.Id</formula>
+        <label>Available Date Id Booking Id</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>AvailableDateSpacesBooked__c</fullName>
+        <externalId>false</externalId>
+        <formula>AvailableDate__r.SpacesBooked__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Available Date Spaces Booked</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>AvailableDateSpacesRemaining__c</fullName>
+        <externalId>false</externalId>
+        <formula>AvailableDate__r.SpacesRemaining__c</formula>
+        <label>Available Date Spaces Remaining</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>AvailableDate__c</fullName>
+        <externalId>false</externalId>
+        <label>Available Date</label>
+        <referenceTo>AvailableDate__c</referenceTo>
+        <relationshipLabel>Booked Dates</relationshipLabel>
+        <relationshipName>BookedDates</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Booking__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Booking</label>
+        <referenceTo>Booking__c</referenceTo>
+        <relationshipLabel>Booked Dates</relationshipLabel>
+        <relationshipName>BookedDates</relationshipName>
+        <required>true</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Client__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK( Booking__r.Client__r.Id ,  Booking__r.Client__r.FirstName + &apos; &apos; +  Booking__r.Client__r.LastName , &quot;_self&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Client</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>AvailableDate__r.Date__c</formula>
+        <label>Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>DayOfWeek__c</fullName>
+        <externalId>false</externalId>
+        <formula>AvailableDate__r.DayOfWeek__c</formula>
+        <label>Day of Week</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>WeekNumber__c</fullName>
+        <externalId>false</externalId>
+        <formula>AvailableDate__r.WeekNumber__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Week Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Booked Date</label>
+    <nameField>
+        <displayFormat>BD-{000000}</displayFormat>
+        <label>Booked Date Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Booked Dates</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <webLinks>
+        <fullName>EditBookedDates</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Edit Booked Dates</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/EditBookedDates?bookingId={!Booking__c.Id}</url>
+    </webLinks>
+</CustomObject>

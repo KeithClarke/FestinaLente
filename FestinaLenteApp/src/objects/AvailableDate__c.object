@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Class__c</fullName>
+        <externalId>false</externalId>
+        <label>Class</label>
+        <referenceTo>Class__c</referenceTo>
+        <relationshipLabel>Available Dates</relationshipLabel>
+        <relationshipName>AvailableDates</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>DayOfWeekNumber__c</fullName>
+        <externalId>false</externalId>
+        <formula>MOD(Date__c - DATE(2000, 1, 2), 7)</formula>
+        <label>Day of Week Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DayOfWeek__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(DayOfWeekNumber__c, 
+    0, &apos;Sunday&apos;, 
+    1, &apos;Monday&apos;, 
+    2, &apos;Tuesday&apos;, 
+    3, &apos;Wednesday&apos;, 
+    4, &apos;Thursday&apos;, 
+    5, &apos;Friday&apos;, 
+    6, &apos;Saturday&apos;, 
+    &apos;&apos;
+)</formula>
+        <label>Day of Week</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SpacesBooked__c</fullName>
+        <externalId>false</externalId>
+        <label>Spaces Booked</label>
+        <summaryForeignKey>BookedDate__c.AvailableDate__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>SpacesRemaining__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISNULL(Class__r.SpacesAvailable__c)), Class__r.SpacesAvailable__c - SpacesBooked__c, null)</formula>
+        <label>Spaces Remaining</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>WeekNumber__c</fullName>
+        <externalId>false</externalId>
+        <formula>MOD(FLOOR((Date__c - DATEVALUE(&quot;2006-01-01&quot;)) / 7), 52) + 1</formula>
+        <label>Week Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Available Date</label>
+    <nameField>
+        <displayFormat>AD-{000000}</displayFormat>
+        <label>Available Date Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>AvailableDates</pluralLabel>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Date__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>DayOfWeek__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Date__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>DayOfWeek__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Date__c</searchFilterFields>
+        <searchFilterFields>DayOfWeek__c</searchFilterFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <webLinks>
+        <fullName>DeleteSelectedAvailableDates</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Delete Selected Available Dates</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&apos;/soap/ajax/26.0/connection.js&apos;)}
+{!REQUIRESCRIPT(&apos;/soap/ajax/26.0/apex.js&apos;)}
+
+var ids = {!GETRECORDIDS( $ObjectType.AvailableDate__c)};
+if (ids.length &gt; 0) {
+    if (confirm(&apos;Are you sure you want to delete the selected Available Date(s)?&apos;)) {
+        sforce.apex.execute(&apos;Actions&apos;, &apos;deleteAvailableDates&apos;, {ids: ids});
+        window.location.reload();
+    }
+} else {
+    alert(&apos;Select at least one Available Date first using the checkboxes.&apos;);
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>GenerateAvailableDates</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Generate Available Dates</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/GenerateAvailableDates?classId={!Class__c.Id}</url>
+    </webLinks>
+</CustomObject>

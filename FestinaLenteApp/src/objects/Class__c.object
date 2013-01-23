@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>AvailableDateCount__c</fullName>
+        <externalId>false</externalId>
+        <label>Available Date Count</label>
+        <summaryForeignKey>AvailableDate__c.Class__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>BookedDateCount__c</fullName>
+        <externalId>false</externalId>
+        <label>Booked Date Count</label>
+        <summarizedField>Booking__c.AvailableDatesBooked__c</summarizedField>
+        <summaryForeignKey>Booking__c.Class__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>BookingCount__c</fullName>
+        <externalId>false</externalId>
+        <label>Booking Count</label>
+        <summaryForeignKey>Booking__c.Class__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Coach__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Coach</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Classes</relationshipLabel>
+        <relationshipName>Classes</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>DayOfWeekNumber__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(DayOfWeek__c,
+    &apos;Sunday&apos;, 0,
+    &apos;Monday&apos;, 1,
+    &apos;Tuesday&apos;, 2,
+    &apos;Wednesday&apos;, 3,
+    &apos;Thursday&apos;, 4,
+    &apos;Friday&apos;, 5,
+    &apos;Saturday&apos;, 6,
+    null
+)</formula>
+        <label>Day of Week Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DayOfWeek__c</fullName>
+        <externalId>false</externalId>
+        <label>Day of Week</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Monday</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tuesday</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Wednesday</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Thursday</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Friday</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Saturday</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sunday</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Detail__c</fullName>
+        <externalId>false</externalId>
+        <label>Detail</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Lesson</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Stable Management then Lesson</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Lesson then Stable Management</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>EarliestAvailableDate__c</fullName>
+        <externalId>false</externalId>
+        <label>Earliest Available Date</label>
+        <summarizedField>AvailableDate__c.Date__c</summarizedField>
+        <summaryForeignKey>AvailableDate__c.Class__c</summaryForeignKey>
+        <summaryOperation>min</summaryOperation>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>EarliestToLatestWeeks__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (NOT(ISNULL(EarliestAvailableDate__c)) &amp;&amp; NOT(ISNULL(LatestAvailableDate__c)), CEILING((LatestAvailableDate__c - EarliestAvailableDate__c) / 7) + 1, null)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Earliest To Latest Weeks</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LatestAvailableDate__c</fullName>
+        <externalId>false</externalId>
+        <label>Latest Available Date</label>
+        <summarizedField>AvailableDate__c.Date__c</summarizedField>
+        <summaryForeignKey>AvailableDate__c.Class__c</summaryForeignKey>
+        <summaryOperation>max</summaryOperation>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>LengthInMinutes__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE( Length__c,
+    &apos;60 mins&apos;, 60,
+    &apos;45 mins&apos;, 45,
+    &apos;30 mins&apos;, 30,
+    NULL
+)</formula>
+        <label>Length in Minutes</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Length__c</fullName>
+        <externalId>false</externalId>
+        <label>Length</label>
+        <picklist>
+            <picklistValues>
+                <fullName>60 mins</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>45 mins</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>30 mins</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Level__c</fullName>
+        <externalId>false</externalId>
+        <label>Level</label>
+        <picklist>
+            <picklistValues>
+                <fullName>B - Beginner</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>BI - Beginner Improver</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WI - Weak Intermediate</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>I - Intermediate</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SI - Strong Intermediate</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>A - Advanced</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>Notes</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>SpacesAvailable__c</fullName>
+        <externalId>false</externalId>
+        <label>Spaces Available</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SpacesBookedAvailable__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+    AND(NOT(ISNULL(BookedDateCount__c)), NOT(ISNULL(SpacesAvailable__c)), NOT(ISNULL(AvailableDateCount__c))),
+    (BookedDateCount__c) / ( SpacesAvailable__c *  AvailableDateCount__c),
+    NULL
+)</formula>
+        <label>Spaces Booked/Available</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>TimeInMinutes__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(Time__c,
+&apos;8 am&apos;, 480,
+&apos;8:15 am&apos;, 495,
+&apos;8:30 am&apos;, 510,
+&apos;8:45 am&apos;, 525,
+&apos;9 am&apos;, 540,
+&apos;9:15 am&apos;, 555,
+&apos;9:30 am&apos;, 570,
+&apos;9:45 am&apos;, 585,
+&apos;10 am&apos;, 600,
+&apos;10:15 am&apos;, 615,
+&apos;10:30 am&apos;, 630,
+&apos;10:45 am&apos;, 645,
+&apos;11 am&apos;, 660,
+&apos;11:15 am&apos;, 675,
+&apos;11:30 am&apos;, 690,
+&apos;11:45 am&apos;, 705,
+&apos;12 pm&apos;, 720,
+&apos;12:15 pm&apos;, 735,
+&apos;12:30 pm&apos;, 750,
+&apos;12:45 pm&apos;, 765,
+&apos;1 pm&apos;, 780,
+&apos;1:15 pm&apos;, 795,
+&apos;1:30 pm&apos;, 810,
+&apos;1:45 pm&apos;, 825,
+&apos;2 pm&apos;, 840,
+&apos;2:15 pm&apos;, 855,
+&apos;2:30 pm&apos;, 870,
+&apos;2:45 pm&apos;, 885,
+&apos;3 pm&apos;, 900,
+&apos;3:15 pm&apos;, 915,
+&apos;3:30 pm&apos;, 930,
+&apos;3:45 pm&apos;, 945,
+&apos;4 pm&apos;, 960,
+&apos;4:15 pm&apos;, 975,
+&apos;4:30 pm&apos;, 990,
+&apos;4:45 pm&apos;, 1005,
+&apos;5 pm&apos;, 1020,
+&apos;5:15 pm&apos;, 1035,
+&apos;5:30 pm&apos;, 1050,
+&apos;5:45 pm&apos;, 1065,
+&apos;6 pm&apos;, 1080,
+&apos;6:15 pm&apos;, 1095,
+&apos;6:30 pm&apos;, 1110,
+&apos;6:45 pm&apos;, 1125,
+null
+)</formula>
+        <label>Time in Minutes</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Time</label>
+        <picklist>
+            <picklistValues>
+                <fullName>8 am</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>8:15 am</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>8:30 am</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>8:45 am</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>9 am</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>9:15 am</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>9:30 am</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>9:45 am</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>10 am</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>10:15 am</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>10:30 am</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>10:45 am</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>11 am</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>11:15 am</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>11:30 am</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>11:45 am</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>12 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>12:15 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>12:30 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>12:45 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1:15 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1:30 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1:45 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2:15 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2:30 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2:45 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3:15 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3:30 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3:45 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4:15 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4:30 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4:45 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5:15 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5:30 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5:45 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6:15 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6:30 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6:45 pm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Equine Facilitated Programme</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pony Camp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Private Lesson</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Term Riding</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <label>Class</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Type__c</columns>
+        <columns>DayOfWeek__c</columns>
+        <columns>Time__c</columns>
+        <columns>Length__c</columns>
+        <columns>Level__c</columns>
+        <columns>AvailableDateCount__c</columns>
+        <columns>BookingCount__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>C-{000000}</displayFormat>
+        <label>Class Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Classes</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>DayOfWeek__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Time__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Length__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Level__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>AvailableDateCount__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>BookingCount__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Type__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>DayOfWeek__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Time__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Length__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Level__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>AvailableDateCount__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>BookingCount__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Type__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>DayOfWeek__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Time__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Length__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Level__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>AvailableDateCount__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>BookingCount__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Type__c</searchFilterFields>
+        <searchFilterFields>DayOfWeek__c</searchFilterFields>
+        <searchFilterFields>Time__c</searchFilterFields>
+        <searchFilterFields>Length__c</searchFilterFields>
+        <searchFilterFields>Level__c</searchFilterFields>
+        <searchFilterFields>AvailableDateCount__c</searchFilterFields>
+        <searchFilterFields>BookingCount__c</searchFilterFields>
+        <searchResultsAdditionalFields>Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>DayOfWeek__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Time__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Length__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Level__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>AvailableDateCount__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>BookingCount__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <webLinks>
+        <fullName>Calendar</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Calendar</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/Calendar?classId={!Class__c.Id}</url>
+    </webLinks>
+</CustomObject>

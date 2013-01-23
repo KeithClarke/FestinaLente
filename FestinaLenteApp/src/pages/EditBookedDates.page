@@ -1,0 +1,81 @@
+<apex:page controller="EditBookedDatesController" tabStyle="Booking__c" id="p">
+
+<style type="text/css">
+td.past {
+    background-color: #fff0f0;
+}
+td.future {
+    background-color: #f0fff0;
+}
+a.flActionLink {
+    color: #015ba7;
+    text-decoration: none;
+}
+span.flActionSpacer {
+    color: #999999;
+}
+.tar {
+    text-align: right !important;
+}
+</style>
+
+    <apex:sectionHeader title="Booked Dates Edit" subtitle="{!booking.Name}"/>
+    <apex:pageMessages />
+    <apex:form id="f">
+        <apex:pageBlock mode="edit" id="pb">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}" />
+                <apex:commandButton value="Cancel" action="{!cancel}" immediate="true"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="1" title="Booking Detail">
+                <apex:outputField value="{!booking.Name}"/>
+                <apex:outputField value="{!booking.Client__c}"/>
+                <apex:outputField value="{!booking.Class__c}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="1" title="Booked Dates" id="pbs">
+                <apex:outputPanel layout="block">
+                    <apex:outputText >Select:&nbsp;</apex:outputText>
+                    <apex:outputLink styleClass="flActionLink" value="#" onclick="flCheck('all')">All</apex:outputLink>
+                    <apex:outputText styleClass="flActionSpacer" escape="false" value="&nbsp;|&nbsp;"/>
+                    <apex:outputLink styleClass="flActionLink" value="#"  onclick="flCheck('none')">None</apex:outputLink>
+                    <apex:outputText styleClass="flActionSpacer" escape="false" value="&nbsp;|&nbsp;"/>
+                    <apex:outputLink styleClass="flActionLink" value="#"  onclick="flCheck('first')">First and Every Other</apex:outputLink>
+                    <apex:outputText styleClass="flActionSpacer" escape="false" value="&nbsp;|&nbsp;"/>
+                    <apex:outputLink styleClass="flActionLink" value="#"  onclick="flCheck('second')">Second and Every Other</apex:outputLink>
+                </apex:outputPanel>
+                <apex:pageBlockTable value="{!availables}" var="item" rendered="{! availables.size > 0}" id="pbt">
+                    <apex:column styleClass="{!IF(item.past, 'past', 'future')}" headerValue="Select">
+                        <apex:inputCheckbox value="{!item.selected}"/>
+                    </apex:column>         
+                    <apex:column styleClass="{!IF(item.past, 'past', 'future')}" value="{!item.sob.Date__c}"/>
+                    <apex:column styleClass="{!IF(item.past, 'past', 'future')} tar" value="{!item.sob.WeekNumber__c}" headerClass="tar"/>
+                    <apex:column styleClass="{!IF(item.past, 'past', 'future')}" value="{!item.sob.DayOfWeek__c}"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    
+<script type="text/javascript">
+function flCheck(algorithm) {
+
+    var table = document.getElementById("p:f:pb:pbs:pbt");
+    var inputs = table.getElementsByTagName("input");
+    for (var i = 0; i < inputs.length; i++) { 
+        var input = inputs.item(i);
+        if (input.type == "checkbox") {
+            if (algorithm == 'all') {
+                input.checked = true;
+            } else if (algorithm == 'none') {
+                input.checked = false;
+            } else if (algorithm == 'first') {
+                input.checked = (i % 2 == 0);
+            } else if (algorithm == 'second') {
+                input.checked = (i % 2 == 1);
+            }
+        }
+    }
+    return false;
+}
+</script>
+
+</apex:page>
