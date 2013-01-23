@@ -81,7 +81,7 @@ function flClick(weeks) {
 // Assumes d/m/y
 function flToDateObject(s) {
     var parts = s.split("/");
-    return parts.length == 3 ? new Date(parts[2], parts[1], parts[0]) : null;
+    return parts.length == 3 ? new Date(parts[2], parts[1] - 1, parts[0]) : null;
 }
 
 // Assumes d/m/y

@@ -34,8 +34,4 @@ public class Dates {
             return null;
         }
     }
-    
-    public static Long toMs(Date d) {
-        return d != null ? Datetime.newInstance(d.year(), d.month(), d.day()).getTime() : null;
-    }
 }
