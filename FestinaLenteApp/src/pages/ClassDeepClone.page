@@ -1,0 +1,27 @@
+<apex:page standardController="Class__c" extensions="ClassDeepCloneController" >
+    <apex:sectionHeader title="Class Clone Including Available Dates Dates" subtitle="New Class"/>
+    <apex:form >
+        <apex:pageMessages />
+        <apex:pageBlock mode="edit">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}" />
+                <apex:commandButton value="Cancel" action="{!cancel}" immediate="true"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="2" title="Information">
+                <apex:outputText />
+                <apex:inputField value="{!Class__c.Coach__c}" required="true"/>
+                <apex:inputField value="{!Class__c.Type__c}" required="true"/>
+                <apex:inputField value="{!Class__c.Detail__c}"/>
+                <apex:inputField value="{!Class__c.DayOfWeek__c}" required="true"/>
+                <apex:inputField value="{!Class__c.Time__c}" required="true"/>
+                <apex:inputField value="{!Class__c.Level__c}"/>
+                <apex:inputField value="{!Class__c.Length__c}" required="true"/>
+                <apex:inputField value="{!Class__c.SpacesAvailable__c}"/>
+                <apex:inputField value="{!Class__c.Notes__c}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="1" title="Available Dates">
+                 <apex:outputText >The {!ads.size} Available Dates will also be cloned with the "Day of Week" adjusted as needed.</apex:outputText>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

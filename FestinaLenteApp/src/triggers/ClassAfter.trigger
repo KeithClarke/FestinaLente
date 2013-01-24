@@ -22,10 +22,9 @@ trigger ClassAfter on Class__c (after update) {
     List<AvailableDate__c> updates = new List<AvailableDate__c> ();
     for (AvailableDate__c ad :ads) {
         Decimal classDayOfWeekNumber = changedClasses.get(ad.Class__c).DayOfWeekNumber__c;
+        // Similar logic in ClassDeepCloneController
         if (ad.DayOfWeekNumber__c != classDayOfWeekNumber) {
-            System.debug('>>>> before=' + ad.Date__c + 'c=' + classDayOfWeekNumber.intValue() + ' ad=' + ad.DayOfWeekNumber__c.intValue());
             ad.Date__c = ad.Date__c.addDays(classDayOfWeekNumber.intValue() - ad.DayOfWeekNumber__c.intValue());
-            System.debug('>>>> after=' + ad.Date__c);
             updates.add(ad);
         }
     }

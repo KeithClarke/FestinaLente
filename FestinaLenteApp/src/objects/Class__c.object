@@ -628,4 +628,15 @@ null
         <protected>false</protected>
         <url>/apex/Calendar?classId={!Class__c.Id}</url>
     </webLinks>
+    <webLinks>
+        <fullName>CloneIncludingAvailableDates</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Clone Including Available Dates</masterLabel>
+        <openType>sidebar</openType>
+        <page>ClassDeepClone</page>
+        <protected>false</protected>
+    </webLinks>
 </CustomObject>
