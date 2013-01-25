@@ -27,6 +27,7 @@
         <members>Contact.EmergencyContactPhone__c</members>
         <members>Contact.EmergencyContactRelationship__c</members>
         <members>Contact.Height__c</members>
+        <members>Contact.Level__c</members>
         <members>Contact.Notes__c</members>
         <members>Contact.PreferredHorse__c</members>
         <members>Contact.Weight__c</members>

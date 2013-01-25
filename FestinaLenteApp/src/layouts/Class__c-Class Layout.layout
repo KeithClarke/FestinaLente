@@ -146,6 +146,7 @@
         <fields>NAME</fields>
         <fields>Contact.CNTC_FIRST_NAME</fields>
         <fields>Contact.NAME</fields>
+        <fields>ClientLevel__c</fields>
         <fields>Contact.PreferredHorse__c</fields>
         <fields>EarliestBookedDate__c</fields>
         <fields>LatestBookedDate__c</fields>

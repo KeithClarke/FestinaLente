@@ -87,7 +87,7 @@ public with sharing class CalendarController {
                 + '         Id, Name, Date__c,'
                 + '         AvailableDate__r.Id,'
                 + '         Booking__r.Id, Booking__r.Name, Booking__r.EarliestBookedDate__c, Booking__r.LatestBookedDate__c,'
-                + '         Booking__r.Client__r.Name,'
+                + '         Booking__r.Client__r.Name, Booking__r.Client__r.Level__c,'
                 + '         Booking__r.Client__r.PreferredHorse__r.Name,'
                 + '         Booking__r.Class__r.Coach__r.Name,'
                 + '         Booking__r.Class__r.Id, Booking__r.Class__r.Name, Booking__r.Class__r.TimeInMinutes__c, Booking__r.Class__r.LengthInMinutes__c,'
@@ -208,6 +208,9 @@ public with sharing class CalendarController {
         String s = 'Booking: <b>' + b.Name + '</b>';
         if (b.Client__r != null) {
             s += '<br/>Client: ' + b.Client__r.Name;
+        }
+        if (b.Client__r != null && b.Client__r.Level__c != null) {
+            s += '<br/>Level: ' + b.Client__r.Level__c;
         }
         if (b.Client__r != null && b.Client__r.PreferredHorse__r != null) {
             s += '<br/>Preferred Horse: ' + b.Client__r.PreferredHorse__r.Name;

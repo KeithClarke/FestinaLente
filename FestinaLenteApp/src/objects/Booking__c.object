@@ -99,6 +99,25 @@
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <fields>
+        <fullName>ClientLevel__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Client__r.Level__c)</formula>
+        <label>Client Level</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ClientPreferredHorse__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(Client__r.PreferredHorse__r.Id, Client__r.PreferredHorse__r.Name, &quot;_self&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Client Preferred Horse</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Client__c</fullName>
         <externalId>false</externalId>
         <label>Client</label>
@@ -132,22 +151,13 @@
         <type>LongTextArea</type>
         <visibleLines>4</visibleLines>
     </fields>
-    <fields>
-        <fullName>PreferredHorse__c</fullName>
-        <externalId>false</externalId>
-        <formula>HYPERLINK(Client__r.PreferredHorse__r.Id, Client__r.PreferredHorse__r.Name, &quot;_self&quot;)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Preferred Horse</label>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
     <label>Booking</label>
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>Client__c</columns>
-        <columns>PreferredHorse__c</columns>
+        <columns>ClientLevel__c</columns>
+        <columns>ClientPreferredHorse__c</columns>
         <columns>Class__c</columns>
         <columns>ClassType__c</columns>
         <columns>ClassCoach__c</columns>
@@ -164,21 +174,24 @@
     <pluralLabel>Bookings</pluralLabel>
     <searchLayouts>
         <customTabListAdditionalFields>Client__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>PreferredHorse__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ClientLevel__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ClientPreferredHorse__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Class__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>ClassType__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>ClassCoach__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>EarliestBookedDate__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>LatestBookedDate__c</customTabListAdditionalFields>
         <lookupDialogsAdditionalFields>Client__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>PreferredHorse__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ClientLevel__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ClientPreferredHorse__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Class__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>ClassType__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>ClassCoach__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>EarliestBookedDate__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>LatestBookedDate__c</lookupDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Client__c</lookupPhoneDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>PreferredHorse__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ClientLevel__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ClientPreferredHorse__c</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Class__c</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>ClassType__c</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>ClassCoach__c</lookupPhoneDialogsAdditionalFields>
@@ -186,14 +199,16 @@
         <lookupPhoneDialogsAdditionalFields>LatestBookedDate__c</lookupPhoneDialogsAdditionalFields>
         <searchFilterFields>NAME</searchFilterFields>
         <searchFilterFields>Client__c</searchFilterFields>
-        <searchFilterFields>PreferredHorse__c</searchFilterFields>
+        <searchFilterFields>ClientLevel__c</searchFilterFields>
+        <searchFilterFields>ClientPreferredHorse__c</searchFilterFields>
         <searchFilterFields>Class__c</searchFilterFields>
         <searchFilterFields>ClassType__c</searchFilterFields>
         <searchFilterFields>ClassCoach__c</searchFilterFields>
         <searchFilterFields>EarliestBookedDate__c</searchFilterFields>
         <searchFilterFields>LatestBookedDate__c</searchFilterFields>
         <searchResultsAdditionalFields>Client__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>PreferredHorse__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ClientLevel__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ClientPreferredHorse__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Class__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>ClassType__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>ClassCoach__c</searchResultsAdditionalFields>

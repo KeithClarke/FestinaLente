@@ -555,6 +555,40 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>Level__c</fullName>
+        <externalId>false</externalId>
+        <label>Level</label>
+        <picklist>
+            <picklistValues>
+                <fullName>B - Beginner</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>BI - Beginner Improver</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WI - Weak Intermediate</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>I - Intermediate</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SI - Strong Intermediate</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>A - Advanced</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>Notes__c</fullName>
         <externalId>false</externalId>
         <label>Notes</label>
@@ -1374,6 +1408,33 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Level__c</picklist>
+            <values>
+                <fullName>A - Advanced</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B - Beginner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BI - Beginner Improver</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I - Intermediate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SI - Strong Intermediate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WI - Weak Intermediate</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Name</picklist>
             <values>
                 <fullName>Dr%2E</fullName>
@@ -2185,6 +2246,33 @@
             </values>
             <values>
                 <fullName>Web</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Level__c</picklist>
+            <values>
+                <fullName>A - Advanced</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B - Beginner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BI - Beginner Improver</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I - Intermediate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SI - Strong Intermediate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WI - Weak Intermediate</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
