@@ -85,6 +85,476 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>EmergencyContactName__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Name</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EmergencyContactPhone__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Phone</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>EmergencyContactRelationship__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Relationship</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Parent</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Guardian</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Key Worker</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Spouse</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Grandparent</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Height__c</fullName>
+        <externalId>false</externalId>
+        <label>Height</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0.50 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>0.55 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>0.60 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>0.65 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>0.70 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>0.75 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>0.80 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>0.85 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>0.90 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>0.95 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1.00 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1.05 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1.10 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1.15 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1.20 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1.25 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1.30 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1.35 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1.40 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1.45 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1.50 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1.55 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1.60 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1.65 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1.70 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1.75 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1.80 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1.85 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1.90 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1.95 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2.00 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2.05 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2.10 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2.15 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2.20 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2.25 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2.30 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2.35 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2.40 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2.45 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2.50 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2 ft</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2 ft 1 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2 ft 2 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2 ft 3 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2 ft 4 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2 ft 5 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2 ft 6 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2 ft 7 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2 ft 8 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2 ft 9 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2 ft 10 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2 ft 11 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3 ft</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3 ft 1 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3 ft 2 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3 ft 3 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3 ft 4 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3 ft 5 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3 ft 6 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3 ft 7 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3 ft 8 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3 ft 9 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3 ft 10 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3 ft 11 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4 ft</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4 ft 1 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4 ft 2 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4 ft 3 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4 ft 4 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4 ft 5 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4 ft 6 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4 ft 7 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4 ft 8 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4 ft 9 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4 ft 10 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4 ft 11 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5 ft</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5 ft 1 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5 ft 2 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5 ft 3 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5 ft 4 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5 ft 5 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5 ft 6 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5 ft 7 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5 ft 8 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5 ft 9 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5 ft 10 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5 ft 11 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6 ft</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6 ft 1 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6 ft 2 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6 ft 3 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6 ft 4 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6 ft 5 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6 ft 6 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6 ft 7 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6 ft 8 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6 ft 9 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6 ft 10 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6 ft 11 in</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>7 ft</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>Notes__c</fullName>
         <externalId>false</externalId>
         <label>Notes</label>
@@ -110,10 +580,6 @@
         <externalId>false</externalId>
         <label>Weight</label>
         <picklist>
-            <picklistValues>
-                <fullName>5 kg</fullName>
-                <default>false</default>
-            </picklistValues>
             <picklistValues>
                 <fullName>10 kg</fullName>
                 <default>false</default>
@@ -230,9 +696,1787 @@
                 <fullName>150 kg</fullName>
                 <default>false</default>
             </picklistValues>
+            <picklistValues>
+                <fullName>2 st</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2 st 7 lbs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3 st</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3 st 7 lbs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4 st</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4 st 7 lbs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5 st</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5 st 7 lbs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6 st</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6 st 7 lbs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>7 st</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>7 st 7 lbs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>8 st</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>8 st 7 lbs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>9 st</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>9 st 7 lbs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>10 st</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>10 st 7 lbs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>11 st</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>11 st 7 lbs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>12 st</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>12 st 7 lbs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>13 st</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>13 st 7 lbs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>14 st</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>14 st 7 lbs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>15 st</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>15 st 7 lbs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>16 st</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>16 st 7 lbs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>17 st</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>17 st 7 lbs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>18 st</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>18 st 7 lbs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>19 st</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>19 st 7 lbs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>20 st</fullName>
+                <default>false</default>
+            </picklistValues>
             <sorted>false</sorted>
         </picklist>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Picklist</type>
     </fields>
+    <recordTypes>
+        <fullName>Client</fullName>
+        <active>true</active>
+        <label>Client</label>
+        <picklistValues>
+            <picklist>ColourCode__c</picklist>
+            <values>
+                <fullName>Aqua</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Blue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fuchsia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gray</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Green</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lime</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Maroon</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Navy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Olive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purple</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Red</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Silver</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yellow</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>EmergencyContactRelationship__c</picklist>
+            <values>
+                <fullName>Grandparent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Guardian</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Key Worker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Spouse</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Height__c</picklist>
+            <values>
+                <fullName>0%2E50 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>0%2E55 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>0%2E60 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>0%2E65 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>0%2E70 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>0%2E75 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>0%2E80 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>0%2E85 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>0%2E90 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>0%2E95 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E00 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E05 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E10 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E15 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E20 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E25 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E30 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E35 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E40 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E45 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E50 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E55 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E60 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E65 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E70 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E75 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E80 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E85 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E90 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E95 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 ft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 ft 1 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 ft 10 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 ft 11 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 ft 2 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 ft 3 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 ft 4 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 ft 5 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 ft 6 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 ft 7 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 ft 8 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 ft 9 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%2E00 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%2E05 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%2E10 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%2E15 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%2E20 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%2E25 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%2E30 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%2E35 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%2E40 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%2E45 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%2E50 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 ft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 ft 1 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 ft 10 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 ft 11 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 ft 2 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 ft 3 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 ft 4 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 ft 5 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 ft 6 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 ft 7 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 ft 8 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 ft 9 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 ft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 ft 1 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 ft 10 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 ft 11 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 ft 2 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 ft 3 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 ft 4 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 ft 5 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 ft 6 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 ft 7 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 ft 8 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 ft 9 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 ft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 ft 1 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 ft 10 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 ft 11 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 ft 2 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 ft 3 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 ft 4 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 ft 5 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 ft 6 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 ft 7 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 ft 8 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 ft 9 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 ft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 ft 1 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 ft 10 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 ft 11 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 ft 2 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 ft 3 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 ft 4 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 ft 5 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 ft 6 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 ft 7 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 ft 8 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 ft 9 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7 ft</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LeadSource</picklist>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Referral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchased List</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Web</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Name</picklist>
+            <values>
+                <fullName>Dr%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mr%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mrs%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ms%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prof%2E</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Weight__c</picklist>
+            <values>
+                <fullName>10 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>105 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>110 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>115 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>120 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>125 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>13 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>13 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>130 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>135 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>14 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>14 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>140 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>145 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>150 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>16 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>16 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>17 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>17 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>18 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>18 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>19 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>19 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>35 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>55 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>65 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>85 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>95 kg</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Coach</fullName>
+        <active>true</active>
+        <label>Coach</label>
+        <picklistValues>
+            <picklist>ColourCode__c</picklist>
+            <values>
+                <fullName>Aqua</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Blue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fuchsia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gray</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Green</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lime</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Maroon</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Navy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Olive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purple</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Red</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Silver</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yellow</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>EmergencyContactRelationship__c</picklist>
+            <values>
+                <fullName>Grandparent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Guardian</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Key Worker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Spouse</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Height__c</picklist>
+            <values>
+                <fullName>0%2E50 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>0%2E55 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>0%2E60 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>0%2E65 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>0%2E70 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>0%2E75 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>0%2E80 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>0%2E85 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>0%2E90 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>0%2E95 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E00 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E05 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E10 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E15 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E20 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E25 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E30 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E35 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E40 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E45 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E50 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E55 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E60 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E65 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E70 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E75 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E80 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E85 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E90 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%2E95 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 ft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 ft 1 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 ft 10 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 ft 11 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 ft 2 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 ft 3 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 ft 4 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 ft 5 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 ft 6 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 ft 7 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 ft 8 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 ft 9 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%2E00 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%2E05 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%2E10 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%2E15 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%2E20 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%2E25 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%2E30 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%2E35 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%2E40 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%2E45 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%2E50 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 ft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 ft 1 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 ft 10 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 ft 11 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 ft 2 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 ft 3 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 ft 4 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 ft 5 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 ft 6 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 ft 7 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 ft 8 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 ft 9 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 ft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 ft 1 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 ft 10 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 ft 11 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 ft 2 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 ft 3 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 ft 4 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 ft 5 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 ft 6 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 ft 7 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 ft 8 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 ft 9 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 ft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 ft 1 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 ft 10 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 ft 11 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 ft 2 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 ft 3 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 ft 4 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 ft 5 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 ft 6 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 ft 7 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 ft 8 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 ft 9 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 ft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 ft 1 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 ft 10 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 ft 11 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 ft 2 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 ft 3 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 ft 4 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 ft 5 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 ft 6 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 ft 7 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 ft 8 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 ft 9 in</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7 ft</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LeadSource</picklist>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Referral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchased List</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Web</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Name</picklist>
+            <values>
+                <fullName>Dr%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mr%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mrs%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ms%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prof%2E</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Weight__c</picklist>
+            <values>
+                <fullName>10 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>105 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>110 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>115 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>120 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>125 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>13 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>13 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>130 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>135 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>14 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>14 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>140 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>145 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>150 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>16 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>16 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>17 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>17 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>18 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>18 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>19 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>19 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>35 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>55 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>65 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>85 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9 st</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9 st 7 lbs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90 kg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>95 kg</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
 </CustomObject>

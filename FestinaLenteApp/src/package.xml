@@ -23,6 +23,10 @@
     <types>
         <members>Contact.Age__c</members>
         <members>Contact.ColourCode__c</members>
+        <members>Contact.EmergencyContactName__c</members>
+        <members>Contact.EmergencyContactPhone__c</members>
+        <members>Contact.EmergencyContactRelationship__c</members>
+        <members>Contact.Height__c</members>
         <members>Contact.Notes__c</members>
         <members>Contact.PreferredHorse__c</members>
         <members>Contact.Weight__c</members>
@@ -60,6 +64,11 @@
         <members>Printing__c-Printing Layout</members>
         <members>Range__c-Range Layout</members>
         <name>Layout</name>
+    </types>
+    <types>
+        <members>Contact.Client</members>
+        <members>Contact.Coach</members>
+        <name>RecordType</name>
     </types>
     <types>
         <members>*</members>
