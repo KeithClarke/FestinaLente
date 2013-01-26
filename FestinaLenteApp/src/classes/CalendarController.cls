@@ -1,12 +1,7 @@
 public with sharing class CalendarController {
 
-    private static final String W = ' where ';
     private static final String A = ' and ';
 
-    public Filter__c filter {get; private set;}
-    public List<Back> backs {get; private set;}
-
-    // Used for breadcrumbs
     public class Back {
         public Id id {get; private set;}
         public String name {get; private set;}
@@ -15,7 +10,11 @@ public with sharing class CalendarController {
             this.name = name;
         }
     }
+    
+    // Used to render initial page
+    public List<Back> backs {get; private set;}
 
+    // Used to render initial page
     public PageReference init() {
 
         Map<String, String> p = ApexPages.currentPage().getParameters();
@@ -27,7 +26,6 @@ public with sharing class CalendarController {
         String classId = p.get('classId');
         
         // Transfer to fields for display/editing
-        filter = new Filter__c(ShowBooked__c = true, ShowAvailable__c = true);
         if (clientId != null) {
             filter.Client__c = clientId;
         }
@@ -65,21 +63,45 @@ public with sharing class CalendarController {
         
         return null;
     }
-  
-    public PageReference refresh() {
     
-        // Detailed data is transient so this will cause a re-generation using the current filter
-        return null;
+    public Filter__c filter {
+        get {
+            if (filter == null) {
+                filter = new Filter__c(ShowBooked__c = true, ShowAvailable__c = true);
+            }
+            return filter;
+        }
+        set;
+    }
+    
+    public Date starts {
+        get {
+            if (starts == null) {
+                starts = Date.newInstance(2000, 1, 1);
+            }
+            return starts;
+        }
+        set;
+    }
+    
+    public Date ends {
+        get {
+            if (ends == null) {
+                ends = Date.newInstance(2100, 1, 1);
+            }
+            return ends;
+        }
+        set;
     }
     
     private BookedDate__c[] queryBookedDates() {
     
         // Only simple variables can be bound into queries
-        String clientId = filter.Client__c;
-        String coachId = filter.Coach__c;
-        String horseId = filter.Horse__c;
-        String bookingId = filter.Booking__c;
-        String classId = filter.Class__c;
+        Id clientId = filter.Client__c;
+        Id coachId = filter.Coach__c;
+        Id horseId = filter.Horse__c;
+        Id bookingId = filter.Booking__c;
+        Id classId = filter.Class__c;
         
         // Build query
         String soql = ''
@@ -93,27 +115,23 @@ public with sharing class CalendarController {
                 + '         Booking__r.Class__r.Id, Booking__r.Class__r.Name, Booking__r.Class__r.TimeInMinutes__c, Booking__r.Class__r.LengthInMinutes__c,'
                 + '         Booking__r.Class__r.Type__c, Booking__r.Class__r.Detail__c, Booking__r.Class__r.Level__c'
                 + ' from BookedDate__c'
+                + ' where Date__c >= :starts'
+                + ' and Date__c <= :ends'
                 ;
-        String op = W;
-        if (clientId != null) {
-            soql += op + 'Booking__r.Client__r.Id = :clientId';
-            op = A;
+        if (is(clientId)) {
+            soql += A + 'Booking__r.Client__r.Id = :clientId';
         }
-        if (coachId != null) {
-            soql += op + 'Booking__r.Class__r.Coach__r.Id = :coachId';
-            op = A;
+        if (is(coachId)) {
+            soql += A + 'Booking__r.Class__r.Coach__r.Id = :coachId';
         }
-        if (horseId != null) {
-            soql += op + 'Booking__r.Client__r.PreferredHorse__r.Id = :horseId';
-            op = A;
+        if (is(horseId)) {
+            soql += A + 'Booking__r.Client__r.PreferredHorse__r.Id = :horseId';
         }
-        if (bookingId != null) {
-            soql += op + 'Booking__r.Id = :bookingId';
-            op = A;
+        if (is(bookingId)) {
+            soql += A + 'Booking__r.Id = :bookingId';
         }
-        if (classId != null) {
-            soql += op + 'Booking__r.Class__r.Id = :classId';
-            op = A;
+        if (is(classId)) {
+            soql += A + 'Booking__r.Class__r.Id = :classId';
         }
         
         System.debug('>>> booked dates soql=' + soql);
@@ -123,8 +141,8 @@ public with sharing class CalendarController {
     private AvailableDate__c[] queryAvailableDates(Set<Id> skipIds) {
     
         // Only simple variables can be bound into queries
-        String coachId = filter.Coach__c;
-        String classId = filter.Class__c;
+        Id coachId = filter.Coach__c;
+        Id classId = filter.Class__c;
         
         // Build query
         String soql = ''
@@ -134,60 +152,61 @@ public with sharing class CalendarController {
                 + '         Class__r.Id, Class__r.Name, Class__r.TimeInMinutes__c, Class__r.LengthInMinutes__c,'
                 + '         Class__r.Type__c, Class__r.Detail__c, Class__r.Level__c'
                 + ' from AvailableDate__c'
+                + ' where Date__c >= :starts'
+                + ' and Date__c <= :ends'
                 ;
-        String op = W;
-        if (coachId != null) {
-            soql += op + 'Class__r.Coach__r.Id = :coachId';
-            op = A;
+        if (is(coachId)) {
+            soql += A + 'Class__r.Coach__r.Id = :coachId';
         }
-        if (classId != null) {
-            soql += op + 'Class__r.Id = :classID';
-            op = A;
+        if (is(classId)) {
+            soql += A + 'Class__r.Id = :classId';
         }
         
         // If already being presented as a booked date don't show again as an available date
         if (skipIds.size() > 0) {
-            soql += op + 'Id not in :skipIds';
-            op = A;
+            soql += A + 'Id not in :skipIds';
         }
         
         System.debug('>>> available dates soql=' + soql);
         return Database.query(soql);
     }
+    
+    private Boolean is(String id) {
+        return id != null && id != '' && id != '000000000000000';
+    }
+    
+    private Event[] createEvents() {
+    
+        List<Event> events = new List<Event>();
 
-    public String events {
-        get {
-            JSONGenerator g = JSON.createGenerator(true);
-            g.writeStartArray();
-            Set<Id> adIds = new Set<Id>();
-            if (filter.ShowBooked__c) {
-                for (BookedDate__c bd : queryBookedDates()) {
-                    g.writeStartObject();
-                    g.writeStringField('title', getTitle(bd));
-                    g.writeStringField('tooltip', getTooltip(bd));
-                    g.writeDateTimeField('start', getStartDateTime(bd.Date__c, bd.Booking__r.Class__r));
-                    g.writeDateTimeField('end', getEndDateTime(bd.Date__c, bd.Booking__r.Class__r));
-                    g.writeStringField('url', '/' + bd.Booking__r.Id);
-                    g.writeStringField('color', '#ff6699');
-                    g.writeEndObject();
-                    adIds.add(bd.AvailableDate__r.Id);
-                }
+        Set<Id> adIds = new Set<Id>();
+        if (filter.ShowBooked__c) {
+            for (BookedDate__c bd : queryBookedDates()) {
+                events.add(new Event(
+                        getTitle(bd),
+                        getTooltip(bd),
+                        getStartDateTime(bd.Date__c, bd.Booking__r.Class__r),
+                        getEndDateTime(bd.Date__c, bd.Booking__r.Class__r),
+                        '/' + bd.Booking__r.Id,
+                        '#ff6699'
+                        ));
+                adIds.add(bd.AvailableDate__r.Id);
             }
-            if (filter.ShowAvailable__c) {
-                for (AvailableDate__c ad : queryAvailableDates(adIds)) {
-                    g.writeStartObject();
-                    g.writeStringField('title', getTitle(ad));
-                    g.writeStringField('tooltip', getTooltip(ad));
-                    g.writeDateTimeField('start', getStartDateTime(ad.Date__c, ad.Class__r));
-                    g.writeDateTimeField('end', getEndDateTime(ad.Date__c, ad.Class__r));
-                    g.writeStringField('url', '/' + ad.Class__r.Id);
-                    g.writeStringField('color', '#6699ff');
-                    g.writeEndObject();
-                }
-            }
-            g.writeEndArray();
-            return g.getAsString();
         }
+        if (filter.ShowAvailable__c) {
+            for (AvailableDate__c ad : queryAvailableDates(adIds)) {
+                events.add(new Event(
+                        getTitle(ad),
+                        getTooltip(ad),
+                        getStartDateTime(ad.Date__c, ad.Class__r),
+                        getEndDateTime(ad.Date__c, ad.Class__r),
+                        '/' + ad.Class__r.Id,
+                        '#6699ff'
+                        ));
+            }
+        }
+
+        return events;
     }
     
     private String getTitle(BookedDate__c bd) {
@@ -270,5 +289,37 @@ public with sharing class CalendarController {
     
     private Integer defaultLength(Decimal l) {
         return l != null ? l.intValue() : 45;
+    }
+    
+    public class Event {
+    
+        public String title;
+        public String tooltip;
+        public DateTime starts;
+        public DateTime ends;
+        public String url;
+        public String color;
+        
+        public Event(String title, String tooltip, DateTime starts, DateTime ends, String url, String color) {
+            this.title = title;
+            this.tooltip = tooltip;
+            this.starts = starts;
+            this.ends = ends;
+            this.url = url;
+            this.color = color;
+        }
+    }
+
+    // Page calls back into this
+    @RemoteAction
+    public static Event[] events(Date starts, Date ends, Filter__c filter) {
+    
+        System.debug('>>> starts=' + starts + ' ends=' + ends + ' filter=' + filter);
+        
+        CalendarController c = new CalendarController();
+        c.starts = starts;
+        c.ends = ends;
+        c.filter = filter;
+        return c.createEvents();
     }
 }

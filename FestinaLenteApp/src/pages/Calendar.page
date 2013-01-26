@@ -24,16 +24,13 @@
     <!-- Filtering fields -->
     <apex:form id="f">
         <apex:pageBlock mode="edit" id="pb">
-            <apex:pageBlockButtons location="top">
-                <apex:commandButton value="Refresh Calendar" action="{!refresh}"/>
-            </apex:pageBlockButtons>
             <apex:pageBlockSection id="pbs">
             
-                <apex:inputField value="{!filter.Client__c}"/>
-                <apex:inputField value="{!filter.Coach__c}"/>
-                <apex:inputField value="{!filter.Horse__c}"/>
-                <apex:inputField value="{!filter.Booking__c}"/>
-                <apex:inputField value="{!filter.Class__c}"/>
+                <apex:inputField value="{!filter.Client__c}" id="client"/>
+                <apex:inputField value="{!filter.Coach__c}" id="coach"/>
+                <apex:inputField value="{!filter.Horse__c}" id="horse"/>
+                <apex:inputField value="{!filter.Booking__c}" id="booking"/>
+                <apex:inputField value="{!filter.Class__c}" id="class"/>
                 <apex:outputText />
                 <apex:inputField value="{!filter.ShowAvailable__c}" id="showAvailable"/>
                 <apex:inputField value="{!filter.ShowBooked__c}" id="showBooked"/>
@@ -70,9 +67,27 @@ $(document).ready(function() {
             .css('padding', '3px')
             .css('border-radius', '3px')
             ;
-            
-    var formViewName = $('#p\\:f\\:pb\\:pbs\\:viewName');
-    var formViewStart = $('#p\\:f\\:pb\\:pbs\\:viewStartDate');
+    
+    var prefix = '#p\\:f\\:pb\\:pbs\\:';
+    var lkid = '_lkid';
+    
+    var client = $(prefix + 'client');
+    var coach = $(prefix + 'coach');
+    var horse = $(prefix + 'horse');
+    var booking = $(prefix + 'booking');
+    var clazz = $(prefix + 'class');
+    
+    var clientLkid = $(prefix + 'client' + lkid);
+    var coachLkid= $(prefix + 'coach' + lkid);
+    var horseLkid = $(prefix + 'horse' + lkid);
+    var bookingLkid = $(prefix + 'booking' + lkid);
+    var clazzLkid = $(prefix + 'class' + lkid);
+                
+    var showAvailable = $(prefix + 'showAvailable');
+    var showBooked = $(prefix + 'showBooked');
+    
+    var formViewName = $(prefix + 'viewName');
+    var formViewStart = $(prefix + 'viewStartDate');
     
     // Writing and reading as text in d/m/y format
     var toDateString = function(d) {
@@ -171,9 +186,67 @@ $(document).ready(function() {
         },
         
         // Large block of JSON created by the controller
-        events:
-{!events}
+        events: function(start, end, callback) {
+            
+            var filter = {
+            
+                Client__c: clientLkid.val(),
+                Coach__c: coachLkid.val(),
+                Horse__c: horseLkid.val(),
+                Booking__c: bookingLkid.val(),
+                Class__c: clazzLkid.val(),
+                
+                ShowAvailable__c: showAvailable.prop('checked'),
+                ShowBooked__c: showBooked.prop('checked')
+            };
+            
+            // Javascript dates need formatting to be accepted at the Apex side
+            Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.CalendarController.events}',
+                    start.toUTCString﻿(),
+                    end.toUTCString﻿(),
+                    filter, 
+                    function(result, event) {
+                        if (event.status) {
+                        
+                            // Jobs done here:
+                            // 1) In Apex "end" is a reserved word so have to use "ends" instead; change name back
+                            // 2) The Apex DateTime is serialized as a millisecond so turn back into a date
+                            // 3) The HTML < and > are replaced by entities so turn back
+                            for (var i = 0; i < result.length; i++) {
+                                var r = result[i];
+                                
+                                r.start = new Date(r.starts);
+                                r.end = new Date(r.ends);
+                                r.tooltip = r.tooltip.replace(/&lt\;/g, '<').replace(/&gt\;/g, '>');
+                            }
+                            
+                            // Invoke FullCalendar function
+                            callback(result);
+                        } else {
+                            alert('ERROR:\n' + event.message + '\n' + event.where);
+                        }
+                    });
+        }
     });
+    
+    var f = function() {
+        // Timeout so transfer to lkid has completed beforerefetch
+        setTimeout(function() {
+                calendar.fullCalendar('refetchEvents');
+                }, 100);
+    };
+    
+    // No onchange fired on lkid fields as they are programmatically set; just looking at input fields
+    client.change(f);
+    coach.change(f);
+    horse.change(f);
+    booking.change(f);
+    clazz.change(f);
+
+    showAvailable.change(f);
+    showBooked.change(f);
+    
 });
 </script>
 

@@ -29,12 +29,17 @@ private class CalendarControllerTest {
                     );
             insert coach;
             
-            clazz = new Class__c(Coach__c = coach.Id, DayOfWeek__c = 'Monday');
+            clazz = new Class__c(
+                    Coach__c = coach.Id,
+                    DayOfWeek__c = 'Monday',
+                    Level__c = 'A - Advanced'
+                    );
             insert clazz;
             
             client = new Contact(
                     FirstName = 'John',
                     LastName = 'Client',
+                    Level__c = 'B - Beginner',
                     PreferredHorse__c = horse.Id,
                     RecordTypeId = [
                             select Id
@@ -70,19 +75,49 @@ private class CalendarControllerTest {
     }
 
     @isTest
-    static void events() {
+    static void initialPage() {
     
         Fixture f = new Fixture();
 
-        // No ids in URL
-        CalendarController c1 = new CalendarController();
-        c1.init();
-        System.assertNotEquals(null, c1.events);
-        
         // All ids in URL
         f.addIdsToCurrentPage();
-        CalendarController c2 = new CalendarController();
-        c2.init();
-        System.assertNotEquals(null, c2.events);
+        CalendarController c = new CalendarController();
+        c.init();
+        
+        System.assertNotEquals(null, c.filter.Client__c);
+        System.assertNotEquals(null, c.filter.Coach__c);
+        System.assertNotEquals(null, c.filter.Horse__c);
+        System.assertNotEquals(null, c.filter.Booking__c);
+        System.assertNotEquals(null, c.filter.Class__c);
+        
+        System.assertEquals(5, c.backs.size());
+    }
+    
+    @isTest
+    static void eventsCallback() {
+    
+        Fixture f = new Fixture();
+        
+        // Just using this as a convenient source of intial values
+        CalendarController c = new CalendarController();
+        
+        // No id filtering; 1 bd and 1 ad (other ad skipped)
+        System.assertEquals(2, CalendarController.events(c.starts, c.ends, c.filter).size());
+        
+        // All id filtering
+        c.filter.Client__c = f.client.Id;
+        c.filter.Coach__c = f.coach.Id;
+        c.filter.Horse__c = f.horse.Id;
+        c.filter.Booking__c = f.booking.Id;
+        c.filter.Class__c = f.clazz.Id;
+        System.assertEquals(2, CalendarController.events(c.starts, c.ends, c.filter).size());
+        
+        // Turn off ads
+        c.filter.ShowAvailable__c = false;
+        System.assertEquals(1, CalendarController.events(c.starts, c.ends, c.filter).size());
+        
+        // Also turn off bds
+        c.filter.ShowBooked__c = false;
+        System.assertEquals(0, CalendarController.events(c.starts, c.ends, c.filter).size());
     }
 }
