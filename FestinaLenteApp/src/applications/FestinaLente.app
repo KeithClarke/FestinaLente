@@ -9,4 +9,6 @@
     <tab>Class__c</tab>
     <tab>Calendar</tab>
     <tab>Printing</tab>
+    <tab>standard-Dashboard</tab>
+    <tab>standard-report</tab>
 </CustomApplication>
