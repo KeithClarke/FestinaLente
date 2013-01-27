@@ -3,13 +3,13 @@ h1, h2, th, td, p, li, div, span {
 }
 
 h1 {
-    font-size: 25px;
+    font-size: 20pt;
 }
 h2 {
-    font-size: 20px;
+    font-size: 16pt;
 }
 td, p, li, div, span {
-    font-size: 12px;
+    font-size: 12pt;
 }
 
 table {
@@ -31,6 +31,7 @@ td.time {
 }
 td.name {
     text-align: left;
+    text-transform: uppercase;
 }
 td.booked {
     background-color: #dff0d8;
