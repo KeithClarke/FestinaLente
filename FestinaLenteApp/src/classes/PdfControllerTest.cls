@@ -21,6 +21,7 @@ private class PdfControllerTest {
             coach = new Contact(
                     FirstName = 'Jane',
                     LastName = 'Coach',
+                    ColourCode__c = 'AliceBlue (#F0F8FF)',
                     RecordTypeId = [
                             select Id
                             from RecordType

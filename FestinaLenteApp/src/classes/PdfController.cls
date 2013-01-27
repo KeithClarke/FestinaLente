@@ -265,9 +265,17 @@ public with sharing class PdfController {
                     Cell c = new Cell();
                     r.cells.add(c);
                     c.text = clazz.Coach__r.Name;
-                    if (clazz.Coach__r.ColourCode__c != null) {
-                        c.style = 'background-color: ' + clazz.Coach__r.ColourCode__c;
+                    
+                    // PDF required hex vales to be used
+                    String colour = clazz.Coach__r.ColourCode__c;
+                    if (colour != null) {
+                        Integer s = colour.indexOf('(');
+                        Integer e = colour.lastIndexOf(')');
+                        if (s != -1 && e != -1) {
+                            c.style = 'background-color: ' + colour.substring(s + 1, e);
+                        }
                     }
+                    
                     c.styleClass = 'name';
                     
                     Cell cc = new Cell();

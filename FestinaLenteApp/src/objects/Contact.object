@@ -24,59 +24,591 @@
         <label>Colour Code</label>
         <picklist>
             <picklistValues>
-                <fullName>Aqua</fullName>
+                <fullName>AliceBlue (#F0F8FF)</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Blue</fullName>
+                <fullName>AntiqueWhite (#FAEBD7)</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Fuchsia</fullName>
+                <fullName>Aqua (#00FFFF)</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Gray</fullName>
+                <fullName>Aquamarine (#7FFFD4)</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Green</fullName>
+                <fullName>Azure (#F0FFFF)</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Lime</fullName>
+                <fullName>Beige (#F5F5DC)</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Maroon</fullName>
+                <fullName>Bisque (#FFE4C4)</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Navy</fullName>
+                <fullName>Black (#000000)</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Olive</fullName>
+                <fullName>BlanchedAlmond (#FFEBCD)</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Purple</fullName>
+                <fullName>Blue (#0000FF)</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Red</fullName>
+                <fullName>BlueViolet (#8A2BE2)</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Silver</fullName>
+                <fullName>Brown (#A52A2A)</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Teal</fullName>
+                <fullName>BurlyWood (#DEB887)</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Yellow</fullName>
+                <fullName>CadetBlue (#5F9EA0)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Chartreuse (#7FFF00)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Chocolate (#D2691E)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Coral (#FF7F50)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>CornflowerBlue (#6495ED)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cornsilk (#FFF8DC)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Crimson (#DC143C)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cyan (#00FFFF)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DarkBlue (#00008B)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DarkCyan (#008B8B)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DarkGoldenRod (#B8860B)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DarkGray (#A9A9A9)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DarkGrey (#A9A9A9)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DarkGreen (#006400)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DarkKhaki (#BDB76B)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DarkMagenta (#8B008B)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DarkOliveGreen (#556B2F)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Darkorange (#FF8C00)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DarkOrchid (#9932CC)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DarkRed (#8B0000)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DarkSalmon (#E9967A)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DarkSeaGreen (#8FBC8F)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DarkSlateBlue (#483D8B)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DarkSlateGray (#2F4F4F)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DarkSlateGrey (#2F4F4F)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DarkTurquoise (#00CED1)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DarkViolet (#9400D3)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DeepPink (#FF1493)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DeepSkyBlue (#00BFFF)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DimGray (#696969)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DimGrey (#696969)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DodgerBlue (#1E90FF)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>FireBrick (#B22222)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>FloralWhite (#FFFAF0)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ForestGreen (#228B22)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Fuchsia (#FF00FF)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Gainsboro (#DCDCDC)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>GhostWhite (#F8F8FF)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Gold (#FFD700)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>GoldenRod (#DAA520)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Gray (#808080)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Grey (#808080)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Green (#008000)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>GreenYellow (#ADFF2F)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>HoneyDew (#F0FFF0)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>HotPink (#FF69B4)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>IndianRed (#CD5C5C)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Indigo (#4B0082)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Ivory (#FFFFF0)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Khaki (#F0E68C)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Lavender (#E6E6FA)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>LavenderBlush (#FFF0F5)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>LawnGreen (#7CFC00)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>LemonChiffon (#FFFACD)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>LightBlue (#ADD8E6)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>LightCoral (#F08080)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>LightCyan (#E0FFFF)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>LightGoldenRodYellow (#FAFAD2)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>LightGray (#D3D3D3)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>LightGrey (#D3D3D3)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>LightGreen (#90EE90)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>LightPink (#FFB6C1)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>LightSalmon (#FFA07A)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>LightSeaGreen (#20B2AA)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>LightSkyBlue (#87CEFA)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>LightSlateGray (#778899)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>LightSlateGrey (#778899)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>LightSteelBlue (#B0C4DE)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>LightYellow (#FFFFE0)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Lime (#00FF00)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>LimeGreen (#32CD32)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Linen (#FAF0E6)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Magenta (#FF00FF)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Maroon (#800000)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MediumAquaMarine (#66CDAA)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MediumBlue (#0000CD)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MediumOrchid (#BA55D3)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MediumPurple (#9370DB)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MediumSeaGreen (#3CB371)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MediumSlateBlue (#7B68EE)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MediumSpringGreen (#00FA9A)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MediumTurquoise (#48D1CC)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MediumVioletRed (#C71585)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MidnightBlue (#191970)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MintCream (#F5FFFA)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MistyRose (#FFE4E1)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Moccasin (#FFE4B5)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NavajoWhite (#FFDEAD)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Navy (#000080)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>OldLace (#FDF5E6)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Olive (#808000)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>OliveDrab (#6B8E23)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Orange (#FFA500)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>OrangeRed (#FF4500)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Orchid (#DA70D6)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PaleGoldenRod (#EEE8AA)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PaleGreen (#98FB98)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PaleTurquoise (#AFEEEE)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PaleVioletRed (#DB7093)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PapayaWhip (#FFEFD5)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PeachPuff (#FFDAB9)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Peru (#CD853F)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pink (#FFC0CB)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Plum (#DDA0DD)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PowderBlue (#B0E0E6)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Purple (#800080)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Red (#FF0000)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>RosyBrown (#BC8F8F)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>RoyalBlue (#4169E1)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SaddleBrown (#8B4513)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Salmon (#FA8072)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SandyBrown (#F4A460)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SeaGreen (#2E8B57)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SeaShell (#FFF5EE)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sienna (#A0522D)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Silver (#C0C0C0)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SkyBlue (#87CEEB)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SlateBlue (#6A5ACD)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SlateGray (#708090)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SlateGrey (#708090)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Snow (#FFFAFA)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SpringGreen (#00FF7F)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SteelBlue (#4682B4)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tan (#D2B48C)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Teal (#008080)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Thistle (#D8BFD8)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tomato (#FF6347)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Turquoise (#40E0D0)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Violet (#EE82EE)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Wheat (#F5DEB3)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>White (#FFFFFF)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WhiteSmoke (#F5F5F5)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Yellow (#FFFF00)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>YellowGreen (#9ACD32)</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -890,59 +1422,591 @@
         <picklistValues>
             <picklist>ColourCode__c</picklist>
             <values>
-                <fullName>Aqua</fullName>
+                <fullName>AliceBlue %28%23F0F8FF%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Blue</fullName>
+                <fullName>AntiqueWhite %28%23FAEBD7%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Fuchsia</fullName>
+                <fullName>Aqua %28%2300FFFF%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Gray</fullName>
+                <fullName>Aquamarine %28%237FFFD4%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Green</fullName>
+                <fullName>Azure %28%23F0FFFF%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Lime</fullName>
+                <fullName>Beige %28%23F5F5DC%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Maroon</fullName>
+                <fullName>Bisque %28%23FFE4C4%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Navy</fullName>
+                <fullName>Black %28%23000000%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Olive</fullName>
+                <fullName>BlanchedAlmond %28%23FFEBCD%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Purple</fullName>
+                <fullName>Blue %28%230000FF%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Red</fullName>
+                <fullName>BlueViolet %28%238A2BE2%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Silver</fullName>
+                <fullName>Brown %28%23A52A2A%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Teal</fullName>
+                <fullName>BurlyWood %28%23DEB887%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Yellow</fullName>
+                <fullName>CadetBlue %28%235F9EA0%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Chartreuse %28%237FFF00%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Chocolate %28%23D2691E%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Coral %28%23FF7F50%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CornflowerBlue %28%236495ED%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cornsilk %28%23FFF8DC%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Crimson %28%23DC143C%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cyan %28%2300FFFF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkBlue %28%2300008B%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkCyan %28%23008B8B%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkGoldenRod %28%23B8860B%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkGray %28%23A9A9A9%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkGreen %28%23006400%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkGrey %28%23A9A9A9%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkKhaki %28%23BDB76B%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkMagenta %28%238B008B%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkOliveGreen %28%23556B2F%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkOrchid %28%239932CC%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkRed %28%238B0000%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkSalmon %28%23E9967A%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkSeaGreen %28%238FBC8F%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkSlateBlue %28%23483D8B%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkSlateGray %28%232F4F4F%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkSlateGrey %28%232F4F4F%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkTurquoise %28%2300CED1%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkViolet %28%239400D3%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Darkorange %28%23FF8C00%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DeepPink %28%23FF1493%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DeepSkyBlue %28%2300BFFF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DimGray %28%23696969%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DimGrey %28%23696969%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DodgerBlue %28%231E90FF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FireBrick %28%23B22222%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FloralWhite %28%23FFFAF0%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ForestGreen %28%23228B22%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fuchsia %28%23FF00FF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gainsboro %28%23DCDCDC%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GhostWhite %28%23F8F8FF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold %28%23FFD700%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GoldenRod %28%23DAA520%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gray %28%23808080%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Green %28%23008000%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GreenYellow %28%23ADFF2F%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Grey %28%23808080%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HoneyDew %28%23F0FFF0%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HotPink %28%23FF69B4%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IndianRed %28%23CD5C5C%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Indigo %28%234B0082%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ivory %28%23FFFFF0%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Khaki %28%23F0E68C%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lavender %28%23E6E6FA%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LavenderBlush %28%23FFF0F5%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LawnGreen %28%237CFC00%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LemonChiffon %28%23FFFACD%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightBlue %28%23ADD8E6%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightCoral %28%23F08080%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightCyan %28%23E0FFFF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightGoldenRodYellow %28%23FAFAD2%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightGray %28%23D3D3D3%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightGreen %28%2390EE90%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightGrey %28%23D3D3D3%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightPink %28%23FFB6C1%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightSalmon %28%23FFA07A%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightSeaGreen %28%2320B2AA%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightSkyBlue %28%2387CEFA%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightSlateGray %28%23778899%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightSlateGrey %28%23778899%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightSteelBlue %28%23B0C4DE%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightYellow %28%23FFFFE0%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lime %28%2300FF00%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LimeGreen %28%2332CD32%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Linen %28%23FAF0E6%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Magenta %28%23FF00FF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Maroon %28%23800000%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MediumAquaMarine %28%2366CDAA%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MediumBlue %28%230000CD%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MediumOrchid %28%23BA55D3%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MediumPurple %28%239370DB%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MediumSeaGreen %28%233CB371%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MediumSlateBlue %28%237B68EE%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MediumSpringGreen %28%2300FA9A%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MediumTurquoise %28%2348D1CC%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MediumVioletRed %28%23C71585%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MidnightBlue %28%23191970%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MintCream %28%23F5FFFA%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MistyRose %28%23FFE4E1%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Moccasin %28%23FFE4B5%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NavajoWhite %28%23FFDEAD%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Navy %28%23000080%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OldLace %28%23FDF5E6%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Olive %28%23808000%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OliveDrab %28%236B8E23%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Orange %28%23FFA500%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OrangeRed %28%23FF4500%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Orchid %28%23DA70D6%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PaleGoldenRod %28%23EEE8AA%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PaleGreen %28%2398FB98%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PaleTurquoise %28%23AFEEEE%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PaleVioletRed %28%23DB7093%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PapayaWhip %28%23FFEFD5%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PeachPuff %28%23FFDAB9%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Peru %28%23CD853F%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pink %28%23FFC0CB%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Plum %28%23DDA0DD%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PowderBlue %28%23B0E0E6%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purple %28%23800080%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Red %28%23FF0000%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RosyBrown %28%23BC8F8F%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RoyalBlue %28%234169E1%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SaddleBrown %28%238B4513%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Salmon %28%23FA8072%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SandyBrown %28%23F4A460%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SeaGreen %28%232E8B57%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SeaShell %28%23FFF5EE%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sienna %28%23A0522D%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Silver %28%23C0C0C0%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SkyBlue %28%2387CEEB%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SlateBlue %28%236A5ACD%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SlateGray %28%23708090%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SlateGrey %28%23708090%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Snow %28%23FFFAFA%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SpringGreen %28%2300FF7F%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SteelBlue %28%234682B4%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tan %28%23D2B48C%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teal %28%23008080%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Thistle %28%23D8BFD8%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tomato %28%23FF6347%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Turquoise %28%2340E0D0%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Violet %28%23EE82EE%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wheat %28%23F5DEB3%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>White %28%23FFFFFF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WhiteSmoke %28%23F5F5F5%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yellow %28%23FFFF00%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>YellowGreen %28%239ACD32%29</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -1732,59 +2796,591 @@
         <picklistValues>
             <picklist>ColourCode__c</picklist>
             <values>
-                <fullName>Aqua</fullName>
+                <fullName>AliceBlue %28%23F0F8FF%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Blue</fullName>
+                <fullName>AntiqueWhite %28%23FAEBD7%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Fuchsia</fullName>
+                <fullName>Aqua %28%2300FFFF%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Gray</fullName>
+                <fullName>Aquamarine %28%237FFFD4%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Green</fullName>
+                <fullName>Azure %28%23F0FFFF%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Lime</fullName>
+                <fullName>Beige %28%23F5F5DC%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Maroon</fullName>
+                <fullName>Bisque %28%23FFE4C4%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Navy</fullName>
+                <fullName>Black %28%23000000%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Olive</fullName>
+                <fullName>BlanchedAlmond %28%23FFEBCD%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Purple</fullName>
+                <fullName>Blue %28%230000FF%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Red</fullName>
+                <fullName>BlueViolet %28%238A2BE2%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Silver</fullName>
+                <fullName>Brown %28%23A52A2A%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Teal</fullName>
+                <fullName>BurlyWood %28%23DEB887%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Yellow</fullName>
+                <fullName>CadetBlue %28%235F9EA0%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Chartreuse %28%237FFF00%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Chocolate %28%23D2691E%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Coral %28%23FF7F50%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CornflowerBlue %28%236495ED%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cornsilk %28%23FFF8DC%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Crimson %28%23DC143C%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cyan %28%2300FFFF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkBlue %28%2300008B%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkCyan %28%23008B8B%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkGoldenRod %28%23B8860B%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkGray %28%23A9A9A9%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkGreen %28%23006400%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkGrey %28%23A9A9A9%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkKhaki %28%23BDB76B%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkMagenta %28%238B008B%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkOliveGreen %28%23556B2F%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkOrchid %28%239932CC%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkRed %28%238B0000%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkSalmon %28%23E9967A%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkSeaGreen %28%238FBC8F%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkSlateBlue %28%23483D8B%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkSlateGray %28%232F4F4F%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkSlateGrey %28%232F4F4F%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkTurquoise %28%2300CED1%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DarkViolet %28%239400D3%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Darkorange %28%23FF8C00%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DeepPink %28%23FF1493%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DeepSkyBlue %28%2300BFFF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DimGray %28%23696969%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DimGrey %28%23696969%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DodgerBlue %28%231E90FF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FireBrick %28%23B22222%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FloralWhite %28%23FFFAF0%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ForestGreen %28%23228B22%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fuchsia %28%23FF00FF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gainsboro %28%23DCDCDC%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GhostWhite %28%23F8F8FF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold %28%23FFD700%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GoldenRod %28%23DAA520%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gray %28%23808080%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Green %28%23008000%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GreenYellow %28%23ADFF2F%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Grey %28%23808080%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HoneyDew %28%23F0FFF0%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HotPink %28%23FF69B4%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IndianRed %28%23CD5C5C%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Indigo %28%234B0082%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ivory %28%23FFFFF0%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Khaki %28%23F0E68C%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lavender %28%23E6E6FA%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LavenderBlush %28%23FFF0F5%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LawnGreen %28%237CFC00%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LemonChiffon %28%23FFFACD%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightBlue %28%23ADD8E6%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightCoral %28%23F08080%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightCyan %28%23E0FFFF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightGoldenRodYellow %28%23FAFAD2%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightGray %28%23D3D3D3%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightGreen %28%2390EE90%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightGrey %28%23D3D3D3%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightPink %28%23FFB6C1%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightSalmon %28%23FFA07A%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightSeaGreen %28%2320B2AA%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightSkyBlue %28%2387CEFA%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightSlateGray %28%23778899%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightSlateGrey %28%23778899%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightSteelBlue %28%23B0C4DE%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LightYellow %28%23FFFFE0%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lime %28%2300FF00%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LimeGreen %28%2332CD32%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Linen %28%23FAF0E6%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Magenta %28%23FF00FF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Maroon %28%23800000%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MediumAquaMarine %28%2366CDAA%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MediumBlue %28%230000CD%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MediumOrchid %28%23BA55D3%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MediumPurple %28%239370DB%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MediumSeaGreen %28%233CB371%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MediumSlateBlue %28%237B68EE%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MediumSpringGreen %28%2300FA9A%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MediumTurquoise %28%2348D1CC%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MediumVioletRed %28%23C71585%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MidnightBlue %28%23191970%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MintCream %28%23F5FFFA%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MistyRose %28%23FFE4E1%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Moccasin %28%23FFE4B5%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NavajoWhite %28%23FFDEAD%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Navy %28%23000080%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OldLace %28%23FDF5E6%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Olive %28%23808000%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OliveDrab %28%236B8E23%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Orange %28%23FFA500%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OrangeRed %28%23FF4500%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Orchid %28%23DA70D6%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PaleGoldenRod %28%23EEE8AA%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PaleGreen %28%2398FB98%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PaleTurquoise %28%23AFEEEE%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PaleVioletRed %28%23DB7093%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PapayaWhip %28%23FFEFD5%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PeachPuff %28%23FFDAB9%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Peru %28%23CD853F%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pink %28%23FFC0CB%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Plum %28%23DDA0DD%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PowderBlue %28%23B0E0E6%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purple %28%23800080%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Red %28%23FF0000%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RosyBrown %28%23BC8F8F%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RoyalBlue %28%234169E1%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SaddleBrown %28%238B4513%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Salmon %28%23FA8072%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SandyBrown %28%23F4A460%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SeaGreen %28%232E8B57%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SeaShell %28%23FFF5EE%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sienna %28%23A0522D%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Silver %28%23C0C0C0%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SkyBlue %28%2387CEEB%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SlateBlue %28%236A5ACD%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SlateGray %28%23708090%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SlateGrey %28%23708090%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Snow %28%23FFFAFA%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SpringGreen %28%2300FF7F%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SteelBlue %28%234682B4%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tan %28%23D2B48C%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teal %28%23008080%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Thistle %28%23D8BFD8%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tomato %28%23FF6347%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Turquoise %28%2340E0D0%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Violet %28%23EE82EE%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wheat %28%23F5DEB3%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>White %28%23FFFFFF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WhiteSmoke %28%23F5F5F5%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yellow %28%23FFFF00%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>YellowGreen %28%239ACD32%29</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
