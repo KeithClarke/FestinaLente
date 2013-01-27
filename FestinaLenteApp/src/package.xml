@@ -30,6 +30,7 @@
         <members>Contact.Level__c</members>
         <members>Contact.Notes__c</members>
         <members>Contact.PreferredHorse__c</members>
+        <members>Contact.Status__c</members>
         <members>Contact.Weight__c</members>
         <name>CustomField</name>
     </types>
@@ -38,6 +39,7 @@
         <members>BookedDate__c</members>
         <members>Booking__c</members>
         <members>Class__c</members>
+        <members>Contact</members>
         <members>Filter__c</members>
         <members>Horse__c</members>
         <members>Printing__c</members>
