@@ -189,6 +189,8 @@
         <fullName>LengthInMinutes__c</fullName>
         <externalId>false</externalId>
         <formula>CASE( Length__c,
+    &apos;Day&apos;, 480,
+    &apos;Half Day&apos;, 240,
     &apos;60 mins&apos;, 60,
     &apos;45 mins&apos;, 45,
     &apos;30 mins&apos;, 30,
@@ -207,7 +209,7 @@
         <label>Length</label>
         <picklist>
             <picklistValues>
-                <fullName>60 mins</fullName>
+                <fullName>30 mins</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
@@ -215,7 +217,15 @@
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>30 mins</fullName>
+                <fullName>60 mins</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Half Day</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Day</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
