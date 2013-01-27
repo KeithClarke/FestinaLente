@@ -55,7 +55,7 @@
                 <default>true</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Retured</fullName>
+                <fullName>Retired</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>

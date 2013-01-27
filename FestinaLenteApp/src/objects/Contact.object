@@ -2,6 +2,14 @@
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <enableFeeds>true</enableFeeds>
     <fields>
+        <fullName>ActiveSince__c</fullName>
+        <externalId>false</externalId>
+        <label>Active Since</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
         <fullName>Age__c</fullName>
         <externalId>false</externalId>
         <formula>IF (
@@ -1088,6 +1096,14 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>InactiveSince__c</fullName>
+        <externalId>false</externalId>
+        <label>Inactive Since</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
         <fullName>LeadSource</fullName>
         <picklist>
             <picklistValues>
@@ -1179,17 +1195,56 @@
                 <default>true</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Inactive</fullName>
+                <fullName>Waiting</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Wating</fullName>
+                <fullName>Inactive</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>WaitingForClassType__c</fullName>
+        <externalId>false</externalId>
+        <label>Waiting for Class Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Equine Facilitated Programme</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pony Camp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Private Lesson</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Term Riding</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>MultiselectPicklist</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>WaitingSince__c</fullName>
+        <externalId>false</externalId>
+        <label>Waiting Since</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Date</type>
     </fields>
     <fields>
         <fullName>Weight__c</fullName>
@@ -2686,14 +2741,37 @@
             <picklist>Status__c</picklist>
             <values>
                 <fullName>Active</fullName>
-                <default>false</default>
+                <default>true</default>
             </values>
             <values>
                 <fullName>Inactive</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Wating</fullName>
+                <fullName>Waiting</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>WaitingForClassType__c</picklist>
+            <values>
+                <fullName>Equine Facilitated Programme</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pony Camp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Private Lesson</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Term Riding</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -4075,14 +4153,33 @@
             <picklist>Status__c</picklist>
             <values>
                 <fullName>Active</fullName>
-                <default>false</default>
+                <default>true</default>
             </values>
             <values>
                 <fullName>Inactive</fullName>
                 <default>false</default>
             </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>WaitingForClassType__c</picklist>
             <values>
-                <fullName>Wating</fullName>
+                <fullName>Equine Facilitated Programme</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pony Camp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Private Lesson</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Term Riding</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
