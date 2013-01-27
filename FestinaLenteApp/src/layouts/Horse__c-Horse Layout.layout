@@ -65,6 +65,7 @@
         <fields>CONTACT.PHONE1</fields>
         <fields>CONTACT.PHONE3</fields>
         <fields>CONTACT.EMAIL</fields>
+        <fields>Status__c</fields>
         <relatedList>Contact.PreferredHorse__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
