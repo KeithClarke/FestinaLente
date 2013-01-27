@@ -30,6 +30,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>BookingBeforeTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CalendarController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -47,6 +51,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>ClassAfterTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ClassBeforeTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>

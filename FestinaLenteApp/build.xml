@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	
+	<property name="sf.url" value="https://login.salesforce.com/"/>
+	<property name="sf.un" value="keith@festinalente.ie"/>
+	<property name="sf.pw" value="????"/>
+	<property name="sf.st" value="????"/>
+	
+    <path id="classpath">
+        <fileset dir="." includes="ant-salesforce.jar"/>
+    </path>
+    	
+	<target name="deploy">
+        <taskdef name="sfdeploy" classname="com.salesforce.ant.DeployTask" classpathref="classpath"/>
+	    <sfdeploy username="${sf.un}" password="${sf.pw}${sf.st}" serverurl="${sf.url}" deployRoot="src" runalltests="true"/>
+	</target>
+	
+	<target name="remove">
+	    <taskdef name="sfdeploy" classname="com.salesforce.ant.DeployTask" classpathref="classpath"/>
+	    <sfdeploy username="${sf.un}" password="${sf.pw}${sf.st}" serverurl="${sf.url}" deployRoot="src-remove" runalltests="false"/>
+	</target>
+	
+</project>
