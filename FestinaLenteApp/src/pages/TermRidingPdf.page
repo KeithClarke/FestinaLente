@@ -19,6 +19,14 @@
  
 </head>
 
+  <div style="float: right">
+      <ul>
+          <li>tick - present</li>
+          <li>cross - absent with notice</li>
+          <li>cross C - absent without notice (charge)</li>
+      </ul>
+  </div>
+
   <h1>Festina Lente Riding School</h1>
   <h2>Term Riding {!formattedFrom} - {!formattedTo}</h2>
   

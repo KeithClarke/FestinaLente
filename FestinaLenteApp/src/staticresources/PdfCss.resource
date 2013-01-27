@@ -1,4 +1,4 @@
-h1, h2, th, td, p, div, span {
+h1, h2, th, td, p, li, div, span {
     font-family: sans-serif;
 }
 
@@ -8,6 +8,9 @@ h1 {
 h2 {
     font-size: 20px;
 }
+td, p, li, div, span {
+    font-size: 12px;
+}
 
 table {
     border-collapse: collapse;
@@ -15,7 +18,6 @@ table {
 }
 td {
     text-align: center;
-    font-size: 12px;
     border: 1px solid #dddddd;
     padding: 5px;
     line-height: 20px;
