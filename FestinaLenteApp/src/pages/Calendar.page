@@ -8,7 +8,7 @@
 
 <script src="{!URLFOR($Resource.QTip)}" type="text/javascript" language="javascript"></script>
 
-    <apex:sectionHeader title="Calendar"/>
+    <apex:sectionHeader title="Calendar" help="{!$Page.Help}"/>
     
     <!-- Breadcrumb links; moved into place by jQuery -->
     <apex:outputPanel layout="block" styleClass="ptBreadcrumb" rendered="{! backs.size > 0}">

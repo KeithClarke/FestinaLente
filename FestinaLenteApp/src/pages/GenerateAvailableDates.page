@@ -7,7 +7,7 @@ a.flActionLink {
 }
 </style>
 
-    <apex:sectionHeader title="Generate Available Dates" subtitle="{!clazz.Name}"/>
+    <apex:sectionHeader title="Generate Available Dates" subtitle="{!clazz.Name}" help="{!$Page.Help}"/>
     <apex:form id="f">
         <apex:pageMessages />
         <apex:pageBlock id="pb" mode="edit">

@@ -19,7 +19,7 @@ span.flActionSpacer {
 }
 </style>
 
-    <apex:sectionHeader title="Booked Dates Edit" subtitle="{!booking.Name}"/>
+    <apex:sectionHeader title="Booked Dates Edit" subtitle="{!booking.Name}" help="{!$Page.Help}"/>
     <apex:pageMessages />
     <apex:form id="f">
         <apex:pageBlock mode="edit" id="pb">

@@ -10,7 +10,7 @@ span.flActionSpacer {
 }
 </style>
 
-    <apex:sectionHeader title="Printing"/>
+    <apex:sectionHeader title="Printing" help="{!$Page.Help}"/>
     <apex:pageMessages />
     <apex:form id="f">
         <apex:pageBlock id="pb" mode="edit">

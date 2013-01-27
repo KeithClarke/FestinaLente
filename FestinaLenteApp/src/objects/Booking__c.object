@@ -32,6 +32,7 @@
         <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
+    <customHelpPage>Help</customHelpPage>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>false</enableActivities>
     <enableFeeds>false</enableFeeds>

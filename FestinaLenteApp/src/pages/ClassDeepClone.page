@@ -1,5 +1,5 @@
 <apex:page standardController="Class__c" extensions="ClassDeepCloneController" >
-    <apex:sectionHeader title="Class Clone Including Available Dates Dates" subtitle="New Class"/>
+    <apex:sectionHeader title="Class Clone Including Available Dates Dates" subtitle="New Class" help="{!$Page.Help}"/>
     <apex:form >
         <apex:pageMessages />
         <apex:pageBlock mode="edit">
