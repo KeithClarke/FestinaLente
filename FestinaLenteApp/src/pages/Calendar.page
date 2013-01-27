@@ -23,7 +23,7 @@
 
     <!-- Filtering fields -->
     <apex:form id="f">
-        <apex:pageBlock mode="edit" id="pb">
+        <apex:pageBlock mode="edit" id="pb" title="Filtering">
             <apex:pageBlockSection id="pbs">
             
                 <apex:inputField value="{!filter.Client__c}" id="client"/>
