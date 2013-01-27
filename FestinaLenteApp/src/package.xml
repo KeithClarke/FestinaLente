@@ -69,6 +69,10 @@
         <name>Layout</name>
     </types>
     <types>
+        <members>Festina Lente</members>
+        <name>Profile</name>
+    </types>
+    <types>
         <members>Contact.Client</members>
         <members>Contact.Coach</members>
         <name>RecordType</name>
