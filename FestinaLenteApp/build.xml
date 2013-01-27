@@ -11,6 +11,7 @@
     </path>
     	
 	<target name="deploy">
+		<echo message="Deploying to user ${sf.un}"/>
         <taskdef name="sfdeploy" classname="com.salesforce.ant.DeployTask" classpathref="classpath"/>
 	    <sfdeploy username="${sf.un}" password="${sf.pw}${sf.st}" serverurl="${sf.url}" deployRoot="src" runalltests="true"/>
 	</target>
