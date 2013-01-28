@@ -174,13 +174,13 @@ $(document).ready(function() {
                 content: event.tooltip,
                 position: {
                     corner: {
-                        target: 'center',
-                        tooltip: 'topRight'
+                        target: 'topLeft',
+                        tooltip: 'bottomRight'
                     }
                 },
                 style: {
                     name: 'light',
-                    tip: 'topRight'
+                    tip: 'bottomRight'
                 }
             });
         },
