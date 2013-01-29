@@ -44,7 +44,7 @@ public with sharing class EditBookedDatesController {
                 
                 availables = new List<SelectableAvailableDate>();
                 for (AvailableDate__c ad : [
-                        select Id, Name, Date__c, DayOfWeek__c, WeekNumber__c
+                        select Id, Name, Date__c, DayOfWeek__c, WeekNumber__c, SpacesBooked__c, SpacesRemaining__c
                         from AvailableDate__c
                         where Class__c in (select Class__c from Booking__c where Id = :bookingId)
                         order by Date__c

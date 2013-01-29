@@ -45,11 +45,14 @@ span.flActionSpacer {
                 </apex:outputPanel>
                 <apex:pageBlockTable value="{!availables}" var="item" rendered="{! availables.size > 0}" id="pbt">
                     <apex:column styleClass="{!IF(item.past, 'past', 'future')}" headerValue="Select">
-                        <apex:inputCheckbox value="{!item.selected}"/>
+                        <apex:inputCheckbox value="{!item.selected}" onclick="flItemCheck(this)" id="checkbox"/>
                     </apex:column>         
                     <apex:column styleClass="{!IF(item.past, 'past', 'future')}" value="{!item.sob.Date__c}"/>
                     <apex:column styleClass="{!IF(item.past, 'past', 'future')} tar" value="{!item.sob.WeekNumber__c}" headerClass="tar"/>
                     <apex:column styleClass="{!IF(item.past, 'past', 'future')}" value="{!item.sob.DayOfWeek__c}"/>
+                    
+                    <apex:column styleClass="{!IF(item.past, 'past', 'future')}" value="{!item.sob.SpacesBooked__c}" id="booked"/>
+                    <apex:column styleClass="{!IF(item.past, 'past', 'future')}" value="{!item.sob.SpacesRemaining__c}" id="remaining"/>
                 </apex:pageBlockTable>
             </apex:pageBlockSection>
         </apex:pageBlock>
@@ -63,6 +66,7 @@ function flCheck(algorithm) {
     for (var i = 0; i < inputs.length; i++) { 
         var input = inputs.item(i);
         if (input.type == "checkbox") {
+            var oldChecked = input.checked;
             if (algorithm == 'all') {
                 input.checked = true;
             } else if (algorithm == 'none') {
@@ -72,9 +76,31 @@ function flCheck(algorithm) {
             } else if (algorithm == 'second') {
                 input.checked = (i % 2 == 1);
             }
+            var newChecked = input.checked;
+            if (oldChecked != newChecked) {
+                flItemCheck(input);
+            }
         }
     }
     return false;
+}
+function flItemCheck(checkbox) {
+
+    flCellIncrement(checkbox, 'booked', checkbox.checked ? 1 : -1);
+    flCellIncrement(checkbox, 'remaining', checkbox.checked ? -1 : 1);
+}
+function flCellIncrement(checkbox, name, increment) {
+
+    var td = document.getElementById(checkbox.getAttribute('id').replace('checkbox', name));
+    if (td) {
+        var spans = td.getElementsByTagName('span');
+        if (spans.length == 1) {
+            var span = spans[0];
+            if (span.innerHTML.length > 0) {
+                span.innerHTML = Number(span.innerHTML) + increment;
+            }
+        }
+    }
 }
 </script>
 
