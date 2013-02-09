@@ -408,6 +408,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Contact.ClassType__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Contact.ColourCode__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -554,11 +559,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Contact.Title</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Contact.WaitingForClassType__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

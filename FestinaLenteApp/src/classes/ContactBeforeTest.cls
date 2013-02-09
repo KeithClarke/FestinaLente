@@ -1,6 +1,6 @@
 @isTest
 private class ContactBeforeTest {
-
+    
     @isTest
     static void activeInactive() {
     
@@ -26,14 +26,14 @@ private class ContactBeforeTest {
     
         Date today = Date.today();
     
-        Contact c = new Contact(LastName = 'Smith', Status__c = 'Waiting', WaitingForClassType__c = 'Term Riding');
+        Contact c = new Contact(LastName = 'Smith', Status__c = 'Waiting', ClassType__c = 'Term Riding');
         insert c;
         
         System.assertEquals('Waiting', [select Status__c from Contact where Id = :c.Id].Status__c);
         System.assertEquals(today, [select ActiveSince__c from Contact where Id = :c.Id].ActiveSince__c);
         System.assertEquals(today, [select WaitingSince__c from Contact where Id = :c.Id].WaitingSince__c);
         
-        c.WaitingForClassType__c = null;
+        c.ClassType__c = null;
         update c;
         
         System.assertEquals('Active', [select Status__c from Contact where Id = :c.Id].Status__c);

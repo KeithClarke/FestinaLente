@@ -22,6 +22,7 @@
     </types>
     <types>
         <members>Contact.Age__c</members>
+        <members>Contact.ClassType__c</members>
         <members>Contact.ColourCode__c</members>
         <members>Contact.EmergencyContactName__c</members>
         <members>Contact.EmergencyContactPhone__c</members>

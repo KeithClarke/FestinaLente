@@ -28,6 +28,89 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>ClassType__c</fullName>
+        <externalId>false</externalId>
+        <label>Class Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Adult Camp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Adult Group Lesson</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cancellation List</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Competition</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAL Session</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Educational Helpers Programme</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EFEP Programme</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pony Camp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Private Lesson</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Semi-Private Lesson</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Special Needs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Stable Management</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Supported Helpers Programme</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Term</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Therapeutic Lesson</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Training: EAL</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Training: TCP</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>MultiselectPicklist</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
         <fullName>ColourCode__c</fullName>
         <externalId>false</externalId>
         <label>Colour Code</label>
@@ -1264,37 +1347,6 @@
         <type>Picklist</type>
     </fields>
     <fields>
-        <fullName>WaitingForClassType__c</fullName>
-        <externalId>false</externalId>
-        <label>Waiting for Class Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Equine Facilitated Programme</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Pony Camp</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Private Lesson</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Term Riding</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <trackFeedHistory>false</trackFeedHistory>
-        <type>MultiselectPicklist</type>
-        <visibleLines>6</visibleLines>
-    </fields>
-    <fields>
         <fullName>WaitingSince__c</fullName>
         <externalId>false</externalId>
         <label>Waiting Since</label>
@@ -1691,6 +1743,81 @@
         <fullName>Client</fullName>
         <active>true</active>
         <label>Client</label>
+        <picklistValues>
+            <picklist>ClassType__c</picklist>
+            <values>
+                <fullName>Adult Camp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Adult Group Lesson</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancellation List</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Competition</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAL Session</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EFEP Programme</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Educational Helpers Programme</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pony Camp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Private Lesson</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Semi-Private Lesson</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Special Needs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stable Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Supported Helpers Programme</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Term</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Therapeutic Lesson</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Training%3A EAL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Training%3A TCP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
         <picklistValues>
             <picklist>ColourCode__c</picklist>
             <values>
@@ -2840,29 +2967,6 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>WaitingForClassType__c</picklist>
-            <values>
-                <fullName>Equine Facilitated Programme</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pony Camp</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Private Lesson</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Term Riding</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Weight__c</picklist>
             <values>
                 <fullName>10 kg</fullName>
@@ -3134,6 +3238,81 @@
         <fullName>Coach</fullName>
         <active>true</active>
         <label>Coach</label>
+        <picklistValues>
+            <picklist>ClassType__c</picklist>
+            <values>
+                <fullName>Adult Camp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Adult Group Lesson</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancellation List</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Competition</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAL Session</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EFEP Programme</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Educational Helpers Programme</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pony Camp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Private Lesson</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Semi-Private Lesson</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Special Needs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stable Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Supported Helpers Programme</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Term</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Therapeutic Lesson</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Training%3A EAL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Training%3A TCP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
         <picklistValues>
             <picklist>ColourCode__c</picklist>
             <values>
@@ -4275,29 +4454,6 @@
             </values>
             <values>
                 <fullName>Inactive</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>WaitingForClassType__c</picklist>
-            <values>
-                <fullName>Equine Facilitated Programme</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pony Camp</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Private Lesson</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Term Riding</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

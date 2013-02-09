@@ -81,7 +81,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>WaitingForClassType__c</field>
+                <field>ClassType__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
