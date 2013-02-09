@@ -13,6 +13,12 @@ public with sharing class CalendarController {
     
     // Used to render initial page
     public List<Back> backs {get; private set;}
+    private Date initialDate {get; private set;}
+    public String initialDateDmy {
+        get {
+            return initialDate.day() + '/' + initialDate.month() + '/' + initialDate.year();
+        }
+    }
 
     // Used to render initial page
     public PageReference init() {
@@ -43,22 +49,52 @@ public with sharing class CalendarController {
         }
         
         backs = new List<Back>();
+        
+        Date earliest = null;
+        Date latest = null;
 
         // Order here should match order of filter fields in page so "back" links are in matching order
         if (clientId != null) {
-            backs.add(new Back(clientId, [select Name from Contact where Id = :clientId].Name));
+            Contact c = [select Name from Contact where Id = :clientId];
+            
+            backs.add(new Back(clientId, c.Name));
         }
         if (coachId != null) {
-            backs.add(new Back(coachId, [select Name from Contact where Id = :coachId].Name));
+            Contact c = [select Name from Contact where Id = :coachId];
+            
+            backs.add(new Back(coachId, c.Name));
         }
         if (horseId != null) {
-            backs.add(new Back(horseId, [select Name from Horse__c where Id = :horseId].Name));
+            Horse__c h = [select Name from Horse__c where Id = :horseId];
+            
+            backs.add(new Back(horseId, h.Name));
         }
         if (bookingId != null) {
-            backs.add(new Back(bookingId, [select Name from Booking__c where Id = :bookingId].Name));
+            Booking__c b = [select Name, EarliestBookedDate__c, LatestBookedDate__c from Booking__c where Id = :bookingId];
+            
+            backs.add(new Back(bookingId, b.Name));
+            
+            // Create narrowest range
+            earliest = Maths.max(earliest, b.EarliestBookedDate__c);
+            latest = Maths.min(latest, b.LatestBookedDate__c);
         }
         if (classId != null) {
-            backs.add(new Back(classId, [select Name from Class__c where Id = :classId].Name));
+            Class__c c = [select Name, EarliestAvailableDate__c, LatestAvailableDate__c from Class__c where Id = :classId];
+            
+            backs.add(new Back(classId, c.Name));
+            
+            // Create narrowest range
+            earliest = Maths.max(earliest, c.EarliestAvailableDate__c);
+            latest = Maths.min(latest, c.LatestAvailableDate__c);
+        }
+        
+        // Get calendar into a relevant range
+        if (latest != null && latest < Date.today()) {
+            initialDate = latest;
+        } else if (earliest != null && earliest > Date.today()) {
+            initialDate = earliest;
+        } else {
+            initialDate = Date.today();
         }
         
         return null;

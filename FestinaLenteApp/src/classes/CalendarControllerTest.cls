@@ -53,10 +53,10 @@ private class CalendarControllerTest {
             booking = new Booking__c(Class__c = clazz.Id, Client__c = client.Id);
             insert booking;
             
-            ad1 = new AvailableDate__c(Class__c = clazz.Id, Date__c = Date.newInstance(2013, 2, 18));
+            ad1 = new AvailableDate__c(Class__c = clazz.Id, Date__c = Date.newInstance(2013, 1, 7));
             insert ad1;
             
-            ad2 = new AvailableDate__c(Class__c = clazz.Id, Date__c = Date.newInstance(2013, 2, 25));
+            ad2 = new AvailableDate__c(Class__c = clazz.Id, Date__c = Date.newInstance(2013, 1, 14));
             insert ad2;
             
             bd1 = new BookedDate__c(AvailableDate__c = ad1.Id, Booking__c = booking.Id);
@@ -91,6 +91,9 @@ private class CalendarControllerTest {
         System.assertNotEquals(null, c.filter.Class__c);
         
         System.assertEquals(5, c.backs.size());
+        
+        // Altough there is a later available date, this is the last booked dat
+        System.assertEquals('7/1/2013', c.initialDateDmy);
     }
     
     @isTest

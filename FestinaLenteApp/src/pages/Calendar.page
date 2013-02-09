@@ -99,7 +99,7 @@ $(document).ready(function() {
     }
     
     // Defaults to today unless the form has aleady been posted in which case defaults to the posted start date
-    var initialDate = formViewStart.val() ? toDateObject(formViewStart.val()) : new Date();
+    var initialDate = formViewStart.val() ? toDateObject(formViewStart.val()) : toDateObject('{!initialDateDmy}');
     
     // These preserve the selection when mon/week/day switch is used
     var selectedStartDate = null;
