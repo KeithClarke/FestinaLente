@@ -247,10 +247,6 @@
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>WI - Weak Intermediate</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
                 <fullName>I - Intermediate</fullName>
                 <default>false</default>
             </picklistValues>

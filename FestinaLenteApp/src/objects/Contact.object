@@ -1148,10 +1148,6 @@
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>WI - Weak Intermediate</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
                 <fullName>I - Intermediate</fullName>
                 <default>false</default>
             </picklistValues>
@@ -2773,10 +2769,6 @@
                 <fullName>SI - Strong Intermediate</fullName>
                 <default>false</default>
             </values>
-            <values>
-                <fullName>WI - Weak Intermediate</fullName>
-                <default>false</default>
-            </values>
         </picklistValues>
         <picklistValues>
             <picklist>Name</picklist>
@@ -4218,10 +4210,6 @@
             </values>
             <values>
                 <fullName>SI - Strong Intermediate</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>WI - Weak Intermediate</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
