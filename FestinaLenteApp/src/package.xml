@@ -30,6 +30,9 @@
         <members>Contact.Level__c</members>
         <members>Contact.Notes__c</members>
         <members>Contact.PreferredHorse__c</members>
+        <members>Contact.SecondEmergencyContactName__c</members>
+        <members>Contact.SecondEmergencyContactPhone__c</members>
+        <members>Contact.SecondEmergencyContactRelationship__c</members>
         <members>Contact.Status__c</members>
         <members>Contact.Weight__c</members>
         <name>CustomField</name>
