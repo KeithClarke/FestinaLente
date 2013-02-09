@@ -62,7 +62,7 @@ function flOpenSelected() {
     var type = document.getElementById('p:f:pb:type:type');
     if (type.value == 'Private Lesson Timetable') {
         flOpenPage('/apex/PrivateLessonPdf');
-    } else if (type.value == 'Term Riding Timetable') {
+    } else if (type.value == 'Term Timetable') {
         flOpenPage('/apex/TermRidingPdf');
     }
     return false;

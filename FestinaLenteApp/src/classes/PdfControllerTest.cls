@@ -81,7 +81,7 @@ private class PdfControllerTest {
     @isTest
     static void termRidings() {
     
-        Fixture f = new Fixture('Term Riding');
+        Fixture f = new Fixture('Term');
         
         PdfController c = new PdfController();
         List<Table> tables = c.termRidings;
@@ -101,7 +101,7 @@ private class PdfControllerTest {
     @isTest
     static void termOther() {
     
-        Fixture f = new Fixture('Term Riding');
+        Fixture f = new Fixture('Term');
         
         PdfController c = new PdfController();
         System.assertEquals('PDF', c.format);

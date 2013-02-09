@@ -26,7 +26,7 @@ private class ContactBeforeTest {
     
         Date today = Date.today();
     
-        Contact c = new Contact(LastName = 'Smith', Status__c = 'Waiting', ClassType__c = 'Term Riding');
+        Contact c = new Contact(LastName = 'Smith', Status__c = 'Waiting', ClassType__c = 'Term');
         insert c;
         
         System.assertEquals('Waiting', [select Status__c from Contact where Id = :c.Id].Status__c);

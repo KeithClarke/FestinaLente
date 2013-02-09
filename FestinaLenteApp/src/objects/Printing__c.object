@@ -138,7 +138,7 @@
                 <default>true</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Term Riding Timetable</fullName>
+                <fullName>Term Timetable</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>

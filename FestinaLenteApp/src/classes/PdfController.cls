@@ -96,7 +96,7 @@ public with sharing class PdfController {
             List<Table> tableList = new List<Table>();
             Map<Id, Table> tableMap = new Map<Id, Table>();
             
-            AvailableDate__c[] ads = query('Term Riding');
+            AvailableDate__c[] ads = query('Term');
             
             // Create multiple tables
             for (AvailableDate__c ad : ads) {
