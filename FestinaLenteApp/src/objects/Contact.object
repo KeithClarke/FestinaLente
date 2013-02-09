@@ -1247,12 +1247,12 @@
         <label>Status</label>
         <picklist>
             <picklistValues>
-                <fullName>Active</fullName>
-                <default>true</default>
-            </picklistValues>
-            <picklistValues>
                 <fullName>Waiting</fullName>
                 <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Active</fullName>
+                <default>true</default>
             </picklistValues>
             <picklistValues>
                 <fullName>Inactive</fullName>
