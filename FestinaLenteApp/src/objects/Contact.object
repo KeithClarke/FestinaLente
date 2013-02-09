@@ -108,7 +108,7 @@
         </picklist>
         <trackFeedHistory>false</trackFeedHistory>
         <type>MultiselectPicklist</type>
-        <visibleLines>6</visibleLines>
+        <visibleLines>10</visibleLines>
     </fields>
     <fields>
         <fullName>ColourCode__c</fullName>
