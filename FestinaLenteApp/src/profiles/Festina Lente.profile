@@ -358,6 +358,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Class__c.SpacesBookedAvailableWithPercent__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Class__c.SpacesBookedAvailable__c</field>
         <readable>true</readable>
     </fieldPermissions>

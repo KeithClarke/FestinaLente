@@ -281,6 +281,15 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>SpacesBookedAvailableWithPercent__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISNULL(SpacesBookedAvailable__c)), TEXT(ROUND(SpacesBookedAvailable__c * 100, 0)) + &apos;%&apos;, NULL)</formula>
+        <label>Spaces Booked/Available</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>SpacesBookedAvailable__c</fullName>
         <externalId>false</externalId>
         <formula>IF(
@@ -623,8 +632,9 @@ null
         <columns>Time__c</columns>
         <columns>Length__c</columns>
         <columns>Level__c</columns>
-        <columns>SpacesAvailable__c</columns>
-        <columns>BookingCount__c</columns>
+        <columns>SpacesBookedAvailableWithPercent__c</columns>
+        <columns>EarliestAvailableDate__c</columns>
+        <columns>LatestAvailableDate__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -641,24 +651,27 @@ null
         <customTabListAdditionalFields>Time__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Length__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Level__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>SpacesAvailable__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>BookingCount__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>SpacesBookedAvailableWithPercent__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>EarliestAvailableDate__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>LatestAvailableDate__c</customTabListAdditionalFields>
         <lookupDialogsAdditionalFields>Type__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Coach__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>DayOfWeek__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Time__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Length__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Level__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>SpacesAvailable__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>BookingCount__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>SpacesBookedAvailableWithPercent__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>EarliestAvailableDate__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>LatestAvailableDate__c</lookupDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Type__c</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Coach__c</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>DayOfWeek__c</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Time__c</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Length__c</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Level__c</lookupPhoneDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>SpacesAvailable__c</lookupPhoneDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>BookingCount__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>SpacesBookedAvailableWithPercent__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>EarliestAvailableDate__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>LatestAvailableDate__c</lookupPhoneDialogsAdditionalFields>
         <searchFilterFields>NAME</searchFilterFields>
         <searchFilterFields>Type__c</searchFilterFields>
         <searchFilterFields>Coach__c</searchFilterFields>
@@ -666,16 +679,18 @@ null
         <searchFilterFields>Time__c</searchFilterFields>
         <searchFilterFields>Length__c</searchFilterFields>
         <searchFilterFields>Level__c</searchFilterFields>
-        <searchFilterFields>SpacesAvailable__c</searchFilterFields>
-        <searchFilterFields>BookingCount__c</searchFilterFields>
+        <searchFilterFields>SpacesBookedAvailableWithPercent__c</searchFilterFields>
+        <searchFilterFields>EarliestAvailableDate__c</searchFilterFields>
+        <searchFilterFields>LatestAvailableDate__c</searchFilterFields>
         <searchResultsAdditionalFields>Type__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Coach__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>DayOfWeek__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Time__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Length__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Level__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>SpacesAvailable__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>BookingCount__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>SpacesBookedAvailableWithPercent__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>EarliestAvailableDate__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>LatestAvailableDate__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <webLinks>
