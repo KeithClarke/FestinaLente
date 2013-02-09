@@ -618,6 +618,7 @@ null
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>Type__c</columns>
+        <columns>Coach__c</columns>
         <columns>DayOfWeek__c</columns>
         <columns>Time__c</columns>
         <columns>Length__c</columns>
@@ -635,6 +636,7 @@ null
     <pluralLabel>Classes</pluralLabel>
     <searchLayouts>
         <customTabListAdditionalFields>Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Coach__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>DayOfWeek__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Time__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Length__c</customTabListAdditionalFields>
@@ -642,6 +644,7 @@ null
         <customTabListAdditionalFields>SpacesAvailable__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>BookingCount__c</customTabListAdditionalFields>
         <lookupDialogsAdditionalFields>Type__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Coach__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>DayOfWeek__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Time__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Length__c</lookupDialogsAdditionalFields>
@@ -649,6 +652,7 @@ null
         <lookupDialogsAdditionalFields>SpacesAvailable__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>BookingCount__c</lookupDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Type__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Coach__c</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>DayOfWeek__c</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Time__c</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Length__c</lookupPhoneDialogsAdditionalFields>
@@ -657,6 +661,7 @@ null
         <lookupPhoneDialogsAdditionalFields>BookingCount__c</lookupPhoneDialogsAdditionalFields>
         <searchFilterFields>NAME</searchFilterFields>
         <searchFilterFields>Type__c</searchFilterFields>
+        <searchFilterFields>Coach__c</searchFilterFields>
         <searchFilterFields>DayOfWeek__c</searchFilterFields>
         <searchFilterFields>Time__c</searchFilterFields>
         <searchFilterFields>Length__c</searchFilterFields>
@@ -664,6 +669,7 @@ null
         <searchFilterFields>SpacesAvailable__c</searchFilterFields>
         <searchFilterFields>BookingCount__c</searchFilterFields>
         <searchResultsAdditionalFields>Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Coach__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>DayOfWeek__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Time__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Length__c</searchResultsAdditionalFields>
