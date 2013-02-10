@@ -591,6 +591,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Filter__c.ClassType__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Filter__c.Class__c</field>
         <readable>true</readable>
     </fieldPermissions>

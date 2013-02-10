@@ -294,7 +294,7 @@
         <externalId>false</externalId>
         <formula>IF(
     AND(NOT(ISNULL(BookedDateCount__c)), NOT(ISNULL(SpacesAvailable__c)), NOT(ISNULL(AvailableDateCount__c))),
-    (BookedDateCount__c) / ( SpacesAvailable__c *  AvailableDateCount__c),
+    IF(SpacesAvailable__c *  AvailableDateCount__c != 0, (BookedDateCount__c) / (SpacesAvailable__c *  AvailableDateCount__c), NULL),
     NULL
 )</formula>
         <label>Spaces Booked/Available</label>

@@ -138,12 +138,13 @@ public with sharing class CalendarController {
         Id horseId = filter.Horse__c;
         Id bookingId = filter.Booking__c;
         Id classId = filter.Class__c;
+        String classType = filter.ClassType__c;
         
         // Build query
         String soql = ''
                 + ' select'
                 + '         Id, Name, Date__c,'
-                + '         AvailableDate__r.Id,'
+                + '         AvailableDate__r.Id, AvailableDate__r.SpacesRemaining__c, AvailableDate__r.SpacesBooked__c,'
                 + '         Booking__r.Id, Booking__r.Name, Booking__r.EarliestBookedDate__c, Booking__r.LatestBookedDate__c,'
                 + '         Booking__r.Client__r.Name, Booking__r.Client__r.Level__c,'
                 + '         Booking__r.Client__r.PreferredHorse__r.Name,'
@@ -169,6 +170,9 @@ public with sharing class CalendarController {
         if (is(classId)) {
             soql += A + 'Booking__r.Class__r.Id = :classId';
         }
+        if (is(classType)) {
+            soql += A + 'Booking__r.Class__r.Type__c = :classType';
+        }
         
         System.debug('>>> booked dates soql=' + soql);
         return Database.query(soql);
@@ -179,11 +183,12 @@ public with sharing class CalendarController {
         // Only simple variables can be bound into queries
         Id coachId = filter.Coach__c;
         Id classId = filter.Class__c;
+        String classType = filter.ClassType__c;
         
         // Build query
         String soql = ''
                 + ' select'
-                + '         Id, Name, Date__c,'
+                + '         Id, Name, Date__c, SpacesBooked__c, SpacesRemaining__c,'
                 + '         Class__r.Coach__r.Name,'
                 + '         Class__r.Id, Class__r.Name, Class__r.TimeInMinutes__c, Class__r.LengthInMinutes__c,'
                 + '         Class__r.Type__c, Class__r.Detail__c, Class__r.Level__c'
@@ -196,6 +201,9 @@ public with sharing class CalendarController {
         }
         if (is(classId)) {
             soql += A + 'Class__r.Id = :classId';
+        }
+        if (is(classType)) {
+            soql += A + 'Class__r.Type__c = :classType';
         }
         
         // If already being presented as a booked date don't show again as an available date
@@ -224,7 +232,7 @@ public with sharing class CalendarController {
                         getStartDateTime(bd.Date__c, bd.Booking__r.Class__r),
                         getEndDateTime(bd.Date__c, bd.Booking__r.Class__r),
                         '/' + bd.Booking__r.Id,
-                        '#ff6699'
+                        '#cc3366'
                         ));
                 adIds.add(bd.AvailableDate__r.Id);
             }
@@ -237,7 +245,7 @@ public with sharing class CalendarController {
                         getStartDateTime(ad.Date__c, ad.Class__r),
                         getEndDateTime(ad.Date__c, ad.Class__r),
                         '/' + ad.Class__r.Id,
-                        '#6699ff'
+                        (ad.SpacesRemaining__c != null && ad.SpacesRemaining__c <= 0 ? '#6699ff' : '#3366cc')
                         ));
             }
         }
@@ -259,6 +267,7 @@ public with sharing class CalendarController {
     
         Booking__c b = bd.Booking__r;
         Class__c c = b.Class__r;
+        AvailableDate__c ad = bd.AvailableDate__r;
         
         String s = 'Booking: <b>' + b.Name + '</b>';
         if (b.Client__r != null) {
@@ -284,6 +293,10 @@ public with sharing class CalendarController {
         if (c.Coach__r != null) {
             s += '<br/>Coach: ' + c.Coach__r.Name;
         }
+        if (ad.SpacesBooked__c != null && ad.SpacesRemaining__c != null) {
+            s += '<br/>Free Spaces: ' + ad.SpacesRemaining__c + ' (' + (ad.SpacesBooked__c + ad.SpacesRemaining__c) + ' Total Spaces)';
+        }
+
         
         return s;
     }
@@ -302,6 +315,9 @@ public with sharing class CalendarController {
         }
         if (c.Coach__r != null) {
             s += '<br/>Coach: ' + c.Coach__r.Name;
+        }
+        if (ad.SpacesBooked__c != null && ad.SpacesRemaining__c != null) {
+            s += '<br/>Free Spaces: ' + ad.SpacesRemaining__c + ' (' + (ad.SpacesBooked__c + ad.SpacesRemaining__c) + ' Total Spaces)';
         }
         
         return s;

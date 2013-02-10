@@ -31,7 +31,7 @@
                 <apex:inputField value="{!filter.Horse__c}" id="horse"/>
                 <apex:inputField value="{!filter.Booking__c}" id="booking"/>
                 <apex:inputField value="{!filter.Class__c}" id="class"/>
-                <apex:outputText />
+                <apex:inputField value="{!filter.ClassType__c}" id="classType"/>
                 <apex:inputField value="{!filter.ShowAvailable__c}" id="showAvailable"/>
                 <apex:inputField value="{!filter.ShowBooked__c}" id="showBooked"/>
                 
@@ -56,13 +56,13 @@ $(document).ready(function() {
     
     // Style "Show" labels
     $('[for*="p:f:pb:pbs:showAvailable"]')
-            .css('background-color', '#6699ff')
+            .css('background-color', '#3366cc')
             .css('color', 'white')
             .css('padding', '3px')
             .css('border-radius', '3px')
             ;
     $('[for*="p:f:pb:pbs:showBooked"]')
-            .css('background-color', '#ff6699')
+            .css('background-color', '#cc3366')
             .css('color', 'white')
             .css('padding', '3px')
             .css('border-radius', '3px')
@@ -76,6 +76,7 @@ $(document).ready(function() {
     var horse = $(prefix + 'horse');
     var booking = $(prefix + 'booking');
     var clazz = $(prefix + 'class');
+    var classType = $(prefix + 'classType');
     
     var clientLkid = $(prefix + 'client' + lkid);
     var coachLkid= $(prefix + 'coach' + lkid);
@@ -195,6 +196,7 @@ $(document).ready(function() {
                 Horse__c: horseLkid.val(),
                 Booking__c: bookingLkid.val(),
                 Class__c: clazzLkid.val(),
+                ClassType__c: classType.val(),
                 
                 ShowAvailable__c: showAvailable.prop('checked'),
                 ShowBooked__c: showBooked.prop('checked')
@@ -230,6 +232,7 @@ $(document).ready(function() {
         }
     });
     
+    // Refresh calendar when a filter value changes
     var f = function() {
         // Timeout so transfer to lkid has completed beforerefetch
         setTimeout(function() {
@@ -243,6 +246,7 @@ $(document).ready(function() {
     horse.change(f);
     booking.change(f);
     clazz.change(f);
+    classType.change(f);
 
     showAvailable.change(f);
     showBooked.change(f);
