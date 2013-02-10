@@ -125,6 +125,16 @@
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
+    <miniLayout>
+        <fields>Client__c</fields>
+        <fields>Class__c</fields>
+        <fields>ClientLevel__c</fields>
+        <fields>ClientPreferredHorse__c</fields>
+        <fields>ClassType__c</fields>
+        <fields>ClassCoach__c</fields>
+        <fields>EarliestBookedDate__c</fields>
+        <fields>LatestBookedDate__c</fields>
+    </miniLayout>
     <relatedLists>
         <customButtons>EditBookedDates</customButtons>
         <excludeButtons>New</excludeButtons>

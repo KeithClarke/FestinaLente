@@ -140,6 +140,9 @@
         <fields>Detail__c</fields>
         <fields>Time__c</fields>
         <fields>Length__c</fields>
+        <fields>EarliestAvailableDate__c</fields>
+        <fields>LatestAvailableDate__c</fields>
+        <fields>SpacesBookedAvailable__c</fields>
     </miniLayout>
     <relatedLists>
         <customButtons>DeleteSelectedBookings</customButtons>
