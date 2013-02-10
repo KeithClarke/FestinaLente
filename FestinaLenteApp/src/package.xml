@@ -60,6 +60,10 @@
         <name>Document</name>
     </types>
     <types>
+        <members>Festina Lente</members>
+        <name>HomePageLayout</name>
+    </types>
+    <types>
         <members>AvailableDate__c-Available Date Layout</members>
         <members>BookedDate__c-Booked Date Layout</members>
         <members>Booking__c-Booking Layout</members>
