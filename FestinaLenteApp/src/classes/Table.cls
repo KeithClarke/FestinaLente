@@ -126,12 +126,6 @@ public class Table {
         return l;
     }
     
-    public List<T> getSortedTimes() {
-        List<T> l = new List<T>(timeSet);
-        l.sort();
-        return l;
-    }
-    
     public List<AvailableDate__c> getAvailableDatesForClass(Class__c clazz) {
          List<AvailableDate__c> l = new List<AvailableDate__c>();
          for (AvailableDate__c ad : ads) {

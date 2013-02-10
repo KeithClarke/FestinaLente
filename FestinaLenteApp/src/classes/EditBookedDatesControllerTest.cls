@@ -33,6 +33,8 @@ private class EditBookedDatesControllerTest {
         
         EditBookedDatesController c = new EditBookedDatesController();
         
+        System.assertEquals(f.booking.Id, c.booking.Id);
+        
         System.assertEquals(1, c.availables.size());
         c.availables.get(0).selected = true;
         
