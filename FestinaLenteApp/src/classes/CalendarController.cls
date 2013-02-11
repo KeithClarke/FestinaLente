@@ -1,5 +1,21 @@
 public with sharing class CalendarController {
 
+    public static String BOOKINGS_COLOUR {
+        get {
+            return'#cc3366';
+        }
+    }
+    public static String FREE_SPACES_COLOUR {
+        get {
+            return '#3366cc';
+        }
+    }
+    public static String FULLY_BOOKED_COLOUR {
+        get {
+            return '#6699ff';
+        }
+    }
+    
     private static final String A = ' and ';
 
     public class Back {
@@ -144,7 +160,7 @@ public with sharing class CalendarController {
         String soql = ''
                 + ' select'
                 + '         Id, Name, Date__c,'
-                + '         AvailableDate__r.Id, AvailableDate__r.SpacesRemaining__c, AvailableDate__r.SpacesBooked__c,'
+                + '         AvailableDate__r.Id, AvailableDate__r.Name, AvailableDate__r.CalendarSortKey__c, AvailableDate__r.SpacesRemaining__c, AvailableDate__r.SpacesBooked__c,'
                 + '         Booking__r.Id, Booking__r.Name, Booking__r.EarliestBookedDate__c, Booking__r.LatestBookedDate__c,'
                 + '         Booking__r.Client__r.Name, Booking__r.Client__r.Level__c,'
                 + '         Booking__r.Client__r.PreferredHorse__r.Name,'
@@ -190,7 +206,7 @@ public with sharing class CalendarController {
         // Build query
         String soql = ''
                 + ' select'
-                + '         Id, Name, Date__c, SpacesBooked__c, SpacesRemaining__c,'
+                + '         Id, Name, CalendarSortKey__c, Date__c, SpacesBooked__c, SpacesRemaining__c,'
                 + '         Class__r.Coach__r.Name,'
                 + '         Class__r.Id, Class__r.Name, Class__r.TimeInMinutes__c, Class__r.LengthInMinutes__c,'
                 + '         Class__r.Type__c, Class__r.Detail__c, Class__r.Level__c'
@@ -228,18 +244,20 @@ public with sharing class CalendarController {
     
     private Event[] createEvents() {
 
-        // Group Events by AvailableDate id
-        Map<Id, List<Event>> m = new Map<Id, List<Event>>();
+        // Group the Events
+        Map<String, List<Event>> m = new Map<String, List<Event>>();
 
         Set<Id> adIdSet = new Set<Id>();
+        Set<String> keySet = new Set<String>();
         if (filter.ShowBookings__c) {
             for (BookedDate__c bd : queryBookedDates()) {
                 Id adId = bd.AvailableDate__r.Id;
-                List<Event> l = m.get(adId);
+                String key = bd.AvailableDate__r.CalendarSortKey__c;
+                List<Event> l = m.get(key);
                 if (l == null) {
                     l = new List<Event>();
                     // Often multiple (already sorted) BookedDates for an AvailableDate; 
-                    m.put(adId, l);
+                    m.put(key, l);
                 }
                 l.add(new Event(
                         getTitle(bd),
@@ -247,18 +265,19 @@ public with sharing class CalendarController {
                         getStartDateTime(bd.Date__c, bd.Booking__r.Class__r),
                         getEndDateTime(bd.Date__c, bd.Booking__r.Class__r),
                         '/' + bd.Booking__r.Id,
-                        '#cc3366'
+                        BOOKINGS_COLOUR
                         ));
-                adIdSet.add(bd.AvailableDate__r.Id);
+                adIdSet.add(adId);
+                keySet.add(key);
             }
         }
         if (filter.ShowClassesFreeSpaces__c || filter.ShowClassesFullyBooked__c) {
             for (AvailableDate__c ad : queryAvailableDates(filter.ShowClassesFreeSpaces__c, filter.ShowClassesFullyBooked__c, adIdSet)) {
-                Id adId = ad.Id;
-                List<Event> l = m.get(adId);
+                String key = ad.CalendarSortKey__c;
+                List<Event> l = m.get(key);
                 if (l == null) {
                     l = new List<Event>();
-                    m.put(adId, l);
+                    m.put(key, l);
                 }
                 l.add(new Event(
                         getTitle(ad),
@@ -266,19 +285,19 @@ public with sharing class CalendarController {
                         getStartDateTime(ad.Date__c, ad.Class__r),
                         getEndDateTime(ad.Date__c, ad.Class__r),
                         '/' + ad.Class__r.Id,
-                        (ad.SpacesRemaining__c != null && ad.SpacesRemaining__c <= 0 ? '#6699ff' : '#3366cc')
+                        (ad.SpacesRemaining__c != null && ad.SpacesRemaining__c <= 0 ? FULLY_BOOKED_COLOUR : FREE_SPACES_COLOUR)
                         ));
-                adIdSet.add(adId);
+                keySet.add(key);
             }
         }
         
-        // Want to keep in defined order so elements don't jump about on the Calendar when checkboxes are changed
-        // Events (both bookings and classes) are left in (sorted) AvailableDate id order then (sorted) BoookedDate id order
-        List<Id> adIdList = new List<Id>(adIdSet);
-        adIdList.sort();
+        // Want to keep in defined order so elements don't jump about on the Calendar when checkboxes are changed.
+        // But note http://code.google.com/p/fullcalendar/issues/detail?id=379: problem with same time events in Chrome.
+        List<String> keyList = new List<String>(keySet);
+        keyList.sort();
         List<Event> events = new List<Event>();
-        for (Id adId : adIdList) {
-            events.addAll(m.get(adId));
+        for (String key : keyList) {
+            events.addAll(m.get(key));
         }
         
         return events;

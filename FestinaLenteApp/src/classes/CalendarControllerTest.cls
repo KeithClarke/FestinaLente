@@ -76,12 +76,17 @@ private class CalendarControllerTest {
 
     @isTest
     static void initialPage() {
+
+        System.assertNotEquals(null, CalendarController.BOOKINGS_COLOUR);
+        System.assertNotEquals(null, CalendarController.FREE_SPACES_COLOUR);
+        System.assertNotEquals(null, CalendarController.FULLY_BOOKED_COLOUR);
     
         Fixture f = new Fixture();
 
         // All ids in URL
         f.addIdsToCurrentPage();
         CalendarController c = new CalendarController();
+        
         c.init();
         
         System.assertNotEquals(null, c.filter.Client__c);

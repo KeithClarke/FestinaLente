@@ -39,6 +39,16 @@
     <enableHistory>false</enableHistory>
     <enableReports>true</enableReports>
     <fields>
+        <fullName>CalendarSortKey__c</fullName>
+        <description>To define order of events on the Calendar</description>
+        <externalId>false</externalId>
+        <formula>Class__r.Name + &apos;:&apos; + Name</formula>
+        <label>Calendar Sort Key</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Class__c</fullName>
         <externalId>false</externalId>
         <label>Class</label>

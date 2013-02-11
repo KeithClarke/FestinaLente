@@ -151,6 +151,11 @@
     </classAccesses>
     <fieldPermissions>
         <editable>false</editable>
+        <field>AvailableDate__c.CalendarSortKey__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>AvailableDate__c.Class__c</field>
         <readable>false</readable>
     </fieldPermissions>
