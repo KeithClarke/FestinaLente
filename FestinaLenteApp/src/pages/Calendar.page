@@ -26,15 +26,21 @@
         <apex:pageBlock mode="edit" id="pb" title="Filtering">
             <apex:pageBlockSection id="pbs">
             
+                <apex:inputField value="{!filter.ShowClassesFreeSpaces__c}" id="showClassesFreeSpaces"/>
                 <apex:inputField value="{!filter.Client__c}" id="client"/>
-                <apex:inputField value="{!filter.Coach__c}" id="coach"/>
-                <apex:inputField value="{!filter.Horse__c}" id="horse"/>
-                <apex:inputField value="{!filter.Booking__c}" id="booking"/>
-                <apex:inputField value="{!filter.Class__c}" id="class"/>
-                <apex:inputField value="{!filter.ClassType__c}" id="classType"/>
-                <apex:inputField value="{!filter.ShowAvailable__c}" id="showAvailable"/>
-                <apex:inputField value="{!filter.ShowBooked__c}" id="showBooked"/>
                 
+                <apex:inputField value="{!filter.ShowClassesFullyBooked__c}" id="showClassesFullyBooked"/>
+                <apex:inputField value="{!filter.Coach__c}" id="coach"/>
+
+                <apex:inputField value="{!filter.ShowBookings__c}" id="showBookings"/>
+                <apex:inputField value="{!filter.Horse__c}" id="horse"/>
+        
+                <apex:inputField value="{!filter.ClassType__c}" id="classType"/>
+                <apex:inputField value="{!filter.Booking__c}" id="booking"/>
+
+                <apex:outputText />
+                <apex:inputField value="{!filter.Class__c}" id="class"/>
+
                 <apex:inputHidden value="{!filter.ViewName__c}" id="viewName"/>
                 <apex:inputHidden value="{!filter.ViewStart__c}" id="viewStartDate"/>
                 
@@ -55,13 +61,19 @@ $(document).ready(function() {
     $('.bPageTitle').append($('.ptBreadcrumb'));
     
     // Style "Show" labels
-    $('[for*="p:f:pb:pbs:showAvailable"]')
+    $('[for*="p:f:pb:pbs:showClassesFullyBooked"]')
+            .css('background-color', '#6699ff')
+            .css('color', 'white')
+            .css('padding', '3px')
+            .css('border-radius', '3px')
+            ;
+    $('[for*="p:f:pb:pbs:showClassesFreeSpaces"]')
             .css('background-color', '#3366cc')
             .css('color', 'white')
             .css('padding', '3px')
             .css('border-radius', '3px')
             ;
-    $('[for*="p:f:pb:pbs:showBooked"]')
+    $('[for*="p:f:pb:pbs:showBookings"]')
             .css('background-color', '#cc3366')
             .css('color', 'white')
             .css('padding', '3px')
@@ -84,8 +96,9 @@ $(document).ready(function() {
     var bookingLkid = $(prefix + 'booking' + lkid);
     var clazzLkid = $(prefix + 'class' + lkid);
                 
-    var showAvailable = $(prefix + 'showAvailable');
-    var showBooked = $(prefix + 'showBooked');
+    var showClassesFreeSpaces = $(prefix + 'showClassesFreeSpaces');
+    var showClassesFullyBooked = $(prefix + 'showClassesFullyBooked');
+    var showBookings = $(prefix + 'showBookings');
     
     var formViewName = $(prefix + 'viewName');
     var formViewStart = $(prefix + 'viewStartDate');
@@ -198,16 +211,17 @@ $(document).ready(function() {
                 Class__c: clazzLkid.val(),
                 ClassType__c: classType.val(),
                 
-                ShowAvailable__c: showAvailable.prop('checked'),
-                ShowBooked__c: showBooked.prop('checked')
+                ShowClassesFreeSpaces__c: showClassesFreeSpaces.prop('checked'),
+                ShowClassesFullyBooked__c: showClassesFullyBooked.prop('checked'),
+                ShowBookings__c: showBookings.prop('checked')
             };
-            
+
             // Javascript dates need formatting to be accepted at the Apex side
             Visualforce.remoting.Manager.invokeAction(
                     '{!$RemoteAction.CalendarController.events}',
                     start.toUTCString﻿(),
                     end.toUTCString﻿(),
-                    filter, 
+                    filter,
                     function(result, event) {
                         if (event.status) {
                         
@@ -248,8 +262,9 @@ $(document).ready(function() {
     clazz.change(f);
     classType.change(f);
 
-    showAvailable.change(f);
-    showBooked.change(f);
+    showClassesFreeSpaces.change(f);
+    showClassesFullyBooked.change(f);
+    showBookings.change(f);
     
     // Hack to improve printing
     var w = calendar.css('width');

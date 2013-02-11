@@ -103,7 +103,7 @@ public with sharing class CalendarController {
     public Filter__c filter {
         get {
             if (filter == null) {
-                filter = new Filter__c(ShowBooked__c = true, ShowAvailable__c = true);
+                filter = new Filter__c(ShowBookings__c = true, ShowClassesFreeSpaces__c = true, ShowClassesFullyBooked__c = true);
             }
             return filter;
         }
@@ -178,7 +178,7 @@ public with sharing class CalendarController {
         return Database.query(soql);
     }
     
-    private AvailableDate__c[] queryAvailableDates(Set<Id> skipIds) {
+    private AvailableDate__c[] queryAvailableDates(Boolean freeSpaces, Boolean fullyBooked, Set<Id> skipIds) {
     
         // Only simple variables can be bound into queries
         Id coachId = filter.Coach__c;
@@ -205,6 +205,12 @@ public with sharing class CalendarController {
         if (is(classType)) {
             soql += A + 'Class__r.Type__c = :classType';
         }
+        if (freeSpaces && !fullyBooked) {
+            soql += A + '(SpacesRemaining__c = null or SpacesRemaining__c > 0)';
+        }
+        if (fullyBooked && !freeSpaces) {
+            soql += A + 'SpacesRemaining__c <= 0';
+        }
         
         // If already being presented as a booked date don't show again as an available date
         if (skipIds.size() > 0) {
@@ -224,7 +230,7 @@ public with sharing class CalendarController {
         List<Event> events = new List<Event>();
 
         Set<Id> adIds = new Set<Id>();
-        if (filter.ShowBooked__c) {
+        if (filter.ShowBookings__c) {
             for (BookedDate__c bd : queryBookedDates()) {
                 events.add(new Event(
                         getTitle(bd),
@@ -237,8 +243,8 @@ public with sharing class CalendarController {
                 adIds.add(bd.AvailableDate__r.Id);
             }
         }
-        if (filter.ShowAvailable__c) {
-            for (AvailableDate__c ad : queryAvailableDates(adIds)) {
+        if (filter.ShowClassesFreeSpaces__c || filter.ShowClassesFullyBooked__c) {
+            for (AvailableDate__c ad : queryAvailableDates(filter.ShowClassesFreeSpaces__c, filter.ShowClassesFullyBooked__c, adIds)) {
                 events.add(new Event(
                         getTitle(ad),
                         getTooltip(ad),

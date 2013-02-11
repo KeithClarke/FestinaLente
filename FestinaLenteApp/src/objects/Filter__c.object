@@ -171,17 +171,24 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>ShowAvailable__c</fullName>
-        <defaultValue>true</defaultValue>
+        <fullName>ShowBookings__c</fullName>
+        <defaultValue>false</defaultValue>
         <externalId>false</externalId>
-        <label>Show Classes</label>
+        <label>Show Bookings</label>
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>ShowBooked__c</fullName>
-        <defaultValue>true</defaultValue>
+        <fullName>ShowClassesFreeSpaces__c</fullName>
+        <defaultValue>false</defaultValue>
         <externalId>false</externalId>
-        <label>Show Bookings</label>
+        <label>Show Classes (Free Spaces)</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>ShowClassesFullyBooked__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Show Classes (Fully Booked)</label>
         <type>Checkbox</type>
     </fields>
     <fields>

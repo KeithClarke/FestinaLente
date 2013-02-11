@@ -37,11 +37,15 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>ShowBooked__c</field>
+                <field>ShowClassesFullyBooked__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>ShowAvailable__c</field>
+                <field>ShowClassesFreeSpaces__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>ShowBookings__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>

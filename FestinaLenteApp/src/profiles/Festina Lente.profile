@@ -616,12 +616,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Filter__c.ShowAvailable__c</field>
+        <field>Filter__c.ShowBookings__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Filter__c.ShowBooked__c</field>
+        <field>Filter__c.ShowClassesFreeSpaces__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Filter__c.ShowClassesFullyBooked__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

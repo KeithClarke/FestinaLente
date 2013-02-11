@@ -116,11 +116,12 @@ private class CalendarControllerTest {
         System.assertEquals(2, CalendarController.events(c.starts, c.ends, c.filter).size());
         
         // Turn off ads
-        c.filter.ShowAvailable__c = false;
+        c.filter.ShowClassesFullyBooked__c = false;
+        c.filter.ShowClassesFreeSpaces__c = false;
         System.assertEquals(1, CalendarController.events(c.starts, c.ends, c.filter).size());
         
         // Also turn off bds
-        c.filter.ShowBooked__c = false;
+        c.filter.ShowBookings__c = false;
         System.assertEquals(0, CalendarController.events(c.starts, c.ends, c.filter).size());
     }
 }
