@@ -62,19 +62,19 @@ $(document).ready(function() {
     
     // Style "Show" labels
     $('[for*="p:f:pb:pbs:showClassesFullyBooked"]')
-            .css('background-color', '#6699ff')
+            .css('background-color', '{!FULLY_BOOKED_COLOUR}')
             .css('color', 'white')
             .css('padding', '3px')
             .css('border-radius', '3px')
             ;
     $('[for*="p:f:pb:pbs:showClassesFreeSpaces"]')
-            .css('background-color', '#3366cc')
+            .css('background-color', '{!FREE_SPACES_COLOUR}')
             .css('color', 'white')
             .css('padding', '3px')
             .css('border-radius', '3px')
             ;
     $('[for*="p:f:pb:pbs:showBookings"]')
-            .css('background-color', '#cc3366')
+            .css('background-color', '{!BOOKINGS_COLOUR}')
             .css('color', 'white')
             .css('padding', '3px')
             .css('border-radius', '3px')
