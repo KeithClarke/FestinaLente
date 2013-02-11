@@ -173,6 +173,8 @@ public with sharing class CalendarController {
         if (is(classType)) {
             soql += A + 'Booking__r.Class__r.Type__c = :classType';
         }
+        // Determinate order for BookedDates
+        soql += ' order by Id';
         
         System.debug('>>> booked dates soql=' + soql);
         return Database.query(soql);
@@ -211,7 +213,6 @@ public with sharing class CalendarController {
         if (fullyBooked && !freeSpaces) {
             soql += A + 'SpacesRemaining__c <= 0';
         }
-        
         // If already being presented as a booked date don't show again as an available date
         if (skipIds.size() > 0) {
             soql += A + 'Id not in :skipIds';
@@ -226,13 +227,21 @@ public with sharing class CalendarController {
     }
     
     private Event[] createEvents() {
-    
-        List<Event> events = new List<Event>();
 
-        Set<Id> adIds = new Set<Id>();
+        // Group Events by AvailableDate id
+        Map<Id, List<Event>> m = new Map<Id, List<Event>>();
+
+        Set<Id> adIdSet = new Set<Id>();
         if (filter.ShowBookings__c) {
             for (BookedDate__c bd : queryBookedDates()) {
-                events.add(new Event(
+                Id adId = bd.AvailableDate__r.Id;
+                List<Event> l = m.get(adId);
+                if (l == null) {
+                    l = new List<Event>();
+                    // Often multiple (already sorted) BookedDates for an AvailableDate; 
+                    m.put(adId, l);
+                }
+                l.add(new Event(
                         getTitle(bd),
                         getTooltip(bd),
                         getStartDateTime(bd.Date__c, bd.Booking__r.Class__r),
@@ -240,12 +249,18 @@ public with sharing class CalendarController {
                         '/' + bd.Booking__r.Id,
                         '#cc3366'
                         ));
-                adIds.add(bd.AvailableDate__r.Id);
+                adIdSet.add(bd.AvailableDate__r.Id);
             }
         }
         if (filter.ShowClassesFreeSpaces__c || filter.ShowClassesFullyBooked__c) {
-            for (AvailableDate__c ad : queryAvailableDates(filter.ShowClassesFreeSpaces__c, filter.ShowClassesFullyBooked__c, adIds)) {
-                events.add(new Event(
+            for (AvailableDate__c ad : queryAvailableDates(filter.ShowClassesFreeSpaces__c, filter.ShowClassesFullyBooked__c, adIdSet)) {
+                Id adId = ad.Id;
+                List<Event> l = m.get(adId);
+                if (l == null) {
+                    l = new List<Event>();
+                    m.put(adId, l);
+                }
+                l.add(new Event(
                         getTitle(ad),
                         getTooltip(ad),
                         getStartDateTime(ad.Date__c, ad.Class__r),
@@ -253,9 +268,19 @@ public with sharing class CalendarController {
                         '/' + ad.Class__r.Id,
                         (ad.SpacesRemaining__c != null && ad.SpacesRemaining__c <= 0 ? '#6699ff' : '#3366cc')
                         ));
+                adIdSet.add(adId);
             }
         }
-
+        
+        // Want to keep in defined order so elements don't jump about on the Calendar when checkboxes are changed
+        // Events (both bookings and classes) are left in (sorted) AvailableDate id order then (sorted) BoookedDate id order
+        List<Id> adIdList = new List<Id>(adIdSet);
+        adIdList.sort();
+        List<Event> events = new List<Event>();
+        for (Id adId : adIdList) {
+            events.addAll(m.get(adId));
+        }
+        
         return events;
     }
     
