@@ -3,8 +3,8 @@
 	
 	<property name="sf.url" value="https://login.salesforce.com/"/>
 	<property name="sf.un" value="keith@festinalente.ie"/>
-    <property name="sf.pw" value="b7388fZr3e6DGEihM"/>
-    <property name="sf.st" value="DfEB5YOVl8NOuEPpfUtkYpnb"/>
+    <property name="sf.pw" value="????"/>
+    <property name="sf.st" value="????"/>
 	
     <path id="classpath">
         <fileset dir="." includes="ant-salesforce.jar"/>
