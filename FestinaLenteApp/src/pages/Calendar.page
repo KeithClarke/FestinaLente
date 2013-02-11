@@ -26,11 +26,29 @@
         <apex:pageBlock mode="edit" id="pb" title="Filtering">
             <apex:pageBlockSection id="pbs">
             
-                <apex:inputField value="{!filter.ShowClassesFreeSpaces__c}" id="showClassesFreeSpaces"/>
-                <apex:inputField value="{!filter.Client__c}" id="client"/>
+                <apex:inputField value="{!filter.ShowClassesFreeSpaces__c}" id="showClassesFreeSpaces"/> 
+                <apex:pageBlockSectionItem id="clientPbsi">
+                    <apex:outputLabel value="{!$ObjectType.Filter__c.Fields.Client__c.Label}"/>
+                    <apex:outputPanel layout="none">
+                        <apex:inputField value="{!filter.Client__c}" id="client"/>
+                        <apex:outputText >&nbsp;</apex:outputText>
+                        <apex:outputLink id="previousClient">Previous</apex:outputLink>
+                        <apex:outputText >&nbsp;</apex:outputText>
+                        <apex:outputLink id="nextClient">Next</apex:outputLink>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
                 
                 <apex:inputField value="{!filter.ShowClassesFullyBooked__c}" id="showClassesFullyBooked"/>
-                <apex:inputField value="{!filter.Coach__c}" id="coach"/>
+                <apex:pageBlockSectionItem id="coachPbsi">
+                    <apex:outputLabel value="{!$ObjectType.Filter__c.Fields.Coach__c.Label}"/>
+                    <apex:outputPanel layout="none">
+                        <apex:inputField value="{!filter.Coach__c}" id="coach"/>
+                        <apex:outputText >&nbsp;</apex:outputText>
+                        <apex:outputLink id="previousCoach">Previous</apex:outputLink>
+                        <apex:outputText >&nbsp;</apex:outputText>
+                        <apex:outputLink id="nextCoach">Next</apex:outputLink>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
 
                 <apex:inputField value="{!filter.ShowBookings__c}" id="showBookings"/>
                 <apex:inputField value="{!filter.Horse__c}" id="horse"/>
@@ -82,20 +100,29 @@ $(document).ready(function() {
     
     var prefix = '#p\\:f\\:pb\\:pbs\\:';
     var lkid = '_lkid';
+    var clientPbsi = 'clientPbsi\\:';
+    var coachPbsi = 'coachPbsi\\:';
     
-    var client = $(prefix + 'client');
-    var coach = $(prefix + 'coach');
+    var client = $(prefix + clientPbsi + 'client');
+    var clientLkid = $(prefix + clientPbsi + 'client' + lkid);
+    var previousClient = $(prefix + clientPbsi + 'previousClient');
+    var nextClient = $(prefix + clientPbsi + 'nextClient');
+    
+    var coach = $(prefix + coachPbsi + 'coach');
+    var coachLkid = $(prefix + coachPbsi + 'coach' + lkid);
+    var previousCoach = $(prefix + coachPbsi + 'previousCoach');
+    var nextCoach = $(prefix + coachPbsi + 'nextCoach');
+    
     var horse = $(prefix + 'horse');
-    var booking = $(prefix + 'booking');
-    var clazz = $(prefix + 'class');
-    var classType = $(prefix + 'classType');
-    
-    var clientLkid = $(prefix + 'client' + lkid);
-    var coachLkid= $(prefix + 'coach' + lkid);
     var horseLkid = $(prefix + 'horse' + lkid);
+    
+    var booking = $(prefix + 'booking');
     var bookingLkid = $(prefix + 'booking' + lkid);
+    
+    var clazz = $(prefix + 'class');
     var clazzLkid = $(prefix + 'class' + lkid);
-                
+    
+    var classType = $(prefix + 'classType');
     var showClassesFreeSpaces = $(prefix + 'showClassesFreeSpaces');
     var showClassesFullyBooked = $(prefix + 'showClassesFullyBooked');
     var showBookings = $(prefix + 'showBookings');
@@ -247,7 +274,7 @@ $(document).ready(function() {
     });
     
     // Refresh calendar when a filter value changes
-    var f = function() {
+    var refreshFunction = function() {
         // Timeout so transfer to lkid has completed beforerefetch
         setTimeout(function() {
                 calendar.fullCalendar('refetchEvents');
@@ -255,16 +282,16 @@ $(document).ready(function() {
     };
     
     // No onchange fired on lkid fields as they are programmatically set; just looking at input fields
-    client.change(f);
-    coach.change(f);
-    horse.change(f);
-    booking.change(f);
-    clazz.change(f);
-    classType.change(f);
+    client.change(refreshFunction);
+    coach.change(refreshFunction);
+    horse.change(refreshFunction);
+    booking.change(refreshFunction);
+    clazz.change(refreshFunction);
+    classType.change(refreshFunction);
 
-    showClassesFreeSpaces.change(f);
-    showClassesFullyBooked.change(f);
-    showBookings.change(f);
+    showClassesFreeSpaces.change(refreshFunction);
+    showClassesFullyBooked.change(refreshFunction);
+    showBookings.change(refreshFunction);
     
     // Hack to improve printing
     var w = calendar.css('width');
@@ -288,7 +315,36 @@ $(document).ready(function() {
     }
     window.onbeforeprint = beforePrint;
     window.onafterprint = afterPrint;
-
+    
+    // Stepping through clients or coaches
+    var clickFunctionFactory = function(recordTypeName, remoteMethod, field, lkidField) {
+        return function() {
+            var id = lkidField.val();
+            Visualforce.remoting.Manager.invokeAction(
+                    remoteMethod,
+                    recordTypeName,
+                    id,
+                    function(result, event) {
+                        if (event.status) {
+                            // Update form fields
+                            field.val(result ? result.Name : null);
+                            lkidField.val(result ? result.Id : null);
+                            // Refresh calendar
+                            refreshFunction();
+                        } else {
+                            alert('ERROR:\n' + event.message + '\n' + event.where);
+                        }
+                    });
+            return false;
+        }
+    }
+    
+    previousClient.click(clickFunctionFactory('Client', '{!$RemoteAction.CalendarController.previousContact}', client, clientLkid));
+    nextClient.click(clickFunctionFactory('Client', '{!$RemoteAction.CalendarController.nextContact}', client, clientLkid));
+    
+    previousCoach.click(clickFunctionFactory('Coach', '{!$RemoteAction.CalendarController.previousContact}', coach, coachLkid));
+    nextCoach.click(clickFunctionFactory('Coach', '{!$RemoteAction.CalendarController.nextContact}', coach, coachLkid));
+    
 });
 </script>
 

@@ -129,4 +129,22 @@ private class CalendarControllerTest {
         c.filter.ShowBookings__c = false;
         System.assertEquals(0, CalendarController.events(c.starts, c.ends, c.filter).size());
     }
+    
+    @IsTest
+    static void previousNextCallback() {
+    
+        Fixture f = new Fixture();
+        
+        System.assertEquals(f.client.Id, CalendarController.nextContact('Client', null).Id);
+        System.assertEquals(null, CalendarController.nextContact('Client', f.client.Id));
+        
+        System.assertEquals(f.coach.Id, CalendarController.nextContact('Coach', null).Id);
+        System.assertEquals(null, CalendarController.nextContact('Coach', f.coach.Id));
+        
+        System.assertEquals(f.client.Id, CalendarController.previousContact('Client', null).Id);
+        System.assertEquals(null, CalendarController.previousContact('Client', f.client.Id));
+        
+        System.assertEquals(f.coach.Id, CalendarController.previousContact('Coach', null).Id);
+        System.assertEquals(null, CalendarController.previousContact('Coach', f.coach.Id));
+    }
 }

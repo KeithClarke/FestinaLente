@@ -238,7 +238,7 @@ public with sharing class CalendarController {
         return Database.query(soql);
     }
     
-    private Boolean is(String id) {
+    private static Boolean is(String id) {
         return id != null && id != '' && id != '000000000000000';
     }
     
@@ -423,5 +423,66 @@ public with sharing class CalendarController {
         c.ends = ends;
         c.filter = filter;
         return c.createEvents();
+    }
+    
+    @RemoteAction
+    public static Contact nextContact(String recordTypeName, Id coachId) {
+        Id rtId = contactRtId(recordTypeName);
+        Contact[] contacts;
+        if (is(coachId)) {
+            String currentName = [select Name from Contact where Id = :coachId].Name;
+            contacts = [
+                    select Id, Name
+                    from Contact
+                    where RecordTypeId = :rtId
+                    and Name > :currentName
+                    order by Name
+                    limit 1
+                    ];
+        } else {
+            contacts = [
+                    select Id, Name
+                    from Contact
+                    where RecordTypeId = :rtId
+                    order by Name
+                    limit 1
+                    ];
+        }
+        return contacts.size() > 0 ? contacts[0] : null;
+    }
+    
+    @RemoteAction
+    public static Contact previousContact(String recordTypeName, Id coachId) {
+        Id rtId = contactRtId(recordTypeName);
+        Contact[] contacts;
+        if (is(coachId)) {
+            String currentName = [select Name from Contact where Id = :coachId].Name;
+            contacts = [
+                    select Id, Name
+                    from Contact
+                    where RecordTypeId = :rtId
+                    and Name < :currentName
+                    order by Name desc
+                    limit 1
+                    ];
+        } else {
+            contacts = [
+                    select Id, Name
+                    from Contact
+                    where RecordTypeId = :rtId
+                    order by Name desc
+                    limit 1
+                    ];
+        }
+        return contacts.size() > 0 ? contacts[0] : null;
+    }
+    
+    private static Id contactRtId(String developerName) {
+        return [
+                select Id
+                from RecordType
+                where DeveloperName = :developerName
+                and SObjectType = :String.valueOf(Contact.SObjectType)
+                ].Id;
     }
 }
