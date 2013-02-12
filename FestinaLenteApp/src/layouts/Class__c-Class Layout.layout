@@ -145,19 +145,6 @@
         <fields>SpacesBookedAvailable__c</fields>
     </miniLayout>
     <relatedLists>
-        <customButtons>DeleteSelectedBookings</customButtons>
-        <fields>NAME</fields>
-        <fields>Contact.CNTC_FIRST_NAME</fields>
-        <fields>Contact.NAME</fields>
-        <fields>ClientLevel__c</fields>
-        <fields>Contact.PreferredHorse__c</fields>
-        <fields>EarliestBookedDate__c</fields>
-        <fields>LatestBookedDate__c</fields>
-        <fields>AvailableDatesBooked__c</fields>
-        <fields>BookedDates__c</fields>
-        <relatedList>Booking__c.Class__c</relatedList>
-    </relatedLists>
-    <relatedLists>
         <customButtons>GenerateAvailableDates</customButtons>
         <customButtons>DeleteSelectedAvailableDates</customButtons>
         <fields>NAME</fields>
@@ -169,6 +156,19 @@
         <relatedList>AvailableDate__c.Class__c</relatedList>
         <sortField>Date__c</sortField>
         <sortOrder>Asc</sortOrder>
+    </relatedLists>
+    <relatedLists>
+        <customButtons>DeleteSelectedBookings</customButtons>
+        <fields>NAME</fields>
+        <fields>Contact.CNTC_FIRST_NAME</fields>
+        <fields>Contact.NAME</fields>
+        <fields>ClientLevel__c</fields>
+        <fields>Contact.PreferredHorse__c</fields>
+        <fields>EarliestBookedDate__c</fields>
+        <fields>LatestBookedDate__c</fields>
+        <fields>AvailableDatesBooked__c</fields>
+        <fields>BookedDates__c</fields>
+        <relatedList>Booking__c.Class__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>true</showHighlightsPanel>
