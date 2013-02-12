@@ -1,5 +1,18 @@
 <apex:page tabStyle="Calendar__tab" controller="CalendarController" action="{!init}" id="p">
 
+<style type="text/css">
+a.pn {
+    color: #015ba7;
+    text-decoration: none;
+}
+a.pn:hover {
+    text-decoration: underline;
+}
+span.ps {
+    color: #999999;
+}
+</style>
+
 <link href="{!URLFOR($Resource.FullCalendarZip,'fullcalendar-1.5.4/fullcalendar/fullcalendar.css')}" rel="stylesheet" type="text/css"/>
 <link href="{!URLFOR($Resource.FullCalendarZip,'fullcalendar-1.5.4/fullcalendar/fullcalendar.print.css')}" rel="stylesheet" type="text/css" media="print"/>
 
@@ -32,9 +45,9 @@
                     <apex:outputPanel layout="none">
                         <apex:inputField value="{!filter.Client__c}" id="client"/>
                         <apex:outputText >&nbsp;</apex:outputText>
-                        <apex:outputLink id="previousClient">Previous</apex:outputLink>
-                        <apex:outputText >&nbsp;</apex:outputText>
-                        <apex:outputLink id="nextClient">Next</apex:outputLink>
+                        <apex:outputLink styleClass="pn" title="Previous Client" id="previousClient">&#171; Previous</apex:outputLink>
+                        <apex:outputPanel layout="inline" styleClass="ps">&nbsp;&nbsp;|&nbsp;&nbsp;</apex:outputPanel>
+                        <apex:outputLink styleClass="pn" title="Next Client" id="nextClient">Next &#187;</apex:outputLink>
                     </apex:outputPanel>
                 </apex:pageBlockSectionItem>
                 
@@ -44,9 +57,9 @@
                     <apex:outputPanel layout="none">
                         <apex:inputField value="{!filter.Coach__c}" id="coach"/>
                         <apex:outputText >&nbsp;</apex:outputText>
-                        <apex:outputLink id="previousCoach">Previous</apex:outputLink>
-                        <apex:outputText >&nbsp;</apex:outputText>
-                        <apex:outputLink id="nextCoach">Next</apex:outputLink>
+                        <apex:outputLink styleClass="pn" title="Previous Coach" id="previousCoach">&#171; Previous</apex:outputLink>
+                        <apex:outputPanel layout="inline" styleClass="ps">&nbsp;&nbsp;|&nbsp;&nbsp;</apex:outputPanel>
+                        <apex:outputLink styleClass="pn" title="Next Coach" id="nextCoach">Next &#187;</apex:outputLink>
                     </apex:outputPanel>
                 </apex:pageBlockSectionItem>
 
