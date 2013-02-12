@@ -51,6 +51,14 @@ public with sharing class EditBookedDatesController {
                         ]) {
                     availables.add(new SelectableAvailableDate(ad, bookings.get(ad.Id)));
                 }
+                
+                if (availables.size() == 0) {
+                    ApexPages.ADDMESSAGE(new ApexPages.Message(
+                            ApexPages.Severity.WARNING,
+                            'Add Available Dates to the Class; those dates can then be selected as Booked Dates using this page.'
+                            ));
+                }
+                
             }
             return availables;
         }

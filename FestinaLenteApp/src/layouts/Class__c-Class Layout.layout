@@ -145,19 +145,6 @@
         <fields>SpacesBookedAvailable__c</fields>
     </miniLayout>
     <relatedLists>
-        <customButtons>GenerateAvailableDates</customButtons>
-        <customButtons>DeleteSelectedAvailableDates</customButtons>
-        <fields>NAME</fields>
-        <fields>Date__c</fields>
-        <fields>WeekNumber__c</fields>
-        <fields>DayOfWeek__c</fields>
-        <fields>SpacesBooked__c</fields>
-        <fields>SpacesRemaining__c</fields>
-        <relatedList>AvailableDate__c.Class__c</relatedList>
-        <sortField>Date__c</sortField>
-        <sortOrder>Asc</sortOrder>
-    </relatedLists>
-    <relatedLists>
         <customButtons>DeleteSelectedBookings</customButtons>
         <fields>NAME</fields>
         <fields>Contact.CNTC_FIRST_NAME</fields>
@@ -169,6 +156,19 @@
         <fields>AvailableDatesBooked__c</fields>
         <fields>BookedDates__c</fields>
         <relatedList>Booking__c.Class__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <customButtons>GenerateAvailableDates</customButtons>
+        <customButtons>DeleteSelectedAvailableDates</customButtons>
+        <fields>NAME</fields>
+        <fields>Date__c</fields>
+        <fields>WeekNumber__c</fields>
+        <fields>DayOfWeek__c</fields>
+        <fields>SpacesBooked__c</fields>
+        <fields>SpacesRemaining__c</fields>
+        <relatedList>AvailableDate__c.Class__c</relatedList>
+        <sortField>Date__c</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>true</showHighlightsPanel>
