@@ -39,7 +39,7 @@
                 <field>Level__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>SpacesAvailable__c</field>
             </layoutItems>
         </layoutColumns>
