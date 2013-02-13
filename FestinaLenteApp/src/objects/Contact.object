@@ -1651,23 +1651,7 @@
         <label>All</label>
     </listViews>
     <listViews>
-        <fullName>AllClients</fullName>
-        <columns>FULL_NAME</columns>
-        <columns>CONTACT.RECORDTYPE</columns>
-        <columns>CONTACT.PHONE1</columns>
-        <columns>CONTACT.PHONE3</columns>
-        <columns>CONTACT.EMAIL</columns>
-        <columns>Status__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CONTACT.RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>Contact.Client</value>
-        </filters>
-        <label>All Clients</label>
-    </listViews>
-    <listViews>
-        <fullName>AllCoaches</fullName>
+        <fullName>AllActiveCoaches</fullName>
         <columns>FULL_NAME</columns>
         <columns>CONTACT.RECORDTYPE</columns>
         <columns>CONTACT.PHONE1</columns>
@@ -1680,33 +1664,81 @@
             <operation>equals</operation>
             <value>Contact.Coach</value>
         </filters>
-        <label>All Coaches</label>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Active</value>
+        </filters>
+        <label>All Active Coaches</label>
+    </listViews>
+    <listViews>
+        <fullName>AllActiveOrWaitingClients</fullName>
+        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+        <columns>FULL_NAME</columns>
+        <columns>CONTACT.RECORDTYPE</columns>
+        <columns>CONTACT.PHONE1</columns>
+        <columns>CONTACT.PHONE3</columns>
+        <columns>CONTACT.EMAIL</columns>
+        <columns>Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CONTACT.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Contact.Client</value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Active</value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Waiting</value>
+        </filters>
+        <label>All Active or Waiting Clients</label>
     </listViews>
     <namedFilters>
         <fullName>nf_01Ii0000000TRSPEA4_00Ni0000000hqUhEAI</fullName>
         <active>true</active>
-        <errorMessage>Contact does not exist or is not a Coach.</errorMessage>
+        <errorMessage>Contact does not exist or is not a Coach (of Status Active).</errorMessage>
         <field>Class__c.Coach__c</field>
         <filterItems>
             <field>Contact.RecordTypeId</field>
             <operation>equals</operation>
             <value>Coach</value>
         </filterItems>
-        <infoMessage>Contact must be a Coach</infoMessage>
+        <filterItems>
+            <field>Contact.Status__c</field>
+            <operation>equals</operation>
+            <value>Active</value>
+        </filterItems>
+        <infoMessage>Contact must be a Coach (of Status Active)</infoMessage>
         <isOptional>false</isOptional>
         <name>Class_Coach</name>
     </namedFilters>
     <namedFilters>
         <fullName>nf_01Ii0000000TRSZEA4_00Ni0000000hppvEAA</fullName>
         <active>true</active>
-        <errorMessage>Contact does not exist or is not a Client.</errorMessage>
+        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+        <errorMessage>Contact does not exist or is not a Client (or Status Waiting or Active)</errorMessage>
         <field>Booking__c.Client__c</field>
         <filterItems>
             <field>Contact.RecordTypeId</field>
             <operation>equals</operation>
             <value>Client</value>
         </filterItems>
-        <infoMessage>Contact must be a Client</infoMessage>
+        <filterItems>
+            <field>Contact.Status__c</field>
+            <operation>equals</operation>
+            <value>Waiting</value>
+        </filterItems>
+        <filterItems>
+            <field>Contact.Status__c</field>
+            <operation>equals</operation>
+            <value>Active</value>
+        </filterItems>
+        <infoMessage>Contact must be a Client (of Status Waiting or Active)</infoMessage>
         <isOptional>false</isOptional>
         <name>Booking_Client</name>
     </namedFilters>

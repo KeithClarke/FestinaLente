@@ -16,6 +16,7 @@ public with sharing class CalendarController {
         }
     }
     
+    private static final Set<String> ACTIVE_STATUSES = new Set<String>{'Waiting', 'Active'};
     private static final String A = ' and ';
 
     public class Back {
@@ -426,16 +427,18 @@ public with sharing class CalendarController {
     }
     
     @RemoteAction
-    public static Contact nextContact(String recordTypeName, Id coachId) {
+    public static Contact nextContact(String recordTypeName, Id contactId) {
+    
         Id rtId = contactRtId(recordTypeName);
         Contact[] contacts;
-        if (is(coachId)) {
-            String currentName = [select Name from Contact where Id = :coachId].Name;
+        if (is(contactId)) {
+            String currentName = [select Name from Contact where Id = :contactId].Name;
             contacts = [
                     select Id, Name
                     from Contact
                     where RecordTypeId = :rtId
                     and Name > :currentName
+                    and Status__c in :ACTIVE_STATUSES
                     order by Name
                     limit 1
                     ];
@@ -444,6 +447,7 @@ public with sharing class CalendarController {
                     select Id, Name
                     from Contact
                     where RecordTypeId = :rtId
+                    and Status__c in :ACTIVE_STATUSES
                     order by Name
                     limit 1
                     ];
@@ -452,16 +456,18 @@ public with sharing class CalendarController {
     }
     
     @RemoteAction
-    public static Contact previousContact(String recordTypeName, Id coachId) {
+    public static Contact previousContact(String recordTypeName, Id contactId) {
+
         Id rtId = contactRtId(recordTypeName);
         Contact[] contacts;
-        if (is(coachId)) {
-            String currentName = [select Name from Contact where Id = :coachId].Name;
+        if (is(contactId)) {
+            String currentName = [select Name from Contact where Id = :contactId].Name;
             contacts = [
                     select Id, Name
                     from Contact
                     where RecordTypeId = :rtId
                     and Name < :currentName
+                    and Status__c in :ACTIVE_STATUSES
                     order by Name desc
                     limit 1
                     ];
@@ -470,6 +476,7 @@ public with sharing class CalendarController {
                     select Id, Name
                     from Contact
                     where RecordTypeId = :rtId
+                    and Status__c in :ACTIVE_STATUSES
                     order by Name desc
                     limit 1
                     ];
@@ -478,6 +485,7 @@ public with sharing class CalendarController {
     }
     
     private static Id contactRtId(String developerName) {
+    
         return [
                 select Id
                 from RecordType
