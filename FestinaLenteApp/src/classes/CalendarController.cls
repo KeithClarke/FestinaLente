@@ -167,7 +167,7 @@ public with sharing class CalendarController {
                 + '         Booking__r.Client__r.PreferredHorse__r.Name,'
                 + '         Booking__r.Class__r.Coach__r.Name,'
                 + '         Booking__r.Class__r.Id, Booking__r.Class__r.Name, Booking__r.Class__r.TimeInMinutes__c, Booking__r.Class__r.LengthInMinutes__c,'
-                + '         Booking__r.Class__r.Type__c, Booking__r.Class__r.Detail__c, Booking__r.Class__r.Level__c'
+                + '         Booking__r.Class__r.Type__c, Booking__r.Class__r.Detail__c, Booking__r.Class__r.AgeGroup__c, Booking__r.Class__r.Level__c, Booking__r.Class__r.Price__c'
                 + ' from BookedDate__c'
                 + ' where Date__c >= :starts'
                 + ' and Date__c <= :ends'
@@ -210,7 +210,7 @@ public with sharing class CalendarController {
                 + '         Id, Name, CalendarSortKey__c, Date__c, SpacesBooked__c, SpacesRemaining__c,'
                 + '         Class__r.Coach__r.Name,'
                 + '         Class__r.Id, Class__r.Name, Class__r.TimeInMinutes__c, Class__r.LengthInMinutes__c,'
-                + '         Class__r.Type__c, Class__r.Detail__c, Class__r.Level__c'
+                + '         Class__r.Type__c, Class__r.Detail__c, Class__r.AgeGroup__c, Class__r.Level__c, Class__r.Price__c'
                 + ' from AvailableDate__c'
                 + ' where Date__c >= :starts'
                 + ' and Date__c <= :ends'
@@ -338,17 +338,22 @@ public with sharing class CalendarController {
         if (c.Detail__c != null) {
             s += '<br/>Detail: ' + c.Detail__c;
         }
+        if (c.AgeGroup__c != null) {
+            s += '<br/>Age Group: ' + c.AgeGroup__c;
+        }
         if (c.Level__c != null) {
             s += '<br/>Level: ' + c.Level__c;
         }
         if (c.Coach__r != null) {
             s += '<br/>Coach: ' + c.Coach__r.Name;
         }
+        if (c.Price__c != null) {
+            s += '<br/>Price: ' + c.Price__c;
+        }
         if (ad.SpacesBooked__c != null && ad.SpacesRemaining__c != null) {
             s += '<br/>Free Spaces: ' + ad.SpacesRemaining__c + ' (' + (ad.SpacesBooked__c + ad.SpacesRemaining__c) + ' Total Spaces)';
         }
 
-        
         return s;
     }
     
@@ -361,11 +366,17 @@ public with sharing class CalendarController {
         if (c.Detail__c != null) {
             s += '<br/>Detail: ' + c.Detail__c;
         }
+        if (c.AgeGroup__c != null) {
+            s += '<br/>Age Group: ' + c.AgeGroup__c;
+        }
         if (c.Level__c != null) {
             s += '<br/>Level: ' + c.Level__c;
         }
         if (c.Coach__r != null) {
             s += '<br/>Coach: ' + c.Coach__r.Name;
+        }
+        if (c.Price__c != null) {
+            s += '<br/>Price: ' + c.Price__c;
         }
         if (ad.SpacesBooked__c != null && ad.SpacesRemaining__c != null) {
             s += '<br/>Free Spaces: ' + ad.SpacesRemaining__c + ' (' + (ad.SpacesBooked__c + ad.SpacesRemaining__c) + ' Total Spaces)';

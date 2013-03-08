@@ -3,6 +3,10 @@ trigger ContactBefore on Contact (before insert, before update) {
     Date today = Date.today();
     for (Contact c : Trigger.new) {
     
+        //
+        // Status logic
+        //
+        
         // This affects status used below
         String waitingForClassType = c.ClassType__c;
         if (waitingForClassType != (Trigger.isInsert ? null : Trigger.oldMap.get(c.Id).ClassType__c)) {
@@ -39,6 +43,19 @@ trigger ContactBefore on Contact (before insert, before update) {
                 
                 c.ClassType__c = null;
             }
+        }
+        
+        //
+        // Waiver date
+        //
+        
+        if (c.WaiverFormCompleted__c) {
+            Boolean oldValue = Trigger.isInsert ? null : Trigger.oldMap.get(c.Id).WaiverFormCompleted__c;
+            if (oldValue != true) {
+                c.WaiverFormCompletedDate__c = today;
+            }
+        } else {
+            c.WaiverFormCompletedDate__c = null;
         }
     }
 }

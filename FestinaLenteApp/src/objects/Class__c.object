@@ -39,6 +39,23 @@
     <enableHistory>false</enableHistory>
     <enableReports>true</enableReports>
     <fields>
+        <fullName>AgeGroup__c</fullName>
+        <externalId>false</externalId>
+        <label>Age Group</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Adult</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Child</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>AvailableDateCount__c</fullName>
         <externalId>false</externalId>
         <label>Available Date Count</label>
@@ -192,6 +209,7 @@
         <formula>CASE( Length__c,
     &apos;Day&apos;, 480,
     &apos;Half Day&apos;, 240,
+    &apos;90 mins&apos;, 90,
     &apos;60 mins&apos;, 60,
     &apos;45 mins&apos;, 45,
     &apos;30 mins&apos;, 30,
@@ -219,6 +237,10 @@
             </picklistValues>
             <picklistValues>
                 <fullName>60 mins</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>90 mins</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
@@ -269,6 +291,15 @@
         <length>32768</length>
         <type>LongTextArea</type>
         <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Price</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
     </fields>
     <fields>
         <fullName>SpacesAvailable__c</fullName>
@@ -552,10 +583,6 @@ null
         <picklist>
             <picklistValues>
                 <fullName>Adult Camp</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Adult Group Lesson</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>

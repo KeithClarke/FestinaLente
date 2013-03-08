@@ -295,6 +295,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Class__c.AgeGroup__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Class__c.AvailableDateCount__c</field>
         <readable>true</readable>
@@ -362,6 +367,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Class__c.Notes__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Class__c.Price__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -582,6 +592,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Contact.WaitingSince__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.WaiverFormCompletedDate__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.WaiverFormCompleted__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

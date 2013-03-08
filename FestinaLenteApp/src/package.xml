@@ -35,6 +35,8 @@
         <members>Contact.SecondEmergencyContactPhone__c</members>
         <members>Contact.SecondEmergencyContactRelationship__c</members>
         <members>Contact.Status__c</members>
+        <members>Contact.WaiverFormCompletedDate__c</members>
+        <members>Contact.WaiverFormCompleted__c</members>
         <members>Contact.Weight__c</members>
         <name>CustomField</name>
     </types>

@@ -37,10 +37,6 @@
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Adult Group Lesson</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
                 <fullName>Cancellation List</fullName>
                 <default>false</default>
             </picklistValues>
@@ -711,7 +707,7 @@
     <fields>
         <fullName>EmergencyContactName__c</fullName>
         <externalId>false</externalId>
-        <label>Contact Name</label>
+        <label>Contact Name 1</label>
         <length>80</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -721,7 +717,7 @@
     <fields>
         <fullName>EmergencyContactPhone__c</fullName>
         <externalId>false</externalId>
-        <label>Contact Phone</label>
+        <label>Contact Phone 1</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Phone</type>
@@ -729,7 +725,7 @@
     <fields>
         <fullName>EmergencyContactRelationship__c</fullName>
         <externalId>false</externalId>
-        <label>Contact Relationship</label>
+        <label>Contact Relationship 1</label>
         <picklist>
             <picklistValues>
                 <fullName>Parent</fullName>
@@ -745,6 +741,10 @@
             </picklistValues>
             <picklistValues>
                 <fullName>Grandparent</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sibling</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
@@ -1271,7 +1271,7 @@
     <fields>
         <fullName>SecondEmergencyContactName__c</fullName>
         <externalId>false</externalId>
-        <label>Contact Name</label>
+        <label>Contact Name 2</label>
         <length>80</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -1281,7 +1281,7 @@
     <fields>
         <fullName>SecondEmergencyContactPhone__c</fullName>
         <externalId>false</externalId>
-        <label>Contact Phone</label>
+        <label>Contact Phone 2</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Phone</type>
@@ -1289,7 +1289,7 @@
     <fields>
         <fullName>SecondEmergencyContactRelationship__c</fullName>
         <externalId>false</externalId>
-        <label>Contact Relationship</label>
+        <label>Contact Relationship 2</label>
         <picklist>
             <picklistValues>
                 <fullName>Parent</fullName>
@@ -1305,6 +1305,10 @@
             </picklistValues>
             <picklistValues>
                 <fullName>Grandparent</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sibling</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
@@ -1353,6 +1357,22 @@
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>WaiverFormCompletedDate__c</fullName>
+        <externalId>false</externalId>
+        <label>Waiver Form Completed Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>WaiverFormCompleted__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Waiver Form Completed</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Weight__c</fullName>
@@ -1782,10 +1802,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Adult Group Lesson</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Cancellation List</fullName>
                 <default>false</default>
             </values>
@@ -2468,6 +2484,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Sibling</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Spouse</fullName>
                 <default>false</default>
             </values>
@@ -2976,6 +2996,10 @@
             </values>
             <values>
                 <fullName>Parent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sibling</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3277,10 +3301,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Adult Group Lesson</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Cancellation List</fullName>
                 <default>false</default>
             </values>
@@ -3963,6 +3983,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Sibling</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Spouse</fullName>
                 <default>false</default>
             </values>
@@ -4471,6 +4495,10 @@
             </values>
             <values>
                 <fullName>Parent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sibling</fullName>
                 <default>false</default>
             </values>
             <values>

@@ -48,4 +48,22 @@ private class ContactBeforeTest {
             System.debug('>>> message=' + e.getMessage());
         }
     }
+    
+    @isTest
+    static void waiverForm() {
+    
+        Date today = Date.today();
+    
+        Contact c = new Contact(LastName = 'Smith');
+        insert c;
+        System.assertEquals(null, [select WaiverFormCompletedDate__c from Contact where Id = :c.Id].WaiverFormCompletedDate__c);
+        
+        c.WaiverFormCompleted__c = true;
+        update c;
+        System.assertEquals(today, [select WaiverFormCompletedDate__c from Contact where Id = :c.Id].WaiverFormCompletedDate__c);
+        
+        c.WaiverFormCompleted__c = false;
+        update c;
+        System.assertEquals(null, [select WaiverFormCompletedDate__c from Contact where Id = :c.Id].WaiverFormCompletedDate__c);
+    }
 }

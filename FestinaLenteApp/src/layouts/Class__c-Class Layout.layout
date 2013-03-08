@@ -31,16 +31,20 @@
                 <field>Type__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Edit</behavior>
+                <field>AgeGroup__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Required</behavior>
                 <field>DayOfWeek__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Level__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Required</behavior>
                 <field>SpacesAvailable__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Price__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -51,6 +55,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Detail__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Level__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -134,10 +142,13 @@
     </layoutSections>
     <miniLayout>
         <fields>Type__c</fields>
+        <fields>AgeGroup__c</fields>
         <fields>DayOfWeek__c</fields>
-        <fields>Level__c</fields>
+        <fields>SpacesAvailable__c</fields>
+        <fields>Price__c</fields>
         <fields>Coach__c</fields>
         <fields>Detail__c</fields>
+        <fields>Level__c</fields>
         <fields>Time__c</fields>
         <fields>Length__c</fields>
         <fields>EarliestAvailableDate__c</fields>
