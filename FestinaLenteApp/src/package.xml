@@ -22,19 +22,33 @@
     </types>
     <types>
         <members>Contact.Age__c</members>
+        <members>Contact.Allergies__c</members>
+        <members>Contact.Aspergers__c</members>
+        <members>Contact.Autism__c</members>
         <members>Contact.ClassType__c</members>
         <members>Contact.ColourCode__c</members>
+        <members>Contact.DoctorName__c</members>
+        <members>Contact.DoctorPhone__c</members>
         <members>Contact.EmergencyContactName__c</members>
         <members>Contact.EmergencyContactPhone__c</members>
         <members>Contact.EmergencyContactRelationship__c</members>
         <members>Contact.Height__c</members>
+        <members>Contact.IntellectualDisability__c</members>
+        <members>Contact.LeaderAndSideWalker__c</members>
+        <members>Contact.LeaderAndTwoSideWalkers__c</members>
+        <members>Contact.Leader__c</members>
         <members>Contact.Level__c</members>
+        <members>Contact.MedicalHistory__c</members>
+        <members>Contact.Medication__c</members>
         <members>Contact.Notes__c</members>
+        <members>Contact.Physical__c</members>
         <members>Contact.PreferredHorse__c</members>
         <members>Contact.SecondEmergencyContactName__c</members>
         <members>Contact.SecondEmergencyContactPhone__c</members>
         <members>Contact.SecondEmergencyContactRelationship__c</members>
+        <members>Contact.Sensory__c</members>
         <members>Contact.Status__c</members>
+        <members>Contact.UseOfHoists__c</members>
         <members>Contact.WaiverFormCompletedDate__c</members>
         <members>Contact.WaiverFormCompleted__c</members>
         <members>Contact.Weight__c</members>
