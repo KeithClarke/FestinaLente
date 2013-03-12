@@ -2,12 +2,12 @@ public with sharing class CalendarController {
 
     public static String BOOKINGS_COLOUR {
         get {
-            return'#cc3366';
+            return '#9cb770';
         }
     }
     public static String FREE_SPACES_COLOUR {
         get {
-            return '#3366cc';
+            return '#cc3366';
         }
     }
     public static String FULLY_BOOKED_COLOUR {
