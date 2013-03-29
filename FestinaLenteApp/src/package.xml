@@ -21,6 +21,8 @@
         <name>CustomApplication</name>
     </types>
     <types>
+        <members>Contact.AccessDatabaseDateOfEntry__c</members>
+        <members>Contact.AccessDatabaseId__c</members>
         <members>Contact.Age__c</members>
         <members>Contact.Allergies__c</members>
         <members>Contact.Aspergers__c</members>
