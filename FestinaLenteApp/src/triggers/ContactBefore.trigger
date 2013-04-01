@@ -3,59 +3,63 @@ trigger ContactBefore on Contact (before insert, before update) {
     Date today = Date.today();
     for (Contact c : Trigger.new) {
     
-        //
-        // Status logic
-        //
-        
-        // This affects status used below
-        String waitingForClassType = c.ClassType__c;
-        if (waitingForClassType != (Trigger.isInsert ? null : Trigger.oldMap.get(c.Id).ClassType__c)) {
-            if (waitingForClassType != null) {
-                c.Status__c = 'Waiting';
-            } else {
-                if (c.Status__c == 'Waiting') {
-                    c.Status__c = 'Active';
+        // Trigger de not fire when a MigratedFromAccess Contact is inserted (i.e. migration being done)
+        if (Trigger.isUpdate || !c.MigratedFromAccess__c) {
+    
+            //
+            // Status logic
+            //
+            
+            // This affects status used below
+            String waitingForClassType = c.ClassType__c;
+            if (waitingForClassType != (Trigger.isInsert ? null : Trigger.oldMap.get(c.Id).ClassType__c)) {
+                if (waitingForClassType != null) {
+                    c.Status__c = 'Waiting';
+                } else {
+                    if (c.Status__c == 'Waiting') {
+                        c.Status__c = 'Active';
+                    }
                 }
             }
-        }
-        
-        String status = c.Status__c;
-        if (status != (Trigger.isInsert ? null : Trigger.oldMap.get(c.Id).Status__c)) {
-            if (status == 'Active') {
-                c.ActiveSince__c = today;
-                c.WaitingSince__c = null;
-                c.InactiveSince__c = null;
-                
-                c.ClassType__c = null;
-            } else if (status == 'Waiting') {
-                if (c.ActiveSince__c == null) {
+            
+            String status = c.Status__c;
+            if (status != (Trigger.isInsert ? null : Trigger.oldMap.get(c.Id).Status__c)) {
+                if (status == 'Active') {
                     c.ActiveSince__c = today;
+                    c.WaitingSince__c = null;
+                    c.InactiveSince__c = null;
+                    
+                    c.ClassType__c = null;
+                } else if (status == 'Waiting') {
+                    if (c.ActiveSince__c == null) {
+                        c.ActiveSince__c = today;
+                    }
+                    c.WaitingSince__c = today;
+                    c.InactiveSince__c = null;
+                    if (c.ClassType__c == null) {
+                        c.ClassType__c.addError('When Status is set to "Waiting", one or more Class Types must be selected');
+                    }
+                } else if (status == 'Inactive') {
+                    c.ActiveSince__c = null;
+                    c.WaitingSince__c = null;
+                    c.InactiveSince__c = today;
+                    
+                    c.ClassType__c = null;
                 }
-                c.WaitingSince__c = today;
-                c.InactiveSince__c = null;
-                if (c.ClassType__c == null) {
-                    c.ClassType__c.addError('When Status is set to "Waiting", one or more Class Types must be selected');
+            }
+            
+            //
+            // Waiver date
+            //
+            
+            if (c.WaiverFormCompleted__c) {
+                Boolean oldValue = Trigger.isInsert ? null : Trigger.oldMap.get(c.Id).WaiverFormCompleted__c;
+                if (oldValue != true) {
+                    c.WaiverFormCompletedDate__c = today;
                 }
-            } else if (status == 'Inactive') {
-                c.ActiveSince__c = null;
-                c.WaitingSince__c = null;
-                c.InactiveSince__c = today;
-                
-                c.ClassType__c = null;
+            } else {
+                c.WaiverFormCompletedDate__c = null;
             }
-        }
-        
-        //
-        // Waiver date
-        //
-        
-        if (c.WaiverFormCompleted__c) {
-            Boolean oldValue = Trigger.isInsert ? null : Trigger.oldMap.get(c.Id).WaiverFormCompleted__c;
-            if (oldValue != true) {
-                c.WaiverFormCompletedDate__c = today;
-            }
-        } else {
-            c.WaiverFormCompletedDate__c = null;
         }
     }
 }
