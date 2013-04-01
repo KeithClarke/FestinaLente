@@ -21,7 +21,6 @@
         <name>CustomApplication</name>
     </types>
     <types>
-        <members>Contact.AccessDatabaseDateOfEntry__c</members>
         <members>Contact.AccessDatabaseId__c</members>
         <members>Contact.Age__c</members>
         <members>Contact.Allergies__c</members>
@@ -42,6 +41,7 @@
         <members>Contact.Level__c</members>
         <members>Contact.MedicalHistory__c</members>
         <members>Contact.Medication__c</members>
+        <members>Contact.MigratedFromAccess__c</members>
         <members>Contact.Notes__c</members>
         <members>Contact.Physical__c</members>
         <members>Contact.PreferredHorse__c</members>

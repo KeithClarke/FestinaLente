@@ -406,11 +406,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Contact.AccessDatabaseDateOfEntry__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Contact.AccessDatabaseId__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -592,6 +587,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Contact.Medication__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.MigratedFromAccess__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
