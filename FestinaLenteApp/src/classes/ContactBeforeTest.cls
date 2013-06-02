@@ -2,6 +2,17 @@
 private class ContactBeforeTest {
     
     @isTest
+    static void defaultingOfAccount() {
+        
+        Contact c = new Contact(LastName = 'Smith');
+        insert c;
+        
+        Id accountId = [select AccountId from Contact where Id = :c.Id].AccountId;
+        System.assertNotEquals(null, accountId);
+        System.assertEquals('Default Account', [select Name from Account where Id = :accountId].Name);
+    }
+    
+    @isTest
     static void activeInactive() {
     
         Date today = Date.today();
