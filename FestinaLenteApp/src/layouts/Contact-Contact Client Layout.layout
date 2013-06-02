@@ -363,6 +363,9 @@
         <fields>Class__c.NAME</fields>
         <fields>Class__c.Type__c</fields>
         <fields>Class__c.Coach__c</fields>
+        <fields>Class__c.DayOfWeek__c</fields>
+        <fields>Class__c.Time__c</fields>
+        <fields>Class__c.Level__c</fields>
         <fields>EarliestBookedDate__c</fields>
         <fields>LatestBookedDate__c</fields>
         <fields>AvailableDatesBooked__c</fields>
