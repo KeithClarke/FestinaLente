@@ -5027,7 +5027,7 @@
         <url>/apex/SendSms?contactId={!Contact.Id}&amp;retURL=/{!Contact.Id}</url>
     </webLinks>
     <webLinks>
-        <fullName>SendSmsList</fullName>
+        <fullName>SendSmsForList</fullName>
         <availability>online</availability>
         <displayType>massActionButton</displayType>
         <linkType>javascript</linkType>
