@@ -213,6 +213,18 @@
     &apos;60 mins&apos;, 60,
     &apos;45 mins&apos;, 45,
     &apos;30 mins&apos;, 30,
+    &apos;2 hours&apos;, 120,
+    &apos;2 hours 30 mins&apos;, 150,
+    &apos;3 hours&apos;, 180,
+    &apos;3 hours 30 mins&apos;, 210,
+    &apos;4 hours&apos;, 240,
+    &apos;4 hours 30 mins&apos;, 270,
+    &apos;5 hours&apos;, 300,
+    &apos;5 hours 30 mins&apos;, 330,
+    &apos;6 hours&apos;, 360,
+    &apos;6 hours 30 mins&apos;, 390,
+    &apos;7 hours&apos;, 420,
+    &apos;7 hours 30 mins&apos;, 450,
     NULL
 )</formula>
         <label>Length in Minutes</label>
@@ -249,6 +261,54 @@
             </picklistValues>
             <picklistValues>
                 <fullName>Day</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2 hours</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2 hours 30 mins</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3 hours</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3 hours 30 mins</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4 hours</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4 hours 30 mins</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5 hours</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5 hours 30 mins</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6 hours</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6 hours 30 mins</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>7 hours</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>7 hours 30 mins</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
