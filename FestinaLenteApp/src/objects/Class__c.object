@@ -681,6 +681,7 @@ null
         <customTabListAdditionalFields>SpacesBookedAvailableWithPercent__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>EarliestAvailableDate__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>LatestAvailableDate__c</customTabListAdditionalFields>
+        <listViewButtons>SendSmsForList</listViewButtons>
         <lookupDialogsAdditionalFields>Type__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Coach__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>DayOfWeek__c</lookupDialogsAdditionalFields>
@@ -741,5 +742,35 @@ null
         <openType>sidebar</openType>
         <page>ClassDeepClone</page>
         <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>SendSms</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Send SMS</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/SendSMS?classId={!Class__c.Id}&amp;retUrl=/{!Class__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>SendSmsForList</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Send SMS</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&apos;/soap/ajax/25.0/connection.js&apos;)}
+{!REQUIRESCRIPT(&apos;/soap/ajax/25.0/apex.js&apos;)}
+
+var records = {!GETRECORDIDS($ObjectType.Class__c)};
+if (records.length &gt;= 1) {
+    window.location.href = &quot;/apex/SendSms?classId=&quot; + records.join(&quot;,&quot;) + &apos;&amp;retURL=&apos; + window.location.href;
+} else {
+    alert(&quot;Select at least one Class first using the checkboxes&quot;);
+}</url>
     </webLinks>
 </CustomObject>

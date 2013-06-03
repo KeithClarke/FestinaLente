@@ -66,6 +66,7 @@
         <members>Horse__c</members>
         <members>Printing__c</members>
         <members>Range__c</members>
+        <members>TwilioConfiguration__c</members>
         <name>CustomObject</name>
     </types>
     <types>

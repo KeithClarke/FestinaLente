@@ -1,0 +1,42 @@
+<apex:page tabStyle="Contact" controller="SmsController" >
+
+    <apex:sectionHeader title="Send SMS" help="{!$Page.Help}"/>
+
+    <apex:pageMessages />
+    <apex:form >
+        <apex:pageBlock mode="edit">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Send" action="{!send}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}" immediate="true"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="To" columns="1">
+                <apex:pageBlockTable value="{!contacts}" var="c">
+                    <apex:column headerValue="Select">
+                        <apex:inputCheckbox value="{!c.selected}" disabled="{!c.disabled}"/>
+                    </apex:column>   
+                    <apex:column headerValue="Name">
+                        <c:LinkWithHoverDetail sobId="{!c.sob.Id}" sobName="{!c.sob.Name}" viewUrl="{!URLFOR($Action.Contact.View, c.sob.Id, null, true)}"/>
+                    </apex:column> 
+                    <apex:column value="{!c.sob.RecordTypeId}"/>
+                    <apex:column value="{!c.sob.Status__c}"/>
+                    <apex:column value="{!c.sob.MobilePhone}"/>
+                    <apex:column headerValue="Mobile Sent To">
+                        <apex:outputText value="{!c.cleanMobileNumber}"/>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Message" columns="1">
+                <apex:inputText value="{!message}" size="160" maxlength="160"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Notes" columns="1">
+                <apex:outputText value="Festina Lente is billed approximately &euro;0.05 for each message sent to each Contact." escape="false"/>
+                <apex:outputPanel layout="inline">
+                    <apex:outputText value="Messages are sent from phone number {!fromNumber}"/>
+                    <apex:outputText value="."/>
+                </apex:outputPanel>
+                <apex:outputText value="Successfully sent messages are shown in the Contact's &quot;Activity History&quot; (after a delay of about a minute)." escape="false"/>
+                <apex:outputText value="Failures are reported by email to the User who did the send."/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

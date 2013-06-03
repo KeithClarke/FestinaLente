@@ -1,0 +1,16 @@
+<apex:component >
+
+    <apex:attribute name="sobId" type="Id" required="true" description=""/>
+    <apex:attribute name="sobName" type="String" required="true" description=""/>
+    <apex:attribute name="viewUrl" type="String" required="false" description=""/>
+
+    <!-- Relies on Javascript that is pulled in with the header. Uses the "mini-view" layout. -->
+    <a href="{!BLANKVALUE(viewUrl, '/' + sobId)}"
+            id="{!sobId}"
+            onblur="LookupHoverDetail.getHover('{!sobId}').hide();"
+            onfocus="LookupHoverDetail.getHover('{!sobId}', '/{!sobId}/m?retURL=%2F{!sobId}&isAjaxRequest=1').show();"
+            onmouseout="LookupHoverDetail.getHover('{!sobId}').hide();"
+            onmouseover="LookupHoverDetail.getHover('{!sobId}', '/{!sobId}/m?retURL=%2F{!sobId}&isAjaxRequest=1').show();"
+            >{!sobName}</a>
+            
+</apex:component>

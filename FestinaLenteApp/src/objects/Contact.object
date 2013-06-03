@@ -5015,4 +5015,34 @@
         <protected>false</protected>
         <url>/apex/Calendar?coachId={!Contact.Id}</url>
     </webLinks>
+    <webLinks>
+        <fullName>SendSms</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Send SMS</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/SendSms?contactId={!Contact.Id}&amp;retURL=/{!Contact.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>SendSmsList</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Send SMS</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&apos;/soap/ajax/25.0/connection.js&apos;)}
+{!REQUIRESCRIPT(&apos;/soap/ajax/25.0/apex.js&apos;)}
+
+var records = {!GETRECORDIDS($ObjectType.Contact)};
+if (records.length &gt;= 1) {
+    window.location.href = &quot;/apex/SendSms?contactId=&quot; + records.join(&quot;,&quot;) + &apos;&amp;retURL=&apos; + window.location.href;
+} else {
+    alert(&quot;Select at least one Contact first using the checkboxes&quot;);
+}</url>
+    </webLinks>
 </CustomObject>
