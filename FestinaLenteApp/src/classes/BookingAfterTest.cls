@@ -10,9 +10,11 @@ private class BookingAfterTest {
         
         Fixture() {
         
-            insert clazz = new Class__c();
-            insert contact = new Contact(FirstName = 'John', LastName = 'Client', Status__c = 'Waiting', ClassType__c = 'Blah');
-            insert ad = new AvailableDate__c(Class__c = clazz.Id);
+            insert clazz = new Class__c(Type__c = 'foo');
+            insert contact = new Contact(FirstName = 'John', LastName = 'Client', Status__c = 'Waiting', ClassType__c = 'bar');
+            
+            // Date needs to be in the futre as past dates are ignored
+            insert ad = new AvailableDate__c(Class__c = clazz.Id, Date__c = Date.newInstance(2100, 1, 1));
             
             assertBookedDateCount(0);
             assertContactStatus('Waiting');
@@ -21,6 +23,9 @@ private class BookingAfterTest {
             
             assertBookedDateCount(1);
             assertContactStatus('Active');
+            
+            delete booking;
+            assertContactStatus('Inactive');
         }
         
         void assertBookedDateCount(Integer expected) {

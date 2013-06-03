@@ -57,14 +57,18 @@ trigger ContactBefore on Contact (before insert, before update) {
                 if (waitingForClassType != null) {
                     c.Status__c = 'Waiting';
                 } else {
-                    if (c.Status__c == 'Waiting') {
+                    if (c.ActiveClassType__c != null) {
                         c.Status__c = 'Active';
+                    } else {
+                    	c.Status__c = 'Inactive';
                     }
                 }
             }
             
             String status = c.Status__c;
             if (status != (Trigger.isInsert ? null : Trigger.oldMap.get(c.Id).Status__c)) {
+            	
+            	// This has been made more symetrical (3 Jun 2013)
                 if (status == 'Active') {
                     c.ActiveSince__c = today;
                     c.WaitingSince__c = null;
@@ -72,11 +76,10 @@ trigger ContactBefore on Contact (before insert, before update) {
                     
                     c.ClassType__c = null;
                 } else if (status == 'Waiting') {
-                    if (c.ActiveSince__c == null) {
-                        c.ActiveSince__c = today;
-                    }
+                    c.ActiveSince__c = null;
                     c.WaitingSince__c = today;
                     c.InactiveSince__c = null;
+                    
                     if (c.ClassType__c == null) {
                         c.ClassType__c.addError('When Status is set to "Waiting", one or more Class Types must be selected');
                     }

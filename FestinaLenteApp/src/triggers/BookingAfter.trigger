@@ -1,4 +1,4 @@
-trigger BookingAfter on Booking__c (after insert, after update) {
+trigger BookingAfter on Booking__c (after insert, after update, after delete) {
     
     if (Trigger.isInsert) {
     
@@ -33,29 +33,76 @@ trigger BookingAfter on Booking__c (after insert, after update) {
         }
     }
     
-    if (Trigger.isInsert || Trigger.isUpdate) {
+    if (Trigger.isInsert || Trigger.isUpdate || Trigger.isDelete) {
     
         //
-        // When a client has a booking made, automatically change the status
+        // When a client has a booking made (or deleted), automatically change the status, waiting types and active types
         //
         
         Set<Id> clientIds = new Set<Id>();
-        for (Booking__c b : Trigger.new) {
+        for (Booking__c b : Trigger.isDelete ? Trigger.old : Trigger.new) {
             if (b.Client__c != null) {
                 clientIds.add(b.Client__c);
             }
         }
-        Contact[] clients = [
-                select Id
-                from Contact
-                where Id in :clientIds
-                and Status__c != 'Active'
-                ];
-        if (clients.size() > 0) {
-            for (Contact c : clients) {
-                c.Status__c = 'Active';
-            }
-            update clients;
+        
+        Map<Id, Set<String>> clientToClassType = new Map<Id, Set<String>>();
+        if (Trigger.isDelete) {
+        	// Consider all deletes
+        	for (Id clientId : clientIds) {
+        		clientToClassType.put(clientId, new Set<String>());
+        	}
+        } else {
+        	// Only consider bookings that vhave dates (as Bookins are created without dates)
+	        for (Booking__c b : [
+	                select Client__c, Class__r.Type__c
+	                from Booking__c
+	                where Client__c in :clientIds
+	                and LatestBookedDate__c != null
+	                and LatestBookedDate__c >= TODAY
+	                and Class__r.Type__c != null
+	                ]) {
+	        	Set<String> s = clientToClassType.get(b.Client__c);
+	        	if (s == null) {
+	        		s = new Set<String>();
+	        		clientToClassType.put(b.Client__c, s);
+	        	}
+	        	s.add(b.Class__r.Type__c);
+	        }
+        }
+        
+        if (clientToClassType.size() > 0) {
+	        Map<Id, Contact> contacts = new Map<Id, Contact>([
+	                select Status__c, ClassType__c, ActiveClassType__c
+	                from Contact
+	                where Id = :clientToClassType.keySet()
+	                ]);
+	        
+	        List<Contact> updates = new List<Contact>();
+	        for (Id clientId : clientToClassType.keySet()) {
+	        	Contact c = contacts.get(clientId);
+	        	
+	        	Set<String> currentActiveClassTypes = c.ActiveClassType__c != null ? new Set<String>(c.ActiveClassType__c.split(';')) : new Set<String>();
+	        	Set<String> currentWaitingClassTypes = c.ClassType__c != null ? new Set<String>(c.ClassType__c.split(';')) : new Set<String>();
+	        	String currentStatus = c.Status__c;
+	        	
+	        	Set<String> newActiveClassTypes = clientToClassType.get(clientId);
+	        	Set<String> newWaitingClassTypes = new Set<String>(currentWaitingClassTypes);
+	        	newWaitingClassTypes.removeAll(newActiveClassTypes);
+	        	String newStatus = newActiveClassTypes.size() > 0 ? 'Active' : (newWaitingClassTypes.size() > 0 ? 'Waiting' : 'Inactive');
+	        	
+	        	if (currentStatus != newStatus || currentActiveClassTypes != newActiveClassTypes || currentWaitingClassTypes != newWaitingClassTypes) {
+		        	updates.add(new Contact(
+		        	       Id = clientId,
+		        	       Status__c = newStatus,
+		        	       ClassType__c = Strings.join(newWaitingClassTypes, ';'),
+		        	       ActiveClassType__c = Strings.join(newActiveClassTypes, ';')
+		        	       ));
+	        	}
+	        }
+	        if (updates.size() > 0) {
+	            update updates;
+	        }
         }
     }
 }
