@@ -114,6 +114,7 @@
     <fields>
         <fullName>DayOfWeek__c</fullName>
         <externalId>false</externalId>
+        <inlineHelpText>Choose the day of the week that the Class repeats on. Or choose &quot;Any&quot; if the Class runs for consecutive days (or on arbitrary days).</inlineHelpText>
         <label>Day of Week</label>
         <picklist>
             <picklistValues>
@@ -145,7 +146,7 @@
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Multiple Days</fullName>
+                <fullName>Any</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
