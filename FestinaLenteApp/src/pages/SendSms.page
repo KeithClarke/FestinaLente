@@ -9,7 +9,13 @@
                 <apex:commandButton value="Send" action="{!send}"/>
                 <apex:commandButton value="Cancel" action="{!cancel}" immediate="true"/>
             </apex:pageBlockButtons>
-            <apex:pageBlockSection title="To" columns="1">
+            <apex:pageBlockSection title="To" columns="1" id="contacts">
+                <apex:commandButton value="Refresh"
+                        action="{!refreshContacts}"
+                        rerender="contacts"
+                        onclick="this.disabled=true; this.className='btnDisabled'; this.value='Refreshing...';"
+                        title="Refresh the list of Contacts to reflect any changes made"
+                        />
                 <apex:pageBlockTable value="{!contacts}" var="c">
                     <apex:column headerValue="Select">
                         <apex:inputCheckbox value="{!c.selected}" disabled="{!c.disabled}"/>

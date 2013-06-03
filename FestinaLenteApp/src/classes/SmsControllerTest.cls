@@ -57,5 +57,8 @@ private class SmsControllerTest {
         
         PageReference cancel = controller.cancel();
         System.assertEquals('fakeRetURL', cancel.getUrl());
+        
+        System.assertEquals(null, controller.refreshContacts());
+        System.assertEquals(1, controller.contacts.size());
     }
 }

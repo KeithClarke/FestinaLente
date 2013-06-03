@@ -80,6 +80,11 @@ public with sharing class SmsController {
     	return wrappers;
     }
     
+    public PageReference refreshContacts() {
+    	contacts = null;
+    	return null;
+    }
+    
     public PageReference send() {
     	
     	Set<Id> contactIds = new Set<Id>();
