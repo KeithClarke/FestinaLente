@@ -26,4 +26,15 @@ private class ClassAfterTest {
         
         System.assertEquals('Thursday', [select DayOfWeek__c from AvailableDate__c where Id =:f.ad.Id].DayOfWeek__c);
     }
+    
+    @isTest
+    static void changeDayOfWeekToMultipleDays() {
+    
+        Fixture f = new Fixture();
+        f.clazz.DayOfWeek__c = 'Multiple Days';
+        update f.clazz;
+        
+        // No change
+        System.assertEquals('Monday', [select DayOfWeek__c from AvailableDate__c where Id =:f.ad.Id].DayOfWeek__c);
+    }
 }

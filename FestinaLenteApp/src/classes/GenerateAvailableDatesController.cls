@@ -34,13 +34,22 @@ public with sharing class GenerateAvailableDatesController {
         }
         private set;
     }
+    
+    // Either consecutive days or weekly
+    public Boolean consecutiveDays {
+    	get {
+    		return clazz.DayOfWeekNumber__c == null;
+    	}
+    }
 
     public PageReference generate() {
     
-        // Move start to correct day of week
         Date s = range.From__c;
-        while(Dates.dayOfWeek(s) != clazz.DayOfWeekNumber__c) {
-           s = s.addDays(1);
+        if (!consecutiveDays) {
+	        // Move start to correct day of week
+	        while(Dates.dayOfWeek(s) != clazz.DayOfWeekNumber__c) {
+	           s = s.addDays(1);
+	        }
         }
         
         Set<Date> alreadyPresentDates = new Set<Date>();
@@ -48,9 +57,9 @@ public with sharing class GenerateAvailableDatesController {
             alreadyPresentDates.add(ad.Date__c);
         }
         
-        // Add weekly dates
+        // Add consecutive or weekly dates
         List<Date> newDates = new List<Date>();
-        for (Date d = s; d <= range.To__c; d = d.addDays(7)) {
+        for (Date d = s; d <= range.To__c; d = d.addDays(consecutiveDays ? 1 : 7)) {
             if (!alreadyPresentDates.contains(d)) {
                 newDates.add(d);
             }

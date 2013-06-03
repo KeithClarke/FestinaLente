@@ -7,9 +7,9 @@ private class AvailableDateAfterTest {
         AvailableDate__c ad1;
         AvailableDate__c ad2;
 
-        Fixture() {
+        Fixture(String dayOfWeek) {
             
-            clazz = new Class__c(DayOfWeek__c = 'Monday');
+            clazz = new Class__c(DayOfWeek__c = dayOfWeek);
             insert clazz;
             
             // Monday
@@ -22,7 +22,7 @@ private class AvailableDateAfterTest {
     @isTest
     static void okChange() {
     
-        Fixture f = new Fixture();
+        Fixture f = new Fixture('Monday');
         f.ad1.Date__c = Date.newInstance(2013, 2, 11);
         update f.ad1;
     }
@@ -30,7 +30,7 @@ private class AvailableDateAfterTest {
     @isTest
     static void wrongDayOfWeekChange() {
     
-        Fixture f = new Fixture();
+        Fixture f = new Fixture('Monday');
         f.ad1.Date__c = Date.newInstance(2013, 2, 20);
         try {
             update f.ad1;
@@ -43,7 +43,7 @@ private class AvailableDateAfterTest {
     @isTest
     static void dateAlreadyDefinedChange() {
     
-        Fixture f = new Fixture();
+        Fixture f = new Fixture('Monday');
         f.ad1.Date__c = f.ad2.Date__c;
         try {
             update f.ad1;
@@ -51,5 +51,14 @@ private class AvailableDateAfterTest {
         } catch (Exception e) {
             System.debug('>>> message=' + e.getMessage());
         }
+    }
+    
+    @isTest
+    static void okChangeMutipleDays() {
+    
+        // No constraint on days when this is set
+        Fixture f = new Fixture('Multiple Days');
+        f.ad1.Date__c = Date.newInstance(2013, 2, 19);
+        update f.ad1;
     }
 }

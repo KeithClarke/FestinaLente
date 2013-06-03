@@ -2,6 +2,7 @@
 
     <apex:attribute name="fromDateFieldId" type="String" required="true" description=""/>
     <apex:attribute name="toDateFieldId" type="String" required="true" description=""/>
+    <apex:attribute name="consecutiveDays" type="Boolean" required="true" description=""/>
 
 <style type="text/css">
 a.flWeekLink {
@@ -10,7 +11,26 @@ a.flWeekLink {
 }
 </style>
 
-<apex:panelGrid columns="10">
+<apex:panelGrid columns="7" rendered="{!consecutiveDays}">
+
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(1)">&nbsp;1</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(2)">&nbsp;2</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(3)">&nbsp;3</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(4)">&nbsp;4</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(5)">&nbsp;5</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(6)">&nbsp;6</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(7)">&nbsp;7</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(8)">&nbsp;8</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(9)">&nbsp;9</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(10)">10</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(11)">11</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(12)">12</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(13)">13</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(14)">14</apex:outputLink>
+
+</apex:panelGrid>
+
+<apex:panelGrid columns="10" rendered="{! !consecutiveDays}">
 
 <apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(1)">&nbsp;1</apex:outputLink>
 <apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(2)">&nbsp;2</apex:outputLink>
@@ -69,11 +89,12 @@ a.flWeekLink {
     
 <script type="text/javascript">
 
-function flClick(weeks) {
+function flClick(number) {
     var from = flToDateObject(document.getElementById("{!fromDateFieldId}").value);
     if (from) {
         var to = new Date();
-        to.setDate(from.getDate() + weeks * 7 - 1);
+        var consecutiveDays = {!consecutiveDays};
+        to.setDate(from.getDate() + (consecutiveDays ? number : number * 7) - 1);
         document.getElementById("{!toDateFieldId}").value = flFromDateObject(to);
     }
 }
