@@ -82,6 +82,8 @@ trigger BookingAfter on Booking__c (after insert, after update, after delete) {
 	        for (Id clientId : clientToClassType.keySet()) {
 	        	Contact c = contacts.get(clientId);
 	        	
+	        	// Similar logic in ContactStatusBatchable
+	        	
 	        	Set<String> currentActiveClassTypes = c.ActiveClassType__c != null ? new Set<String>(c.ActiveClassType__c.split(';')) : new Set<String>();
 	        	Set<String> currentWaitingClassTypes = c.ClassType__c != null ? new Set<String>(c.ClassType__c.split(';')) : new Set<String>();
 	        	String currentStatus = c.Status__c;
