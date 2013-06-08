@@ -50,7 +50,7 @@
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Required</behavior>
+                <behavior>Edit</behavior>
                 <field>Coach__c</field>
             </layoutItems>
             <layoutItems>
