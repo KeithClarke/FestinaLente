@@ -61,4 +61,48 @@ private class SmsControllerTest {
         System.assertEquals(null, controller.refreshContacts());
         System.assertEquals(1, controller.contacts.size());
     }
+    
+    @isTest
+    static void prefixSuffix1() {
+    	doPrefixSuffix(null, null, '', 0);
+    }
+    
+    @isTest
+    static void prefixSuffix2() {
+    	doPrefixSuffix('Hi', 'Bye', 'HiBye', 2);
+    }
+    
+    @isTest
+    static void prefixSuffix3() {
+    	doPrefixSuffix('Hi\\n', '\\nBye', 'Hi\n\nBye', 3);
+    }
+    
+    @isTest
+    static void prefixSuffix4() {
+    	String expectedPrefix = 'Hi from ' + UserInfo.getName() + ' ' + UserInfo.getName() + '\n';
+    	String expectedSuffix = '\nBye from ' + UserInfo.getName() + '\n' + UserInfo.getName();
+    	doPrefixSuffix(
+    	       'Hi from {!User.Name} {!User.Name}\\n',
+    	       '\\nBye from {!User.Name}\\n{!User.Name}',
+    	       expectedPrefix + expectedSuffix,
+    	       expectedPrefix.length()
+    	       );
+    }
+    
+    private static void doPrefixSuffix(String prefix, String suffix, String expectedMessage, Integer expectedCaretPosition) {
+    	
+    	TwilioConfiguration__c config = new TwilioConfiguration__c(
+                SetupOwnerId = UserInfo.getOrganizationId(),
+                AccountSid__c = 'abc',
+                AuthToken__c = 'xyz',
+                FromNumber__c = '12345678',
+                MessagePrefix__c = prefix,
+                MessageSuffix__c = suffix
+                );
+        insert config;
+
+        SmsController controller = new SmsController();
+        System.assertEquals(expectedMessage, controller.message);
+        System.assertEquals(expectedCaretPosition, controller.caretPosition);
+    }
 }

@@ -1,4 +1,7 @@
-<apex:page tabStyle="Contact" controller="SmsController" >
+<apex:page tabStyle="Contact" controller="SmsController">
+
+    <script src="{!URLFOR($Resource.FullCalendarZip, 'fullcalendar-1.5.4/jquery/jquery-1.8.1.min.js')}" type="text/javascript" language="javascript"></script>
+    <script src="{!$Resource.jQueryCaretJs}" type="text/javascript" language="javascript"></script>
 
     <apex:sectionHeader title="Send SMS" help="{!$Page.Help}"/>
 
@@ -32,7 +35,8 @@
                 </apex:pageBlockTable>
             </apex:pageBlockSection>
             <apex:pageBlockSection title="Message" columns="1">
-                <apex:inputText value="{!message}" size="160" maxlength="160"/>
+                <apex:inputTextArea value="{!message}" rows="8" style="width: 100%" styleClass="message-text"/>
+                <apex:outputText styleClass="message-remaining"/>
             </apex:pageBlockSection>
             <apex:pageBlockSection title="Notes" columns="1">
                 <apex:outputText value="Festina Lente is billed approximately &euro;0.05 for each message sent to each Contact." escape="false"/>
@@ -40,9 +44,46 @@
                     <apex:outputText value="Messages are sent from phone number {!fromNumber}"/>
                     <apex:outputText value="."/>
                 </apex:outputPanel>
+                <apex:outputText value="The default message prefix and suffix text are set using the Twilio Configuration custom settings."/>
                 <apex:outputText value="Successfully sent messages are shown in the Contact's &quot;Activity History&quot; (after a delay of about a minute)." escape="false"/>
                 <apex:outputText value="Failures are reported by email to the User who did the send."/>
             </apex:pageBlockSection>
         </apex:pageBlock>
     </apex:form>
+    
+<script type="text/javascript" language="javascript">
+
+var j$ = jQuery.noConflict();
+
+// Replace normal focus with specific character focus (between prefix and suffix)
+function setFocusOnLoad() {
+    var messageText = j$('.message-text');
+    messageText.caret({!caretPosition});
+}
+
+j$(document).ready(function() {
+    
+    var messageText = j$('.message-text');
+    var messageRemaining = j$('.message-remaining');
+    
+    // IE9 apparently doesn't support this
+    var max = 160;
+    messageText.prop('maxlength', max);
+
+    var echoMessageRemaining = function() {
+        // Counting of maxlength is a bit weird
+        var text = messageText.val();
+        var matches = text.match(/\n/g);
+        var breaks = matches ? matches.length : 0;
+        var length = text.length + breaks;
+        messageRemaining.text('[' + (max - length) + ' characters remaining]');
+    }
+
+    // Execute when characters entered
+    messageText.keyup(echoMessageRemaining);
+    
+    // Execute onload
+    echoMessageRemaining();
+});
+</script>
 </apex:page>

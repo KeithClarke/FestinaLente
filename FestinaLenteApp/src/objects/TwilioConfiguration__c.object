@@ -31,5 +31,25 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>MessagePrefix__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>To include a User field, use e.g. {!User.Name}; to include a line feed use \n; to include a leading or trailing space use \s.</inlineHelpText>
+        <label>Message Prefix</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MessageSuffix__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>To include a User field, use e.g. {!User.Name}; to include a line feed use \n; to include a leading or trailing space use \s.</inlineHelpText>
+        <label>Message Suffix</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>Twilio Configuration</label>
 </CustomObject>
