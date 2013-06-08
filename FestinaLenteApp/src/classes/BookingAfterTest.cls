@@ -10,11 +10,9 @@ private class BookingAfterTest {
         
         Fixture() {
         
-            insert clazz = new Class__c(Type__c = 'foo');
-            insert contact = new Contact(FirstName = 'John', LastName = 'Client', Status__c = 'Waiting', ClassType__c = 'bar');
-            
-            // Date needs to be in the futre as past dates are ignored
-            insert ad = new AvailableDate__c(Class__c = clazz.Id, Date__c = Date.newInstance(2100, 1, 1));
+            insert clazz = new Class__c();
+            insert contact = new Contact(FirstName = 'John', LastName = 'Client', Status__c = 'Waiting', ClassType__c = 'Blah');
+            insert ad = new AvailableDate__c(Class__c = clazz.Id);
             
             assertBookedDateCount(0);
             assertContactStatus('Waiting');
@@ -23,9 +21,6 @@ private class BookingAfterTest {
             
             assertBookedDateCount(1);
             assertContactStatus('Active');
-            
-            delete booking;
-            assertContactStatus('Inactive');
         }
         
         void assertBookedDateCount(Integer expected) {
@@ -36,7 +31,7 @@ private class BookingAfterTest {
         }
         
         void assertContactStatus(String expected) {
-        	System.assertEquals(expected, [select Status__c from Contact where Id = :contact.Id].Status__c);
+            System.assertEquals(expected, [select Status__c from Contact where Id = :contact.Id].Status__c);
         }
     }
     

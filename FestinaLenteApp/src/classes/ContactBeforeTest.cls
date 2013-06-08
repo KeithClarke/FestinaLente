@@ -41,16 +41,15 @@ private class ContactBeforeTest {
         insert c;
         
         System.assertEquals('Waiting', [select Status__c from Contact where Id = :c.Id].Status__c);
-        System.assertEquals(null, [select ActiveSince__c from Contact where Id = :c.Id].ActiveSince__c);
+        System.assertEquals(today, [select ActiveSince__c from Contact where Id = :c.Id].ActiveSince__c);
         System.assertEquals(today, [select WaitingSince__c from Contact where Id = :c.Id].WaitingSince__c);
         
         c.ClassType__c = null;
         update c;
         
-        System.assertEquals('Inactive', [select Status__c from Contact where Id = :c.Id].Status__c);
-        System.assertEquals(null, [select ActiveSince__c from Contact where Id = :c.Id].ActiveSince__c);
+        System.assertEquals('Active', [select Status__c from Contact where Id = :c.Id].Status__c);
+        System.assertEquals(today, [select ActiveSince__c from Contact where Id = :c.Id].ActiveSince__c);
         System.assertEquals(null, [select WaitingSince__c from Contact where Id = :c.Id].WaitingSince__c);
-        System.assertEquals(today, [select InactiveSince__c from Contact where Id = :c.Id].InactiveSince__c);
         
         c.Status__c = 'Waiting';
         try {

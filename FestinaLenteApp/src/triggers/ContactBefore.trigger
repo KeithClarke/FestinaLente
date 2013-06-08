@@ -1,7 +1,7 @@
 trigger ContactBefore on Contact (before insert, before update) {
-	
-	// If a Contact is added but not assigned to an Account then it is treated as "private" and e.g. will not be accessible in reports
-	Boolean defaultAccountNeeded = false;
+    
+    // If a Contact is added but not assigned to an Account then it is treated as "private" and e.g. will not be accessible in reports
+    Boolean defaultAccountNeeded = false;
     if (Trigger.isInsert) {
         for (Contact contact : Trigger.new) {
             if (contact.AccountId == null) {
@@ -57,18 +57,14 @@ trigger ContactBefore on Contact (before insert, before update) {
                 if (waitingForClassType != null) {
                     c.Status__c = 'Waiting';
                 } else {
-                    if (c.ActiveClassType__c != null) {
+                    if (c.Status__c == 'Waiting') {
                         c.Status__c = 'Active';
-                    } else {
-                    	c.Status__c = 'Inactive';
                     }
                 }
             }
             
             String status = c.Status__c;
             if (status != (Trigger.isInsert ? null : Trigger.oldMap.get(c.Id).Status__c)) {
-            	
-            	// This has been made more symetrical (3 Jun 2013)
                 if (status == 'Active') {
                     c.ActiveSince__c = today;
                     c.WaitingSince__c = null;
@@ -76,10 +72,11 @@ trigger ContactBefore on Contact (before insert, before update) {
                     
                     c.ClassType__c = null;
                 } else if (status == 'Waiting') {
-                    c.ActiveSince__c = null;
+                    if (c.ActiveSince__c == null) {
+                        c.ActiveSince__c = today;
+                    }
                     c.WaitingSince__c = today;
                     c.InactiveSince__c = null;
-                    
                     if (c.ClassType__c == null) {
                         c.ClassType__c.addError('When Status is set to "Waiting", one or more Class Types must be selected');
                     }

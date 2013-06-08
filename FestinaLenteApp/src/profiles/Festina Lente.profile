@@ -74,14 +74,6 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>ContactStatusBatchable</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>ContactStatusBatchableTest</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>Dates</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -452,11 +444,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Contact.AccountId</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Contact.ActiveClassType__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
