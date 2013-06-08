@@ -29,7 +29,7 @@ span.flActionSpacer {
                 <apex:outputText />
                 <apex:pageBlockSectionItem >
                     <apex:outputLabel >Select Weeks Later</apex:outputLabel>
-                     <c:ToDateLinksPanelGrid fromDateFieldId="p:f:pb:dates:from" toDateFieldId="p:f:pb:dates:to"/>
+                     <c:ToDateLinksPanelGrid fromDateFieldId="p:f:pb:dates:from" toDateFieldId="p:f:pb:dates:to" consecutiveDays="false"/>
                  </apex:pageBlockSectionItem>
             </apex:pageBlockSection>
             <apex:pageBlockSection title="Days" columns="1" id="days">
