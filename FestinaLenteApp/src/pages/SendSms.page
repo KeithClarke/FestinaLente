@@ -35,7 +35,7 @@
                 </apex:pageBlockTable>
             </apex:pageBlockSection>
             <apex:pageBlockSection title="Message" columns="1">
-                <apex:inputTextArea value="{!message}" rows="8" style="width: 100%" styleClass="message-text"/>
+                <apex:inputTextArea value="{!message}" rows="10" style="width: 100%" styleClass="message-text"/>
                 <apex:outputText styleClass="message-remaining"/>
             </apex:pageBlockSection>
             <apex:pageBlockSection title="Notes" columns="1">
