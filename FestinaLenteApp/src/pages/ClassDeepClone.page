@@ -9,7 +9,7 @@
             </apex:pageBlockButtons>
             <apex:pageBlockSection columns="2" title="Information">
                 <apex:outputText />
-                <apex:inputField value="{!Class__c.Coach__c}" required="true"/>
+                <apex:inputField value="{!Class__c.Coach__c}"/>
                 <apex:inputField value="{!Class__c.Type__c}" required="true"/>
                 <apex:inputField value="{!Class__c.Detail__c}"/>
                 <apex:inputField value="{!Class__c.DayOfWeek__c}" required="true"/>
