@@ -1,4 +1,4 @@
-<apex:page tabStyle="Contact" controller="SmsController">
+<apex:page tabStyle="Contact" controller="SmsController" id="p">
 
     <script src="{!URLFOR($Resource.FullCalendarZip, 'fullcalendar-1.5.4/jquery/jquery-1.8.1.min.js')}" type="text/javascript" language="javascript"></script>
     <script src="{!$Resource.jQueryCaretJs}" type="text/javascript" language="javascript"></script>
@@ -6,10 +6,10 @@
     <apex:sectionHeader title="Send SMS" help="{!$Page.Help}"/>
 
     <apex:pageMessages />
-    <apex:form >
-        <apex:pageBlock mode="edit">
-            <apex:pageBlockButtons >
-                <apex:commandButton value="Send" action="{!send}"/>
+    <apex:form id="f">
+        <apex:pageBlock mode="edit" id="pb">
+            <apex:pageBlockButtons id="pbb">
+                <apex:commandButton value="Send" action="{!send}" id="send" />
                 <apex:commandButton value="Cancel" action="{!cancel}" immediate="true"/>
             </apex:pageBlockButtons>
             <apex:pageBlockSection title="To" columns="1" id="contacts">
@@ -39,8 +39,11 @@
                 <apex:outputText styleClass="message-remaining"/>
             </apex:pageBlockSection>
             <apex:pageBlockSection title="Notes" columns="1">
-                <apex:outputText value="Festina Lente is billed approximately &euro;0.05 for each message sent to each Contact." escape="false"/>
-                <apex:outputPanel layout="inline">
+                <apex:outputPanel layout="inline" rendered="{! NOT(ISNULL(messageCost))}">
+                    <apex:outputText value="Festina Lente is billed approximately &euro;{!messageCost} for each message sent to each Contact" escape="false"/>
+                    <apex:outputText value="."/>
+                </apex:outputPanel>
+                <apex:outputPanel layout="inline"  rendered="{! NOT(ISNULL(fromNumber))}">
                     <apex:outputText value="Messages are sent from phone number {!fromNumber}"/>
                     <apex:outputText value="."/>
                 </apex:outputPanel>
@@ -84,6 +87,32 @@ j$(document).ready(function() {
     
     // Execute onload
     echoMessageRemaining();
+
+    // Confirm send (both buttons)
+    var sendButtons = j$('#p\\:f\\:pb\\:pbb\\:send, #p\\:f\\:pb\\:pbb\\:bottom\\:send');
+    
+    sendButtons.click(function() {
+        var count = j$(this).closest('form').find('input:checkbox:checked').length;
+        var messageCost = {!IF(NOT(ISNULL(messageCost)), messageCost, 'null')};
+        var prompt = 'Send ' + count + ' SMS messages now?';
+        if (messageCost) {
+            var cost = parseFloat(messageCost * count).toFixed(2);
+            prompt += '\nEstimated cost is \u20ac' + cost + '.';
+        }
+        if (confirm(prompt)) {
+            return true;
+        } else {
+            return false;
+        }
+    });
+    
+    // Disable send to start with; enable when message has changed
+    sendButtons.addClass('btnDisabled');
+    sendButtons.attr('disabled', 'disabled');
+    messageText.keyup(function() {
+        sendButtons.removeAttr('disabled');
+        sendButtons.removeClass('btnDisabled');
+    });
 });
 </script>
 </apex:page>

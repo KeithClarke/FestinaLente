@@ -23,6 +23,12 @@ public with sharing class SmsController {
             return TwilioConfiguration__c.getInstance();
         }
     }
+    
+    public Decimal messageCost {
+        get {
+            return cs != null ? cs.MessageCost__c : null;
+        }
+    }
       
     public String fromNumber {
         get {

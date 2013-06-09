@@ -32,6 +32,15 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>MessageCost__c</fullName>
+        <externalId>false</externalId>
+        <label>Message Cost</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
         <fullName>MessagePrefix__c</fullName>
         <externalId>false</externalId>
         <inlineHelpText>To include a User field, use e.g. {!User.Name}; to include a line feed use \n; to include a leading or trailing space use \s.</inlineHelpText>
