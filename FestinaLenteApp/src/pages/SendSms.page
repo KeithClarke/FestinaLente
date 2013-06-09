@@ -12,6 +12,10 @@
                 <apex:commandButton value="Send" action="{!send}" id="send" />
                 <apex:commandButton value="Cancel" action="{!cancel}" immediate="true"/>
             </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Message" columns="1">
+                <apex:inputTextArea value="{!message}" rows="10" style="width: 100%" styleClass="message-text"/>
+                <apex:outputText styleClass="message-remaining"/>
+            </apex:pageBlockSection>
             <apex:pageBlockSection title="To" columns="1" id="contacts">
                 <apex:commandButton value="Refresh"
                         action="{!refreshContacts}"
@@ -33,10 +37,6 @@
                         <apex:outputText value="{!c.cleanMobileNumber}"/>
                     </apex:column>
                 </apex:pageBlockTable>
-            </apex:pageBlockSection>
-            <apex:pageBlockSection title="Message" columns="1">
-                <apex:inputTextArea value="{!message}" rows="10" style="width: 100%" styleClass="message-text"/>
-                <apex:outputText styleClass="message-remaining"/>
             </apex:pageBlockSection>
             <apex:pageBlockSection title="Notes" columns="1">
                 <apex:outputPanel layout="inline" rendered="{! NOT(ISNULL(messageCost))}">
