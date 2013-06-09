@@ -9,7 +9,7 @@ trigger ClassAfter on Class__c (after update) {
         Decimal oldDayOfWeekNumber = Trigger.oldMap.get(id).DayOfWeekNumber__c;
         Decimal newDayOfWeekNumber = Trigger.newMap.get(id).DayOfWeekNumber__c;
         
-        // A null here means the class is not tied to a specific day
+        // A null here means the class is not tied to a specific day so no change required
         if  (newDayOfWeekNumber != null) {
 	        if (newDayOfWeekNumber != oldDayOfWeekNumber) {
 	            changedClasses.put(id, Trigger.newMap.get(id));

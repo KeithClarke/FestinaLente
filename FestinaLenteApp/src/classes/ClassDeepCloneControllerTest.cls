@@ -6,11 +6,12 @@ private class ClassDeepCloneControllerTest {
         Class__c clazz;
         AvailableDate__c[] ads;
         
-        Fixture() {
+        Fixture(String dayOfWeek) {
 
-            clazz = new Class__c(DayOfWeek__c = 'Monday');
+            clazz = new Class__c(DayOfWeek__c = dayOfWeek);
             insert clazz;
 
+            // These are Mondays
             ads = new AvailableDate__c[] {
                     new AvailableDate__c(Class__c = clazz.Id, Date__c = Date.newInstance(2013, 2, 18)),
                     new AvailableDate__c(Class__c = clazz.Id, Date__c = Date.newInstance(2013, 2, 25))
@@ -21,17 +22,29 @@ private class ClassDeepCloneControllerTest {
     
     @isTest
     static void saveChangeDay() {
-        save('Wednesday');
+        save('Monday', 'Wednesday');
     }
     
     @isTest
     static void saveSameDay() {
-        save('Monday');
+        save('Monday', 'Monday');
     }
     
-    private static void save(String newDayOfWeek) {
+    @isTest
+    static void saveToAny() {
+    	// Dates are not changed
+        save('Monday', 'Any');
+    }
     
-        Fixture f = new Fixture();
+    @isTest
+    static void saveFromAny() {
+        // Dates are changed
+        save('Any', 'Wednesday');
+    }
+    
+    private static void save(String oldDayOfWeek, String newDayOfWeek) {
+    
+        Fixture f = new Fixture(oldDayOfWeek);
         
         ClassDeepCloneController c = new ClassDeepCloneController(new ApexPages.StandardController(f.clazz));
         c.clazz.DayOfWeek__c = newDayOfWeek;
@@ -45,14 +58,16 @@ private class ClassDeepCloneControllerTest {
                 ];
         System.assertEquals(f.ads.size(), actuals.size());
         for (AvailableDate__c actual : actuals) {
-            System.assertEquals(newDayOfWeek, actual.DayOfWeek__c);
+        	if (newDayOfWeek != 'Any') {
+                System.assertEquals(newDayOfWeek, actual.DayOfWeek__c);
+        	}
         }
     }
     
     @isTest
     static void cancel() {
     
-        Fixture f = new Fixture();
+        Fixture f = new Fixture('Monday');
         
         ClassDeepCloneController c = new ClassDeepCloneController(new ApexPages.StandardController(f.clazz));
         

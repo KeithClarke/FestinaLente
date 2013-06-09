@@ -24,7 +24,7 @@ public with sharing class ClassDeepCloneController {
         Class__c newClazz = clazz.clone();
         insert newClazz;
         
-        // Need to get formula result
+        // Need to get formula result: null for "Any"
         Decimal newClazzDayOfWeekNumber = [
                 select DayOfWeekNumber__c
                 from Class__c
@@ -36,7 +36,9 @@ public with sharing class ClassDeepCloneController {
         for (AvailableDate__c ad : ads) {
             newAds.add(new AvailableDate__c(
                     Class__c = newClazz.Id,
-                    Date__c = ad.Date__c.addDays(newClazzDayOfWeekNumber.intValue() - ad.DayOfWeekNumber__c.intValue())
+                    Date__c = newClazzDayOfWeekNumber != null
+                            ? ad.Date__c.addDays(newClazzDayOfWeekNumber.intValue() - ad.DayOfWeekNumber__c.intValue())
+                            : ad.Date__c
                     ));
         }
         if (newAds.size() > 0) {
