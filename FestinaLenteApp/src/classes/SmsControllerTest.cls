@@ -9,7 +9,7 @@ private class SmsControllerTest {
         
         ApexPages.currentPage().getParameters().put('contactId', c.Id);
         
-        doTest();
+        doTest(null, 1);
     }
     
     @isTest
@@ -26,10 +26,56 @@ private class SmsControllerTest {
         
         ApexPages.currentPage().getParameters().put('classId', clazz.Id);
         
-        doTest();
+        doTest(null, 1);
     }
     
-    private static void doTest() {
+    @isTest
+    static void testFilteringUsingContactNoMatch() {
+        doTestFiltering(true, false);
+    }
+    
+    @isTest
+    static void testFilteringUsingContactMatch() {
+        doTestFiltering(true, true);
+    }
+    
+    @isTest
+    static void testFilteringUsingClassNoMatch() {
+        doTestFiltering(false, false);
+    }
+    
+    @isTest
+    static void testFilteringUsingClassMatch() {
+        doTestFiltering(false, true);
+    }
+    
+    private static void doTestFiltering(Boolean useContactId, Boolean matchingFilter) {
+        
+        Contact c = new Contact(LastName = 'Doe', MobilePhone = '0861112222');
+        insert c;
+        
+        Class__c clazz = new Class__c();
+        insert clazz;
+        
+        Date d = Date.newInstance(2013, 1, 10);
+        AvailableDate__c ad = new AvailableDate__c(Class__c = clazz.Id, Date__c = d);
+        insert ad;
+        
+        Booking__c b = new Booking__c(Client__c = c.Id, Class__c = clazz.Id);
+        insert b;
+        
+        // No need to create a BookedDate here: it is created by default
+        
+        if (useContactId) {
+            ApexPages.currentPage().getParameters().put('contactId', c.Id);
+        } else {
+            ApexPages.currentPage().getParameters().put('classId', clazz.Id);
+        }
+        
+        doTest(matchingFilter ? d : d.addDays(1), matchingFilter ? 1 : 0);
+    }
+    
+    private static void doTest(Date filterDate, Integer expectedContactCount) {
         
         TwilioConfiguration__c config = new TwilioConfiguration__c(
                 SetupOwnerId = UserInfo.getOrganizationId(),
@@ -43,25 +89,29 @@ private class SmsControllerTest {
         ApexPages.currentPage().getParameters().put('retURL', 'fakeRetURL');
         
         SmsController controller = new SmsController();
+        if (filterDate != null) {
+            controller.filter.Date__c = filterDate;
+        }
         
         System.assertEquals('12345678', controller.fromNumber);
         System.assertNotEquals(null, controller.messageCost);
         
-        System.assertEquals(1, controller.contacts.size());
-        
-        SmsController.SelectableContact sc = controller.contacts[0];
-        System.assertEquals('+353861112222', sc.cleanMobileNumber);
-        
-        sc.selected = true;     
-        controller.message = 'Message text';
-        PageReference send = controller.send();
-        System.assertEquals('fakeRetURL', send.getUrl());
-        
-        PageReference cancel = controller.cancel();
-        System.assertEquals('fakeRetURL', cancel.getUrl());
+        System.assertEquals(expectedContactCount, controller.contacts.size());
+        if (expectedContactCount > 0) {
+            SmsController.SelectableContact sc = controller.contacts[0];
+            System.assertEquals('+353861112222', sc.cleanMobileNumber);
+            
+            sc.selected = true;     
+            controller.message = 'Message text';
+            PageReference send = controller.send();
+            System.assertEquals('fakeRetURL', send.getUrl());
+            
+            PageReference cancel = controller.cancel();
+            System.assertEquals('fakeRetURL', cancel.getUrl());
+        }
         
         System.assertEquals(null, controller.refreshContacts());
-        System.assertEquals(1, controller.contacts.size());
+        System.assertEquals(expectedContactCount, controller.contacts.size());
     }
     
     @isTest

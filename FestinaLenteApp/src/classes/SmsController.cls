@@ -100,6 +100,16 @@ public with sharing class SmsController {
         }
     }
     
+    public AvailableDate__c filter {
+    	get {
+    		if (filter == null) {
+    			filter = new AvailableDate__c();
+    		}
+    		return filter;
+    	}
+    	private set;
+    }
+    
     public SelectableContact[] contacts {
         get {
             if (contacts == null) {
@@ -110,12 +120,12 @@ public with sharing class SmsController {
                 String classId = params.get('classId');
                 
                 if (contactId != null) {
-                    contacts = wrap([
+                    contacts = wrap(filter([
                             select Id, Name, RecordTypeId, Status__c, MobilePhone
                             from Contact
                             where Id = :decodeIds(contactId)
                             order by Name
-                            ]);
+                            ]));
                 } else if (classId != null) {
                     List<Contact> cs = new List<Contact>();
                     Set<Id> alreadyIncluded = new Set<Id>();
@@ -130,9 +140,9 @@ public with sharing class SmsController {
                             alreadyIncluded.add(b.Client__r.Id);
                         }
                     }
-                    contacts = wrap(cs);
+                    contacts = wrap(filter(cs));
                 } else {
-                    contacts = wrap(new Contact[] {});
+                    contacts = wrap(filter(new Contact[] {}));
                 }
             }
             return contacts;
@@ -143,6 +153,37 @@ public with sharing class SmsController {
     private static List<String> decodeIds(String s) {
         
         return EncodingUtil.urlDecode(s, 'UTF-8').split(',');
+    }
+    
+    private Contact[] filter(Contact[] contacts) {
+    	
+    	if (contacts.size() > 0 && filter.Date__c != null) {
+    		
+    	    Set<Id> contactIds = new Set<Id>();
+    	    for (Contact c : contacts) {
+    	    	contactIds.add(c.Id);
+    	    }
+    	    
+    	    Set<Id> bookedContactIds = new Set<Id>();
+    	    for (BookedDate__c bd : [
+    	           select Booking__r.Client__c
+    	           from BookedDate__c
+    	           where Date__c = :filter.Date__c
+    	           and Booking__r.Client__c in :contactIds
+    	           ]) {
+    	    	bookedContactIds.add(bd.Booking__r.Client__c);
+    	    }
+
+    	    List<Contact> filtered = new List<Contact>();
+    	    for (Contact c : contacts) {
+    	    	if (bookedContactIds.contains(c.Id)) {
+                    filtered.add(c);
+    	    	}
+            }
+    	    return filtered;
+    	} else {
+    		return contacts;
+    	}
     }
     
     private static SelectableContact[] wrap(Contact[] contacts) {
