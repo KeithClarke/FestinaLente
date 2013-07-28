@@ -1,6 +1,7 @@
 public class Dates {
-	
-	private static final Date SUNDAY = Date.newInstance(2010, 1, 3);
+    
+    private static final Date SUNDAY = Date.newInstance(2010, 1, 3);
+    private static final Date DATE_1900_01_07 = Date.newInstance(1900, 1, 7);
 
     private static final Map<String, Integer> DAY_NAME_TO_INTEGER = new Map<String, Integer>{
         'Sunday' => 0,
@@ -49,14 +50,20 @@ public class Dates {
         return d != null ? d.addDays(OFFSET_TO_PRECEDING_MONDAY.get(dayOfWeek(d))) : null;
     }
     
-    public static Integer weekNumber(Date d) {
-        // TODO check same as formula on available date
-        // TODO test
-        Integer days = Date.newInstance(2001, 1, 1).daysBetween(d);
-        return Math.mod(days / 7, 52) + 1;
+    // Must match AvailableDate.WeekNumber forumula
+    public static Integer weekNumber(Date value) {
+        if (value != null) {
+            // Taken from http://boards.developerforce.com/t5/Formulas-Validation-Rules/ISO-Week-Calculation/td-p/174749
+            Integer dayNumber = Math.mod(DATE_1900_01_07.daysBetween(value), 7) + 1;
+            Date dateForYear = value.addDays(Math.mod(8 - dayNumber, 7) - 3);
+            Date year_01_01 = Date.newInstance(dateForYear.year(), 1, 1);
+            return (Integer) Math.floor((year_01_01.daysBetween(value) + Math.mod((Math.mod(DATE_1900_01_07.daysBetween(year_01_01), 7) + 1) + 1, 7) - 3) / 7 + 1); 
+        } else {
+            return null;
+        }
     }
     
     public static Boolean isEvenWeekNumber(Date d) {
-    	return Math.mod(weekNumber(d), 2) == 0;
+        return d != null ? Math.mod(weekNumber(d), 2) == 0 : null;
     }
 }

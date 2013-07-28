@@ -118,7 +118,7 @@
     <fields>
         <fullName>WeekNumber__c</fullName>
         <externalId>false</externalId>
-        <formula>MOD(FLOOR((Date__c - DATEVALUE(&quot;2006-01-01&quot;)) / 7), 52) + 1</formula>
+        <formula>FLOOR((Date__c - DATE(YEAR(Date__c + (MOD(8 - (MOD(Date__c - DATE(1900, 1, 7), 7) + 1), 7) - 3)), 1, 1) + MOD((MOD(DATE(YEAR(Date__c + (MOD(8 - (MOD(Date__c - DATE(1900, 1, 7), 7) + 1) ,7) - 3)), 1, 1) - DATE(1900, 1, 7), 7) + 1) + 1, 7) - 3) / 7 + 1)</formula>
         <label>Week Number</label>
         <precision>18</precision>
         <required>false</required>
