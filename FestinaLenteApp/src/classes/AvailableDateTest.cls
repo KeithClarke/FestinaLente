@@ -29,6 +29,8 @@ private class AvailableDateTest {
                 ];
         System.assertEquals('Friday', actual.DayOfWeek__c);
         System.assertEquals(5, actual.DayOfWeekNumber__c);
-        System.assertEquals(3, actual.WeekNumber__c);
+        
+        // This is more completely tested in DatesTest.weekNumber
+        System.assertEquals(2, actual.WeekNumber__c);
     }
 }
