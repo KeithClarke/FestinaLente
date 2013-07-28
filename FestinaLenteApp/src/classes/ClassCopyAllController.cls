@@ -41,23 +41,23 @@ public with sharing class ClassCopyAllController {
         public Date start {get; private set;}
         
         public void appendSelectedDates(Set<Date> dates) {
-            mon.addDateIfSelected(dates);
-            tue.addDateIfSelected(dates);
-            wed.addDateIfSelected(dates);
-            thu.addDateIfSelected(dates);
-            fri.addDateIfSelected(dates);
-            sat.addDateIfSelected(dates);
-            sun.addDateIfSelected(dates);
+            mon.addDate(dates, true);
+            tue.addDate(dates, true);
+            wed.addDate(dates, true);
+            thu.addDate(dates, true);
+            fri.addDate(dates, true);
+            sat.addDate(dates, true);
+            sun.addDate(dates, true);
         }
         
         public void appendUnselectedDates(Set<Date> dates) {
-            mon.addDateIfUnselected(dates);
-            tue.addDateIfUnselected(dates);
-            wed.addDateIfUnselected(dates);
-            thu.addDateIfUnselected(dates);
-            fri.addDateIfUnselected(dates);
-            sat.addDateIfUnselected(dates);
-            sun.addDateIfUnselected(dates);
+            mon.addDate(dates, false);
+            tue.addDate(dates, false);
+            wed.addDate(dates, false);
+            thu.addDate(dates, false);
+            fri.addDate(dates, false);
+            sat.addDate(dates, false);
+            sun.addDate(dates, false);
         }
     }
 
@@ -78,14 +78,8 @@ public with sharing class ClassCopyAllController {
             this.r = range.From__c <= d && d <= range.To__c;
         }
         
-        public void addDateIfSelected(Set<Date> dates) {
-            if (s && r) {
-                dates.add(d);
-            }
-        }
-        
-        public void addDateIfUnselected(Set<Date> dates) {
-            if (!s && r) {
+        public void addDate(Set<Date> dates, Boolean selected) {
+            if (r && s == selected) {
                 dates.add(d);
             }
         }
@@ -133,22 +127,24 @@ public with sharing class ClassCopyAllController {
                   order by Name
                   ]);
         } else {
-        	String[] fields = new String[] {
-	        		String.valueOf(Class__c.Id),
-	        		String.valueOf(Class__c.Name),
-	        		String.valueOf(Class__c.Coach__c),
-	        		String.valueOf(Class__c.Type__c),
-	        		String.valueOf(Class__c.Detail__c),
-	        		String.valueOf(Class__c.DayOfWeek__c),
-	        		String.valueOf(Class__c.Time__c),
-	        		String.valueOf(Class__c.Level__c),
-	        		String.valueOf(Class__c.Length__c),
-	        		String.valueOf(Class__c.BookingCount__c),
-	        		String.valueOf(Class__c.EarliestAvailableDate__c),
-	        		String.valueOf(Class__c.LatestAvailableDate__c),
-	        		String.valueOf(Class__c.DayOfWeekNumber__c)
-	        	    };
-        	controller.addFields(fields);
+        	if (!Test.isRunningTest()) {
+	        	String[] fields = new String[] {
+		        		String.valueOf(Class__c.Id),
+		        		String.valueOf(Class__c.Name),
+		        		String.valueOf(Class__c.Coach__c),
+		        		String.valueOf(Class__c.Type__c),
+		        		String.valueOf(Class__c.Detail__c),
+		        		String.valueOf(Class__c.DayOfWeek__c),
+		        		String.valueOf(Class__c.Time__c),
+		        		String.valueOf(Class__c.Level__c),
+		        		String.valueOf(Class__c.Length__c),
+		        		String.valueOf(Class__c.BookingCount__c),
+		        		String.valueOf(Class__c.EarliestAvailableDate__c),
+		        		String.valueOf(Class__c.LatestAvailableDate__c),
+		        		String.valueOf(Class__c.DayOfWeekNumber__c)
+		        	    };
+	        	controller.addFields(fields);
+        	}
         }
         
         // Make selectable
@@ -181,6 +177,7 @@ public with sharing class ClassCopyAllController {
     public Boolean consecutiveDays {
         get {
         	if (consecutiveDays == null) {
+        		consecutiveDays = false;
         		for (SelectableClass  sc : selectableClasses) {
         			if (sc.selected && sc.sob.DayOfWeekNumber__c == null) {
         				consecutiveDays = true;
@@ -195,6 +192,7 @@ public with sharing class ClassCopyAllController {
     public Boolean weekly {
         get {
             if (weekly == null) {
+            	weekly = false;
                 for (SelectableClass  sc : selectableClasses) {
                     if (sc.selected && sc.sob.DayOfWeekNumber__c != null) {
                         weekly = true;
@@ -238,18 +236,8 @@ public with sharing class ClassCopyAllController {
     
     public PageReference copy() {
     	
-    	Set<Id> classIds = new Set<Id>();
-    	for (SelectableClass sc : selectableClasses) {
-    		classIds.add(sc.sob.Id);
-    	}
-    	
-    	Set<Date> dates = new Set<Date>();
-    	for (Week week : weeks) {
-    		week.appendSelectedDates(dates);
-    	}
-    	
     	// Does the copy
-    	List<Id> ids = new ClassCopyAll(classIds, dates).copy();
+    	List<Id> ids = new ClassCopyAll(getSelectedClassIds(), getSelectedDates()).copy();
     	
     	if (ids.size() > 0) {
     		// Go to overviw page (recently created items)
@@ -258,5 +246,25 @@ public with sharing class ClassCopyAllController {
 	        // Go back to original page before this one
 	        return controller.cancel();
     	}
+    }
+    
+    // Public for tests only
+    public Set<Id> getSelectedClassIds() {
+    	       
+        Set<Id> classIds = new Set<Id>();
+        for (SelectableClass sc : selectableClasses) {
+            classIds.add(sc.sob.Id);
+        }
+        return classIds;
+    }
+    
+    // Public for tests only
+    public Set<Date> getSelectedDates() {
+
+        Set<Date> dates = new Set<Date>();
+        for (Week week : weeks) {
+            week.appendSelectedDates(dates);
+        }
+        return dates;
     }
 }
