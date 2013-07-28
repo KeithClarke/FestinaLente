@@ -1,0 +1,311 @@
+<apex:page standardController="Class__c" extensions="ClassCopyAllController" recordsetvar="classes" id="p">
+
+<style type="text/css">
+
+/* Copy of platform's headerRow styles */
+.headerColumn {
+    background: #f2f3f3;
+    border-color: #e0e3e5;
+}
+
+/* Blocks of text */
+.info {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Tabslesorter: Force.com uses backround-image for shaded blue header; replace that styling with this */
+table.tablesorter thead tr .header {
+    background-image: url({! URLFOR($Resource.jQueryTablesorterBlueZip, 'bg.gif') }) !important;
+    background-repeat: no-repeat !important;
+    background-position: center right !important;
+    cursor: pointer !important;
+    background-color: #f2f3f3 !important;
+}
+table.tablesorter thead tr .headerSortUp {
+    background-image: url({! URLFOR($Resource.jQueryTablesorterBlueZip, 'asc.gif') }) !important;
+}
+table.tablesorter thead tr .headerSortDown {
+    background-image: url({! URLFOR($Resource.jQueryTablesorterBlueZip, 'desc.gif') }) !important;
+}
+th.header {
+    padding-right: 20px !important;
+}
+</style>
+
+<script src="{!URLFOR($Resource.FullCalendarZip, 'fullcalendar-1.5.4/jquery/jquery-1.8.1.min.js')}" type="text/javascript" language="javascript"></script>
+<script src="{!URLFOR($Resource.jQueryTablesorterMinJs)}" type="text/javascript" language="javascript"></script>
+
+    <apex:sectionHeader title="Copy All to New Dates" subtitle="Copy Classes and Bookings to New Dates" help="{!$Page.Help}"/>
+    <apex:form id="f">
+        <apex:actionFunction name="refreshDaysToInclude" action="{!refreshDaysToInclude}"/>
+        <apex:pageMessages />
+        <apex:outputPanel layout="block" styleClass="info">
+            Allows sets of Classes to be re-created for new terms, with all the Bookings already made.
+        </apex:outputPanel>
+        <apex:pageBlock mode="edit" id="pb">
+            <apex:pageBlockButtons id="pbb">
+                <apex:commandButton value="Copy" action="{!copy}" id="copy"/>
+                <apex:commandButton value="Cancel" action="{!cancel}" immediate="true"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="1" title="New Date Range">
+                <apex:outputPanel layout="block" styleClass="info">
+                    Input the overall date range for the Classes.
+                    For a term-based Class, this is the start date and end date of a term.
+                    For a camp Class that runs over a few consecutive days, this is the first day date and the last day date.
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="2"  id="pbs-date-range">
+
+                <apex:inputField value="{!range.From__c}" required="true" id="from"/>
+                <apex:inputField value="{!range.To__c}" required="true" id="to"/>
+                
+                <apex:outputText rendered="{!weekly}"/>
+                <apex:pageBlockSectionItem rendered="{!weekly}">
+                    <apex:outputLabel >Select Number of Weeks</apex:outputLabel>
+                    <c:ToDateLinksPanelGrid fromDateFieldId="p:f:pb:pbs-date-range:from" toDateFieldId="p:f:pb:pbs-date-range:to" consecutiveDays="{!(false)}"/>
+                </apex:pageBlockSectionItem>
+                
+                <apex:outputText rendered="{!consecutiveDays}"/>
+                <apex:pageBlockSectionItem rendered="{!consecutiveDays}">
+                    <apex:outputLabel >Select Number of Days</apex:outputLabel>
+                    <c:ToDateLinksPanelGrid fromDateFieldId="p:f:pb:pbs-date-range:from" toDateFieldId="p:f:pb:pbs-date-range:to" consecutiveDays="{!(true)}"/>
+                </apex:pageBlockSectionItem>
+                
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="1" title="New Days to Include" id="pbs-days">
+                <apex:outputPanel layout="block" styleClass="info">
+                    Exclude dates such as bank holidays and half-term breaks (when Classes will not be held) by unchecking the dates.
+                    These dates will be excluded from the Available Dates and Booked Dates generated.
+                </apex:outputPanel>
+                <apex:pageBlockTable var="week" value="{!weeks}" id="table">
+                    <apex:column styleClass="headerColumn">
+                        <apex:facet name="header">
+                            <apex:outputPanel layout="inline">
+                                <apex:inputCheckbox styleClass="all-checkbox" id="all"/>
+                                <apex:outputLabel value="Week Number" for="all"/>
+                            </apex:outputPanel>
+                        </apex:facet>
+                        <apex:inputCheckbox styleClass="row-checkbox" id="week"/>
+                        <apex:outputLabel value="{!week.num}" for="week"/>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                            <apex:outputPanel layout="inline">
+                                <apex:inputCheckbox styleClass="col-checkbox monday" id="mon-col"/>
+                                <apex:outputLabel value="Monday" for="mon-col"/>
+                            </apex:outputPanel>
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!week.mon.s}" styleClass="day-checkbox monday" rendered="{!week.mon.r}" id="mon"/>
+                        <apex:outputLabel value="{!week.mon.f}" for="mon" rendered="{!week.mon.r}" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                            <apex:outputPanel layout="inline">
+                                <apex:inputCheckbox styleClass="col-checkbox tuesday" id="tue-col"/>
+                                <apex:outputLabel value="Tuesday" for="tue-col"/>
+                            </apex:outputPanel>
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!week.tue.s}" styleClass="day-checkbox tuesday" rendered="{!week.tue.r}" id="tue"/>
+                        <apex:outputLabel value="{!week.tue.f}" for="tue" rendered="{!week.tue.r}" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                            <apex:outputPanel layout="inline">
+                                <apex:inputCheckbox styleClass="col-checkbox wednesday" id="wed-col"/>
+                                <apex:outputLabel value="Wednesday" for="wed-col"/>
+                            </apex:outputPanel>
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!week.wed.s}" styleClass="day-checkbox wednesday" rendered="{!week.wed.r}" id="wed"/>
+                        <apex:outputLabel value="{!week.wed.f}" for="wed" rendered="{!week.wed.r}" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                            <apex:outputPanel layout="inline">
+                                <apex:inputCheckbox styleClass="col-checkbox thursday" id="thu-col"/>
+                                <apex:outputLabel value="Thursday" for="thu-col"/>
+                            </apex:outputPanel>
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!week.thu.s}" styleClass="day-checkbox thursday" rendered="{!week.thu.r}" id="thu"/>
+                        <apex:outputLabel value="{!week.thu.f}" for="thu" rendered="{!week.thu.r}" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                            <apex:outputPanel layout="inline">
+                                <apex:inputCheckbox styleClass="col-checkbox friday" id="fri-col"/>
+                                <apex:outputLabel value="Friday" for="fri-col"/>
+                            </apex:outputPanel>
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!week.fri.s}" styleClass="day-checkbox friday" rendered="{!week.fri.r}" id="fri"/>
+                        <apex:outputLabel value="{!week.fri.f}" for="fri" rendered="{!week.fri.r}" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                            <apex:outputPanel layout="inline">
+                                <apex:inputCheckbox styleClass="col-checkbox saturday" id="sat-col"/>
+                                <apex:outputLabel value="Saturday" for="sat-col"/>
+                            </apex:outputPanel>
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!week.sat.s}" styleClass="day-checkbox saturday" rendered="{!week.sat.r}" id="sat"/>
+                        <apex:outputLabel value="{!week.sat.f}" for="sat" rendered="{!week.sat.r}" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                            <apex:outputPanel layout="inline">
+                                <apex:inputCheckbox styleClass="col-checkbox sunday" id="sun-col"/>
+                                <apex:outputLabel value="Sunday" for="sun-col"/>
+                            </apex:outputPanel>
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!week.sun.s}" styleClass="day-checkbox sunday" rendered="{!week.sun.r}" id="sun"/>
+                        <apex:outputLabel value="{!week.sun.f}" for="sun" rendered="{!week.sun.r}" />
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="1" title="Classes" id="pbs-classes">
+                 <apex:outputPanel layout="block" styleClass="info">
+                    For each of the Classes with Selected checked, a copy of the Class and its Bookings will be made with
+                    the Available Dates and Booked Dates moved to be within the dates specified above.
+                </apex:outputPanel>
+                <apex:pageBlockTable var="c" value="{!selectableClasses}" styleClass="tablesorter" id="table">
+                    <apex:column headerValue="Select">
+                        <apex:inputCheckbox value="{!c.selected}"/>
+                    </apex:column>   
+                    <apex:column headerValue="Name">
+                        <c:LinkWithHoverDetail sobId="{!c.sob.Id}" sobName="{!c.sob.Name}"/>
+                    </apex:column>
+                    <apex:column value="{!c.sob.Coach__c}"/>
+                    <apex:column value="{!c.sob.Type__c}"/>
+                    <apex:column value="{!c.sob.Detail__c}"/>
+                    <apex:column value="{!c.sob.DayOfWeek__c}"/>
+                    <apex:column value="{!c.sob.Time__c}"/>
+                    <apex:column value="{!c.sob.Level__c}"/>
+                    <apex:column value="{!c.sob.Length__c}"/>
+                    <apex:column value="{!c.sob.BookingCount__c}" styleClass="class-booking-count"/>
+                    <apex:column value="{!c.sob.EarliestAvailableDate__c}"/>
+                    <apex:column value="{!c.sob.LatestAvailableDate__c}"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    
+<script type="text/javascript" language="javascript">
+
+// Stop the calendar poppung up when the page opens
+function setFocusOnLoad() {
+}
+
+var j$ = jQuery.noConflict();
+
+// When date range changes, refresh the page
+j$(document).ready(function() {
+
+    var table = j$("#p\\:f\\:pb\\:pbs-days\\:table");
+    if (table.find("tr").length <= 1) {
+        table.fadeTo(0, 0.25);
+    }
+
+    var refresh = function() {
+    
+        // Do nothing if fields empty
+        if (j$("#p\\:f\\:pb\\:pbs-date-range\\:from").val().length == 0 || j$("#p\\:f\\:pb\\:pbs-date-range\\:to").val().length == 0) {
+            return;
+        }
+    
+        // Signal that change is happening
+        table.fadeTo("slow", 0.25);
+        
+        // Whole page is refreshed
+        refreshDaysToInclude();
+    }
+
+    // Invoke the apex:actionFunction when the date range changes
+    j$("#p\\:f\\:pb\\:pbs-date-range\\:from, #p\\:f\\:pb\\:pbs-date-range\\:to").change(refresh);
+    j$("a.flWeekLink").click(refresh);
+});
+
+// Checkboxes interactions in the days table
+j$(document).ready(function() {
+
+    var all = j$(":checkbox.all-checkbox");
+    var rows = j$(":checkbox.row-checkbox");
+    var cols = j$(":checkbox.col-checkbox");
+    var days = j$(":checkbox.day-checkbox");
+    
+    var dayClasses = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+    
+    // Make the header checkoxes consitent with the day checkboxes
+    var reconcile = function() {
+    
+        // Top left
+        all.attr("checked", days.filter(":checked").length == days.length);
+        
+        // Column heading checkboxes
+        j$.each(dayClasses, function(index, dayClass) {
+            var colDays = days.filter("." + dayClass);
+            cols.filter("." + dayClass).attr("checked", colDays.filter(":checked").length == colDays.length);
+        });
+        
+        // Row heading checkboxes
+        all.closest("table").find("tr").each(function() {
+            var tr = j$(this);
+            var rowDays = tr.find(":checkbox.day-checkbox");
+            tr.find(":checkbox.row-checkbox").attr("checked", rowDays.filter(":checked").length == rowDays.length);
+        });
+    }
+    reconcile();
+    
+    // Propagate changes
+    all.change(function() {
+        var checkbox = j$(this);
+        checkbox.closest("table").find(":checkbox.day-checkbox, :checkbox.col-checkbox, :checkbox.row-checkbox").attr("checked", checkbox.is(":checked"));
+        reconcile();
+    });
+    rows.change(function() {
+        var checkbox = j$(this);
+        checkbox.closest("tr").find(":checkbox.day-checkbox").attr("checked", checkbox.is(":checked"));
+        reconcile();
+    });
+    cols.change(function() {
+        var checkbox = j$(this);
+        var checkboxClasses = checkbox.attr("class").split(/\s+/).reverse();
+        j$.each(checkboxClasses, function(i, checkboxClass) {
+            j$.each(dayClasses, function(j, dayClass) {
+                if (dayClass == checkboxClass) {
+                    checkbox.closest("table").find(":checkbox.day-checkbox." + dayClass).attr("checked", checkbox.is(":checked"));
+                    return false;
+                }
+            });
+        });
+        reconcile();
+    }); 
+    days.change(function() {
+        reconcile();
+    });
+});
+
+// Make classes table sortable
+j$(document).ready(function() {
+    j$("#p\\:f\\:pb\\:pbs-classes\\:table").tablesorter({
+        headers: {0: {sorter: false}},
+        sortList: [[1, 0]]
+    });
+});
+
+// Confirmation of copy
+j$(document).ready(function() {
+    j$("#p\\:f\\:pb\\:pbb\\:copy").click(function() {
+        var classCount = 0;
+        var bookingCount = 0;
+        j$("#p\\:f\\:pb\\:pbs-classes\\:table tr").each(function() {
+            var tr = j$(this);
+            if (tr.find(":checkbox:checked").length) {
+                classCount++;
+                bookingCount += parseInt(tr.find("td.class-booking-count span").text());
+            }
+        });
+        return confirm("Copy " + classCount + " Classes and " + bookingCount + " Bookings to the new dates now?");
+    });
+});
+
+</script>
+</apex:page>

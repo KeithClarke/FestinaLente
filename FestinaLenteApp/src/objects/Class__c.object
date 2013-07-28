@@ -746,6 +746,7 @@ null
         <customTabListAdditionalFields>SpacesBookedAvailableWithPercent__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>EarliestAvailableDate__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>LatestAvailableDate__c</customTabListAdditionalFields>
+        <listViewButtons>CopyAllToNewDatesList</listViewButtons>
         <listViewButtons>SendSmsForList</listViewButtons>
         <lookupDialogsAdditionalFields>Type__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Coach__c</lookupDialogsAdditionalFields>
@@ -803,10 +804,33 @@ null
         <displayType>button</displayType>
         <height>600</height>
         <linkType>page</linkType>
-        <masterLabel>Clone Including Available Dates</masterLabel>
+        <masterLabel>Clone with Dates</masterLabel>
         <openType>sidebar</openType>
         <page>ClassDeepClone</page>
         <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>CopyAllToNewDates</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Copy All to New Dates</masterLabel>
+        <openType>sidebar</openType>
+        <page>ClassCopyAll</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>CopyAllToNewDatesList</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Copy All to New Dates</masterLabel>
+        <openType>sidebar</openType>
+        <page>ClassCopyAllList</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
     </webLinks>
     <webLinks>
         <fullName>SendSms</fullName>

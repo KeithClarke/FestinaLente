@@ -13,88 +13,88 @@ a.flWeekLink {
 
 <apex:panelGrid columns="7" rendered="{!consecutiveDays}">
 
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(1)">&nbsp;1</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(2)">&nbsp;2</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(3)">&nbsp;3</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(4)">&nbsp;4</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(5)">&nbsp;5</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(6)">&nbsp;6</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(7)">&nbsp;7</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(8)">&nbsp;8</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(9)">&nbsp;9</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(10)">10</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(11)">11</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(12)">12</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(13)">13</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(14)">14</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(1, true)">&nbsp;1</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(2, true)">&nbsp;2</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(3, true)">&nbsp;3</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(4, true)">&nbsp;4</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(5, true)">&nbsp;5</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(6, true)">&nbsp;6</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(7, true)">&nbsp;7</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(8, true)">&nbsp;8</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(9, true)">&nbsp;9</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(10, true)">10</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(11, true)">11</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(12, true)">12</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(13, true)">13</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(14, true)">14</apex:outputLink>
 
 </apex:panelGrid>
 
 <apex:panelGrid columns="10" rendered="{! !consecutiveDays}">
 
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(1)">&nbsp;1</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(2)">&nbsp;2</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(3)">&nbsp;3</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(4)">&nbsp;4</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(5)">&nbsp;5</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(6)">&nbsp;6</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(7)">&nbsp;7</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(8)">&nbsp;8</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(9)">&nbsp;9</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(10)">10</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(11)">11</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(12)">12</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(13)">13</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(14)">14</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(15)">15</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(16)">16</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(17)">17</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(18)">18</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(19)">19</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(20)">20</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(21)">21</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(22)">22</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(23)">23</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(24)">24</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(25)">25</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(26)">26</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(27)">27</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(28)">28</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(29)">29</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(30)">30</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(31)">31</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(32)">32</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(33)">33</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(34)">34</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(35)">35</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(36)">36</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(37)">37</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(38)">38</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(39)">39</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(40)">40</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(41)">41</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(42)">42</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(43)">43</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(44)">44</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(45)">45</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(46)">46</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(47)">47</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(48)">48</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(49)">49</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(50)">50</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(51)">51</apex:outputLink>
-<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(52)">52</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(1, false)">&nbsp;1</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(2, false)">&nbsp;2</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(3, false)">&nbsp;3</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(4, false)">&nbsp;4</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(5, false)">&nbsp;5</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(6, false)">&nbsp;6</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(7, false)">&nbsp;7</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(8, false)">&nbsp;8</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(9, false)">&nbsp;9</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(10, false)">10</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(11, false)">11</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(12, false)">12</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(13, false)">13</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(14, false)">14</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(15, false)">15</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(16, false)">16</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(17, false)">17</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(18, false)">18</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(19, false)">19</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(20, false)">20</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(21, false)">21</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(22, false)">22</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(23, false)">23</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(24, false)">24</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(25, false)">25</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(26, false)">26</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(27, false)">27</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(28, false)">28</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(29, false)">29</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(30, false)">30</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(31, false)">31</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(32, false)">32</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(33, false)">33</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(34, false)">34</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(35, false)">35</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(36, false)">36</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(37, false)">37</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(38, false)">38</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(39, false)">39</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(40, false)">40</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(41, false)">41</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(42, false)">42</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(43, false)">43</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(44, false)">44</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(45, false)">45</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(46, false)">46</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(47, false)">47</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(48, false)">48</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(49, false)">49</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(50, false)">50</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(51, false)">51</apex:outputLink>
+<apex:outputLink styleClass="flWeekLink" value="#" onclick="flClick(52, false)">52</apex:outputLink>
 
 </apex:panelGrid>
     
 <script type="text/javascript">
 
-function flClick(number) {
+function flClick(number, consecutiveDays) {
     var from = flToDateObject(document.getElementById("{!fromDateFieldId}").value);
     if (from) {
-        var to = new Date();
-        var consecutiveDays = {!consecutiveDays};
-        to.setDate(from.getDate() + (consecutiveDays ? number : number * 7) - 1);
+        var days = (consecutiveDays ? number : number * 7) - 1;
+        var msPerDay = 24 * 60 * 60 * 1000;
+        var to = new Date(from.getTime() + days * msPerDay);
         document.getElementById("{!toDateFieldId}").value = flFromDateObject(to);
     }
 }

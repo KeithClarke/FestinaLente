@@ -1,7 +1,19 @@
 <apex:page standardController="Class__c" extensions="ClassDeepCloneController" >
-    <apex:sectionHeader title="Class Clone Including Available Dates Dates" subtitle="New Class" help="{!$Page.Help}"/>
+
+<style type="text/css">
+/* Blocks of text */
+.info {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+</style>
+
+    <apex:sectionHeader title="Clone with Dates" subtitle="New Class" help="{!$Page.Help}"/>
     <apex:form >
         <apex:pageMessages />
+        <apex:outputPanel layout="block" styleClass="info">
+            Allows a Class that already has its Available Dates setup to be used as the basis for another Class.
+        </apex:outputPanel>
         <apex:pageBlock mode="edit">
             <apex:pageBlockButtons >
                 <apex:commandButton value="Save" action="{!save}" />
