@@ -85,25 +85,27 @@ span.ps {
 <script src="{!URLFOR($Resource.QTip)}"/>
 <script>
 
-$(document).ready(function() {
+var j$ = jQuery.noConflict();
+
+j$(document).ready(function() {
 
     // Move breadcrumb
-    $('.bPageTitle').append($('.ptBreadcrumb'));
+    j$('.bPageTitle').append(j$('.ptBreadcrumb'));
     
     // Style "Show" labels
-    $('[for*="p:f:pb:pbs:showClassesFullyBooked"]')
+    j$('[for*="p:f:pb:pbs:showClassesFullyBooked"]')
             .css('background-color', '{!FULLY_BOOKED_COLOUR}')
             .css('color', 'white')
             .css('padding', '3px')
             .css('border-radius', '3px')
             ;
-    $('[for*="p:f:pb:pbs:showClassesFreeSpaces"]')
+    j$('[for*="p:f:pb:pbs:showClassesFreeSpaces"]')
             .css('background-color', '{!FREE_SPACES_COLOUR}')
             .css('color', 'white')
             .css('padding', '3px')
             .css('border-radius', '3px')
             ;
-    $('[for*="p:f:pb:pbs:showBookings"]')
+    j$('[for*="p:f:pb:pbs:showBookings"]')
             .css('background-color', '{!BOOKINGS_COLOUR}')
             .css('color', 'white')
             .css('padding', '3px')
@@ -115,32 +117,32 @@ $(document).ready(function() {
     var clientPbsi = 'clientPbsi\\:';
     var coachPbsi = 'coachPbsi\\:';
     
-    var client = $(prefix + clientPbsi + 'client');
-    var clientLkid = $(prefix + clientPbsi + 'client' + lkid);
-    var previousClient = $(prefix + clientPbsi + 'previousClient');
-    var nextClient = $(prefix + clientPbsi + 'nextClient');
+    var client = j$(prefix + clientPbsi + 'client');
+    var clientLkid = j$(prefix + clientPbsi + 'client' + lkid);
+    var previousClient = j$(prefix + clientPbsi + 'previousClient');
+    var nextClient = j$(prefix + clientPbsi + 'nextClient');
     
-    var coach = $(prefix + coachPbsi + 'coach');
-    var coachLkid = $(prefix + coachPbsi + 'coach' + lkid);
-    var previousCoach = $(prefix + coachPbsi + 'previousCoach');
-    var nextCoach = $(prefix + coachPbsi + 'nextCoach');
+    var coach = j$(prefix + coachPbsi + 'coach');
+    var coachLkid = j$(prefix + coachPbsi + 'coach' + lkid);
+    var previousCoach = j$(prefix + coachPbsi + 'previousCoach');
+    var nextCoach = j$(prefix + coachPbsi + 'nextCoach');
     
-    var horse = $(prefix + 'horse');
-    var horseLkid = $(prefix + 'horse' + lkid);
+    var horse = j$(prefix + 'horse');
+    var horseLkid = j$(prefix + 'horse' + lkid);
     
-    var booking = $(prefix + 'booking');
-    var bookingLkid = $(prefix + 'booking' + lkid);
+    var booking = j$(prefix + 'booking');
+    var bookingLkid = j$(prefix + 'booking' + lkid);
     
-    var clazz = $(prefix + 'class');
-    var clazzLkid = $(prefix + 'class' + lkid);
+    var clazz = j$(prefix + 'class');
+    var clazzLkid = j$(prefix + 'class' + lkid);
     
-    var classType = $(prefix + 'classType');
-    var showClassesFreeSpaces = $(prefix + 'showClassesFreeSpaces');
-    var showClassesFullyBooked = $(prefix + 'showClassesFullyBooked');
-    var showBookings = $(prefix + 'showBookings');
+    var classType = j$(prefix + 'classType');
+    var showClassesFreeSpaces = j$(prefix + 'showClassesFreeSpaces');
+    var showClassesFullyBooked = j$(prefix + 'showClassesFullyBooked');
+    var showBookings = j$(prefix + 'showBookings');
     
-    var formViewName = $(prefix + 'viewName');
-    var formViewStart = $(prefix + 'viewStartDate');
+    var formViewName = j$(prefix + 'viewName');
+    var formViewStart = j$(prefix + 'viewStartDate');
     
     // Writing and reading as text in d/m/y format
     var toDateString = function(d) {
@@ -162,7 +164,7 @@ $(document).ready(function() {
     var inFunction = false;
 
     // Setup calendar
-    var calendar = $('#calendar');
+    var calendar = j$('#calendar');
     calendar.fullCalendar({
     
         // General config
