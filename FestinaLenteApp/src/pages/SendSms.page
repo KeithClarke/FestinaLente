@@ -6,9 +6,6 @@
 }
 </style>
 
-    <script src="{!URLFOR($Resource.FullCalendarZip, 'fullcalendar-1.5.4/jquery/jquery-1.8.1.min.js')}" type="text/javascript" language="javascript"></script>
-    <script src="{!$Resource.jQueryCaretJs}" type="text/javascript" language="javascript"></script>
-
     <apex:sectionHeader title="Send SMS" help="{!$Page.Help}"/>
 
     <apex:pageMessages />
@@ -24,21 +21,21 @@
             </apex:pageBlockSection>
             <apex:pageBlockSection title="To" columns="1" id="contacts">
                 <apex:outputPanel layout="none">
-	                <apex:outputPanel layout="block" style="float: right">
-		                <apex:outputLabel for="filter">Limit List to Clients that have a Booking on&nbsp;&nbsp;</apex:outputLabel>
-		                <apex:inputField onchange="document.getElementById('{!$Component.refresh}').click(); return false;" value="{!filter.Date__c}" id="filter"/>
-		                <apex:outputText >&nbsp;&nbsp;[&nbsp;</apex:outputText>
-		                <apex:outputLink onclick="document.getElementById('{!$Component.filter}').value = ''; document.getElementById('{!$Component.refresh}').click(); return false;">Clear</apex:outputLink>
-		                <apex:outputText >&nbsp;]</apex:outputText>
-	                </apex:outputPanel>
-	                <apex:commandButton value="Refresh"
-	                        action="{!refreshContacts}"
-	                        rerender="contacts"
-	                        onclick="this.disabled=true; this.className='btnDisabled'; this.value='Refreshing...';"
-	                        title="Refresh the list of Contacts to reflect any changes made"
-	                        id="refresh"
-	                        />
-	            </apex:outputPanel>
+                    <apex:outputPanel layout="block" style="float: right">
+                        <apex:outputLabel for="filter">Limit List to Clients that have a Booking on&nbsp;&nbsp;</apex:outputLabel>
+                        <apex:inputField onchange="document.getElementById('{!$Component.refresh}').click(); return false;" value="{!filter.Date__c}" id="filter"/>
+                        <apex:outputText >&nbsp;&nbsp;[&nbsp;</apex:outputText>
+                        <apex:outputLink onclick="document.getElementById('{!$Component.filter}').value = ''; document.getElementById('{!$Component.refresh}').click(); return false;">Clear</apex:outputLink>
+                        <apex:outputText >&nbsp;]</apex:outputText>
+                    </apex:outputPanel>
+                    <apex:commandButton value="Refresh"
+                            action="{!refreshContacts}"
+                            rerender="contacts"
+                            onclick="this.disabled=true; this.className='btnDisabled'; this.value='Refreshing...';"
+                            title="Refresh the list of Contacts to reflect any changes made"
+                            id="refresh"
+                            />
+                </apex:outputPanel>
                 <apex:pageBlockTable value="{!contacts}" var="c">
                     <apex:column headerValue="Select">
                         <apex:inputCheckbox value="{!c.selected}" disabled="{!c.disabled}"/>
@@ -69,8 +66,10 @@
             </apex:pageBlockSection>
         </apex:pageBlock>
     </apex:form>
-    
-<script type="text/javascript" language="javascript">
+
+<script src="{!URLFOR($Resource.FullCalendarZip, 'fullcalendar-1.5.4/jquery/jquery-1.8.1.min.js')}"/>
+<script src="{!$Resource.jQueryCaretJs}"/>
+<script>
 
 var j$ = jQuery.noConflict();
 
@@ -131,4 +130,5 @@ j$(document).ready(function() {
     });
 });
 </script>
+
 </apex:page>

@@ -52,7 +52,7 @@ span.flActionSpacer {
         </apex:pageBlock>
     </apex:form>
 
-<script type="text/javascript">
+<script>
 
 // Avoid date popup on page load
 function setFocusOnLoad() {

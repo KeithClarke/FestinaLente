@@ -33,9 +33,6 @@ th.header {
 }
 </style>
 
-<script src="{!URLFOR($Resource.FullCalendarZip, 'fullcalendar-1.5.4/jquery/jquery-1.8.1.min.js')}" type="text/javascript" language="javascript"></script>
-<script src="{!URLFOR($Resource.jQueryTablesorterMinJs)}" type="text/javascript" language="javascript"></script>
-
     <apex:sectionHeader title="Copy All to New Dates" subtitle="Copy Classes and Bookings to New Dates" help="{!$Page.Help}"/>
     <apex:form id="f">
         <apex:actionFunction name="refreshDaysToInclude" action="{!refreshDaysToInclude}"/>
@@ -187,8 +184,11 @@ th.header {
             </apex:pageBlockSection>
         </apex:pageBlock>
     </apex:form>
-    
-<script type="text/javascript" language="javascript">
+
+
+<script src="{!URLFOR($Resource.FullCalendarZip, 'fullcalendar-1.5.4/jquery/jquery-1.8.1.min.js')}"/>
+<script src="{!URLFOR($Resource.jQueryTablesorterMinJs)}"/>
+<script>
 
 // Stop the calendar poppung up when the page opens
 function setFocusOnLoad() {

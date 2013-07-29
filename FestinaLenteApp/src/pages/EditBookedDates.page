@@ -58,7 +58,8 @@ span.flActionSpacer {
         </apex:pageBlock>
     </apex:form>
     
-<script type="text/javascript">
+<script>
+
 function flCheck(algorithm) {
 
     var table = document.getElementById("p:f:pb:pbs:pbt");

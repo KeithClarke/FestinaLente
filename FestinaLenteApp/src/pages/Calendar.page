@@ -16,11 +16,6 @@ span.ps {
 <link href="{!URLFOR($Resource.FullCalendarZip,'fullcalendar-1.5.4/fullcalendar/fullcalendar.css')}" rel="stylesheet" type="text/css"/>
 <link href="{!URLFOR($Resource.FullCalendarZip,'fullcalendar-1.5.4/fullcalendar/fullcalendar.print.css')}" rel="stylesheet" type="text/css" media="print"/>
 
-<script src="{!URLFOR($Resource.FullCalendarZip, 'fullcalendar-1.5.4/jquery/jquery-1.8.1.min.js')}" type="text/javascript" language="javascript"></script>
-<script src="{!URLFOR($Resource.FullCalendarZip, 'fullcalendar-1.5.4/fullcalendar/fullcalendar.min.js')}" type="text/javascript" language="javascript"></script>
-
-<script src="{!URLFOR($Resource.QTip)}" type="text/javascript" language="javascript"></script>
-
     <apex:sectionHeader title="Calendar" help="{!$Page.Help}"/>
     
     <!-- Breadcrumb links; moved into place by jQuery -->
@@ -84,7 +79,11 @@ span.ps {
         <div id='calendar'/>
     </apex:pageBlock>
 
-<script type="text/javascript" language="javascript">
+
+<script src="{!URLFOR($Resource.FullCalendarZip, 'fullcalendar-1.5.4/jquery/jquery-1.8.1.min.js')}"/>
+<script src="{!URLFOR($Resource.FullCalendarZip, 'fullcalendar-1.5.4/fullcalendar/fullcalendar.min.js')}"/>
+<script src="{!URLFOR($Resource.QTip)}"/>
+<script>
 
 $(document).ready(function() {
 
