@@ -240,7 +240,7 @@ public with sharing class CalendarController {
     }
     
     private static Boolean is(String id) {
-        return id != null && id != '' && id != '000000000000000';
+        return id != null && id != '' && id != '000000000000000' && id != '000000000000000AAA';
     }
     
     private Event[] createEvents() {
