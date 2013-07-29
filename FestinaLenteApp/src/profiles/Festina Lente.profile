@@ -58,6 +58,22 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>ClassCopyAll</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ClassCopyAllController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ClassCopyAllControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ClassCopyAllTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>ClassDeepCloneController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -971,6 +987,14 @@
     </objectPermissions>
     <pageAccesses>
         <apexPage>Calendar</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>ClassCopyAll</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>ClassCopyAllList</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
