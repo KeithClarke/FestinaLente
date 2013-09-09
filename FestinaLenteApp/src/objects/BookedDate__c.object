@@ -146,6 +146,7 @@
         <fullName>EditBookedDates</fullName>
         <availability>online</availability>
         <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
         <height>600</height>
         <linkType>url</linkType>
         <masterLabel>Edit Booked Dates</masterLabel>

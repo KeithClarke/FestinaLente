@@ -791,6 +791,7 @@ null
         <fullName>Calendar</fullName>
         <availability>online</availability>
         <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
         <height>600</height>
         <linkType>url</linkType>
         <masterLabel>Calendar</masterLabel>
@@ -836,6 +837,7 @@ null
         <fullName>SendSms</fullName>
         <availability>online</availability>
         <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
         <height>600</height>
         <linkType>url</linkType>
         <masterLabel>Send SMS</masterLabel>
