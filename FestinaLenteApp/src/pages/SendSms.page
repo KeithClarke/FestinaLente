@@ -4,9 +4,23 @@
 .requiredLegend {
     display: none;
 }
+.fullWidth {
+    width: 100%;
+}
+.leftColumn {
+    width: 50%;
+    padding-right: 5px;
+}
+.rightColumn {
+    width: 50%;
+    padding-left: 5px;
+}
+.sync-checkbox-label.disabled {
+    color: gray;
+}
 </style>
 
-    <apex:sectionHeader title="Send SMS" help="{!$Page.Help}"/>
+    <apex:sectionHeader title="Send SMS or Email" help="{!$Page.Help}"/>
 
     <apex:pageMessages />
     <apex:form id="f">
@@ -15,11 +29,49 @@
                 <apex:commandButton value="Send" action="{!send}" id="send" />
                 <apex:commandButton value="Cancel" action="{!cancel}" immediate="true"/>
             </apex:pageBlockButtons>
-            <apex:pageBlockSection title="Message" columns="1">
-                <apex:inputTextArea value="{!message}" rows="10" style="width: 100%" styleClass="message-text"/>
-                <apex:outputText styleClass="message-remaining"/>
+            <apex:pageBlockSection columns="1">
+                <apex:facet name="header">
+                    <apex:outputPanel layout="none">
+                        <apex:outputPanel layout="block"  style="float: right">
+                            <apex:inputCheckbox id="sync" styleClass="sync-checkbox"/>
+                            <apex:outputLabel styleClass="sync-checkbox-label" value="Keep SMS and Email the same" for="sync"/>
+                        </apex:outputPanel>
+                        <h3>Message</h3>
+                    </apex:outputPanel>
+                </apex:facet>
+                <apex:panelGrid columns="2" styleClass="fullWidth" columnClasses="leftColumn, rightColumn">
+                
+                    <apex:outputText />
+                    <apex:outputText value="Email Subject"/>
+                    
+                    <apex:outputText />
+                    <apex:inputText styleClass="fullWidth" value="{!emailSubject}"/>
+                    
+                    <apex:outputLabel value="SMS Message"/>
+                    <apex:outputLabel value="Email Body"/>
+                    
+                    <apex:inputTextArea value="{!smsMessage}" rows="10" styleClass="sms-message-text fullWidth"/>
+                    <apex:inputTextArea value="{!emailMessage}" rows="10" styleClass="email-message-text fullWidth"/>
+                    
+                    <apex:outputText styleClass="sms-message-remaining"/>
+                    <apex:outputText />
+                    
+                </apex:panelGrid>
             </apex:pageBlockSection>
-            <apex:pageBlockSection title="To" columns="1" id="contacts">
+            <apex:pageBlockSection columns="1" id="contacts">
+                <apex:facet name="header">
+                    <apex:outputPanel layout="none">
+                        <apex:commandLink value="Refresh"
+                                action="{!refreshContacts}"
+                                rerender="contacts"
+                                onclick="this.innerHTML='Refreshing...';"
+                                title="Refresh the list of Contacts to reflect any changes made to the Contacts while this page has been open"
+                                id="refresh"
+                                style="float: right"
+                                />
+                        <h3>To</h3>
+                    </apex:outputPanel>
+                </apex:facet>
                 <apex:outputPanel layout="none">
                     <apex:outputPanel layout="block" style="float: right">
                         <apex:outputLabel for="filter">Limit List to Clients that have a Booking on&nbsp;&nbsp;</apex:outputLabel>
@@ -28,30 +80,36 @@
                         <apex:outputLink onclick="document.getElementById('{!$Component.filter}').value = ''; document.getElementById('{!$Component.refresh}').click(); return false;">Clear</apex:outputLink>
                         <apex:outputText >&nbsp;]</apex:outputText>
                     </apex:outputPanel>
-                    <apex:commandButton value="Refresh"
-                            action="{!refreshContacts}"
-                            rerender="contacts"
-                            onclick="this.disabled=true; this.className='btnDisabled'; this.value='Refreshing...';"
-                            title="Refresh the list of Contacts to reflect any changes made"
-                            id="refresh"
-                            />
+                    <apex:outputLabel for="select">Select All&nbsp;&nbsp;</apex:outputLabel>
+                    <apex:selectList id="select" size="1" onchange="preferenceChange()" styleClass="preference-select">
+                        <apex:selectOption itemValue="Preferring SMS" itemLabel="Preferring SMS"/>
+                        <apex:selectOption itemValue="Preferring Email" itemLabel="Preferring Email"/>
+                        <apex:selectOption itemValue="SMS Only" itemLabel="SMS Only"/>
+                        <apex:selectOption itemValue="Email Only" itemLabel="Email Only"/>
+                        <apex:selectOption itemValue="Both SMS and Email" itemLabel="Both SMS and Email"/>
+                        <apex:selectOption itemValue="None" itemLabel="None"/>
+                    </apex:selectList>
                 </apex:outputPanel>
-                <apex:pageBlockTable value="{!contacts}" var="c">
-                    <apex:column headerValue="Select">
-                        <apex:inputCheckbox value="{!c.selected}" disabled="{!c.disabled}"/>
+                <apex:pageBlockTable value="{!contacts}" var="c" rowClasses="sendRow">
+                    <apex:column headerValue="Send SMS">
+                        <apex:inputCheckbox styleClass="sendSms" value="{!c.smsSelected}" disabled="{!c.smsDisabled}"/>
+                    </apex:column>   
+                    <apex:column headerValue="Send Email">
+                        <apex:inputCheckbox styleClass="sendEmail" value="{!c.emailSelected}" disabled="{!c.emailDisabled}"/>
                     </apex:column>   
                     <apex:column headerValue="Name">
                         <c:LinkWithHoverDetail sobId="{!c.sob.Id}" sobName="{!c.sob.Name}" viewUrl="{!URLFOR($Action.Contact.View, c.sob.Id, null, true)}"/>
                     </apex:column> 
                     <apex:column value="{!c.sob.RecordTypeId}"/>
                     <apex:column value="{!c.sob.Status__c}"/>
+                    <apex:column value="{!c.sob.Email}"/>
                     <apex:column value="{!c.sob.MobilePhone}"/>
                     <apex:column headerValue="Mobile Sent To">
                         <apex:outputText value="{!c.cleanMobileNumber}"/>
                     </apex:column>
                 </apex:pageBlockTable>
             </apex:pageBlockSection>
-            <apex:pageBlockSection title="Notes" columns="1">
+            <apex:pageBlockSection title="SMS Notes" columns="1">
                 <apex:outputPanel layout="inline" rendered="{! NOT(ISNULL(messageCost))}">
                     <apex:outputText value="Festina Lente is billed approximately &euro;{!messageCost} for each message sent to each Contact" escape="false"/>
                     <apex:outputText value="."/>
@@ -64,6 +122,13 @@
                 <apex:outputText value="Successfully sent messages are shown in the Contact's &quot;Activity History&quot; (after a delay of about a minute)." escape="false"/>
                 <apex:outputText value="Failures are reported by email to the User who did the send."/>
             </apex:pageBlockSection>
+            <apex:pageBlockSection title="Email Notes" columns="1">
+                <apex:outputText value="Emails cost nothing to send."/>
+                <apex:outputText value="The &quot;From&quot; email address is taken from your Salesforce User details."  escape="false"/>
+                <apex:outputText value="The default message subject, prefix and suffix text are set using the Twilio Configuration custom settings."/>
+                <apex:outputText value="Successfully sent messages are shown in the Contact's &quot;Activity History&quot;." escape="false"/>
+                <apex:outputText value="Failures are reported immediately so errors can be corrected and the send done again."/>
+            </apex:pageBlockSection>
         </apex:pageBlock>
     </apex:form>
 
@@ -75,43 +140,78 @@ var j$ = jQuery.noConflict();
 
 // Replace normal focus with specific character focus (between prefix and suffix)
 function setFocusOnLoad() {
-    var messageText = j$('.message-text');
+    var messageText = j$('.sms-message-text');
     messageText.caret({!caretPosition});
 }
 
 j$(document).ready(function() {
     
-    var messageText = j$('.message-text');
-    var messageRemaining = j$('.message-remaining');
+    var syncCheckbox = j$('.sync-checkbox');
+    var syncCheckboxLabel = j$('.sync-checkbox-label');
+    var emailMessageText = j$('.email-message-text');
+    var smsMessageText = j$('.sms-message-text');
+    var smsMessageRemaining = j$('.sms-message-remaining');
     
     // IE9 apparently doesn't support this
     var max = 160;
-    messageText.prop('maxlength', max);
+    smsMessageText.prop('maxlength', max);
+    
+    // Default to synced
+    syncCheckbox.prop('checked', true);
 
-    var echoMessageRemaining = function() {
+    // Execute when characters entered
+    var echoSmsMessageRemaining = function() {
         // Counting of maxlength is a bit weird
-        var text = messageText.val();
+        var text = smsMessageText.val();
         var matches = text.match(/\n/g);
         var breaks = matches ? matches.length : 0;
         var length = text.length + breaks;
-        messageRemaining.text('[' + (max - length) + ' characters remaining]');
+        smsMessageRemaining.text('[' + (max - length) + ' characters remaining]');
     }
-
-    // Execute when characters entered
-    messageText.keyup(echoMessageRemaining);
+    echoSmsMessageRemaining();
     
-    // Execute onload
-    echoMessageRemaining();
-
-    // Confirm send (both buttons)
     var sendButtons = j$('#p\\:f\\:pb\\:pbb\\:send, #p\\:f\\:pb\\:pbb\\:bottom\\:send');
     
+    // Disable send to start with
+    sendButtons.addClass('btnDisabled');
+    sendButtons.attr('disabled', 'disabled');
+    
+    // Sync text and enable send when change made
+    emailMessageText.on('keyup paste', function() {
+        if (emailMessageText.val().length <= max) {
+            syncCheckbox.prop('disabled', false);
+            syncCheckboxLabel.removeClass('disabled');
+            if (syncCheckbox.prop('checked')) {
+                smsMessageText.val(emailMessageText.val());
+                echoSmsMessageRemaining();
+            }
+        } else {
+            syncCheckbox.prop('checked', false);
+            syncCheckbox.prop('disabled', true);
+            syncCheckboxLabel.addClass('disabled');
+        }
+        sendButtons.removeAttr('disabled');
+        sendButtons.removeClass('btnDisabled');
+    });
+    smsMessageText.on('keyup paste', function() {
+        if (syncCheckbox.prop('checked')) {
+            emailMessageText.val(smsMessageText.val());
+        }
+        echoSmsMessageRemaining();
+        sendButtons.removeAttr('disabled');
+        sendButtons.removeClass('btnDisabled');
+    });
+
+    // Confirm send (both buttons)
     sendButtons.click(function() {
-        var count = j$(this).closest('form').find('input:checkbox:checked').length;
+    
+        var smsCount = j$(this).closest('form').find('input:checkbox:checked.sendSms').length;
+        var emailCount = j$(this).closest('form').find('input:checkbox:checked.sendEmail').length;
+
         var messageCost = {!IF(NOT(ISNULL(messageCost)), messageCost, 'null')};
-        var prompt = 'Send ' + count + ' SMS messages now?';
+        var prompt = 'Send ' + smsCount + ' SMS messages and ' + emailCount + ' Email messages now?';
         if (messageCost) {
-            var cost = parseFloat(messageCost * count).toFixed(2);
+            var cost = parseFloat(messageCost * smsCount).toFixed(2);
             prompt += '\nEstimated cost is \u20ac' + cost + '.';
         }
         if (confirm(prompt)) {
@@ -121,14 +221,73 @@ j$(document).ready(function() {
         }
     });
     
-    // Disable send to start with; enable when message has changed
-    sendButtons.addClass('btnDisabled');
-    sendButtons.attr('disabled', 'disabled');
-    messageText.keyup(function() {
-        sendButtons.removeAttr('disabled');
-        sendButtons.removeClass('btnDisabled');
-    });
+    // Apply preference
+    preferenceChange();
 });
+
+// Not attaching function using jQuery here because Contacts area gets re-rendered
+var preferenceChange = function() {
+    
+    var select = j$('select.preference-select');
+    var selected = select.find(':selected').text();
+    
+    var prefer = function(preferEmail) {
+        j$('.sendRow').each(function() {
+        
+            var row = j$(this);
+            var sendEmail = row.find('.sendEmail:not(:disabled)');
+            var sendSms = row.find('.sendSms:not(:disabled)');
+            
+            var first = preferEmail ? sendEmail : sendSms;
+            var second = preferEmail ? sendSms : sendEmail;
+            
+            if (first.length == 1) {
+                first.prop('checked', true);
+                if (second.length == 1) {
+                    second.prop('checked', false);
+                }
+            } else if (second.length == 1) {
+                second.prop('checked', true);
+            }
+        });
+    };
+    
+    var only = function(preferEmail) {
+    
+        var sendEmail = j$('input.sendEmail:not(:disabled)');
+        var sendSms = j$('input.sendSms:not(:disabled)');
+        
+        var select = preferEmail ? sendEmail : sendSms;
+        var deselect = preferEmail ? sendSms : sendEmail;
+        
+        select.prop('checked', true);
+        deselect.prop('checked', false);
+    };
+    
+    var all = function(all) {
+    
+        var sendEmail = j$('input.sendEmail:not(:disabled)');
+        var sendSms = j$('input.sendSms:not(:disabled)');
+        
+        sendEmail.prop('checked', all);
+        sendSms.prop('checked', all);
+    };
+    
+    if (selected == 'Preferring Email') {
+        prefer(true);
+    } else if (selected == 'Preferring SMS') {
+        prefer(false);
+    } else if (selected == 'Email Only') {
+        only(true);
+    } else if (selected == 'SMS Only') {
+        only(false);
+    } else if (selected == 'Both SMS and Email') {
+        all(true);
+    } else if (selected == 'None') {
+        all(false);
+    }
+};
+
 </script>
 
 </apex:page>

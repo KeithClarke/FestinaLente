@@ -5,6 +5,10 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
         <actionName>Clone</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -17,11 +21,19 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
         <actionName>List</actionName>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -32,6 +44,7 @@
         <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Object ids used for filtering. Not persisted.</description>
     <enableActivities>false</enableActivities>
@@ -47,6 +60,7 @@
         <relationshipLabel>Filters</relationshipLabel>
         <relationshipName>Filters</relationshipName>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -124,6 +138,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -135,6 +150,7 @@
         <relationshipLabel>Filters</relationshipLabel>
         <relationshipName>Filters</relationshipName>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -146,6 +162,7 @@
         <relationshipLabel>Filters</relationshipLabel>
         <relationshipName>ClientFilters</relationshipName>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -157,6 +174,7 @@
         <relationshipLabel>Filters (Coach)</relationshipLabel>
         <relationshipName>CoachFilters</relationshipName>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -168,6 +186,7 @@
         <relationshipLabel>Filters</relationshipLabel>
         <relationshipName>Filters</relationshipName>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -175,6 +194,7 @@
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
         <label>Show Bookings</label>
+        <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
     <fields>
@@ -182,6 +202,7 @@
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
         <label>Show Classes (Free Spaces)</label>
+        <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
     <fields>
@@ -189,6 +210,7 @@
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
         <label>Show Classes (Fully Booked)</label>
+        <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
     <fields>
@@ -197,6 +219,7 @@
         <label>View Name</label>
         <length>40</length>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -206,6 +229,7 @@
         <label>View Start</label>
         <length>40</length>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>

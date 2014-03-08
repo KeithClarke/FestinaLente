@@ -59,7 +59,6 @@ public class SmsBatchable implements Database.Batchable<SObject>, Database.State
                            + '&To=' + EncodingUtil.urlEncode(toNumber, 'UTF-8')
                            + '&Body=' + + EncodingUtil.urlEncode(message, 'UTF-8')
                            );
-                        
                     HttpResponse res = new Http().send(req);
                     if (res.getStatusCode() >= 200 && res.getStatusCode() < 300) {
                         tasks.add(new Task(

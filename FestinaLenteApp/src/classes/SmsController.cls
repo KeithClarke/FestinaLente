@@ -2,8 +2,12 @@ public with sharing class SmsController {
     
     public class SelectableContact {
         
-        public Boolean selected {get; set;}
-        public Boolean disabled {get; private set;}
+        public Boolean emailSelected {get; set;}
+        public Boolean emailDisabled {get; private set;}
+        
+        public Boolean smsSelected {get; set;}
+        public Boolean smsDisabled {get; private set;}
+        
         public Contact sob {get; private set;}
         public String cleanMobileNumber {
             get {
@@ -11,16 +15,47 @@ public with sharing class SmsController {
             }
         }
         
-        public SelectableContact(Contact sob, Boolean selected, Boolean disabled) {
+        public SelectableContact(Contact sob) {
+        	
             this.sob = sob;
-            this.selected = selected;
-            this.disabled = disabled;
+            this.emailSelected = false;
+            this.emailDisabled = sob.Email == null;
+            this.smsSelected = false;
+            this.smsDisabled = sob.MobilePhone == null;
+            
+            // Prefer email
+            if (this.emailSelected && this.smsSelected) {
+            	this.smsSelected = false;
+            }
         }
     }
     
     private TwilioConfiguration__c cs {
         get {
             return TwilioConfiguration__c.getInstance();
+        }
+    }
+    
+    public String emailSubject {
+    	get {
+    		return cs != null ? cs.EmailSubject__c : null;
+    	}
+    	set;
+    }
+    
+    public String emailMessage {
+        get {
+            if (emailMessage == null) {
+                emailMessage = messagePrefix + messageSuffix;
+            }
+            return emailMessage;
+        }
+        set;
+    }
+    
+    public String fromEmail {
+        get {
+            return cs != null ? cs.FromNumber__c : null;
         }
     }
     
@@ -36,12 +71,12 @@ public with sharing class SmsController {
         }
     }
 
-    public String message {
+    public String smsMessage {
         get {
-            if (message == null) {
-                message = messagePrefix + messageSuffix;
+            if (smsMessage == null) {
+                smsMessage = messagePrefix + messageSuffix;
             }
-            return message;
+            return smsMessage;
         }
         set;
     }
@@ -121,7 +156,7 @@ public with sharing class SmsController {
                 
                 if (contactId != null) {
                     contacts = wrap(filter([
-                            select Id, Name, RecordTypeId, Status__c, MobilePhone
+                            select Id, Name, RecordTypeId, MobilePhone, Email, Status__c
                             from Contact
                             where Id = :decodeIds(contactId)
                             order by Name
@@ -130,7 +165,7 @@ public with sharing class SmsController {
                     List<Contact> cs = new List<Contact>();
                     Set<Id> alreadyIncluded = new Set<Id>();
                     for (Booking__c b : [
-                            select Client__r.Id, Client__r.Name, Client__r.MobilePhone, Client__r.Email, Client__r.Status__c
+                            select Client__r.Id, Client__r.Name, Client__r.RecordTypeId, Client__r.MobilePhone, Client__r.Email, Client__r.Status__c
                             from Booking__c
                             where Class__c = :decodeIds(classId)
                             order by Client__r.Name
@@ -190,7 +225,7 @@ public with sharing class SmsController {
         
         List<SelectableContact> wrappers = new List<SelectableContact>();
         for (Contact c : contacts) {
-            wrappers.add(new SelectableContact(c, c.MobilePhone != null, c.MobilePhone == null));
+            wrappers.add(new SelectableContact(c));
         }
         return wrappers;
     }
@@ -202,30 +237,54 @@ public with sharing class SmsController {
     
     public PageReference send() {
         
-        Set<Id> contactIds = new Set<Id>();
+        Set<Id> emailContactIds = new Set<Id>();
+        Set<Id> smsContactIds = new Set<Id>();
         for (SelectableContact c : contacts) {
-            if (c.selected) {
-                contactIds.add(c.sob.Id);
+        	if (c.emailSelected) {
+        		emailContactIds.add(c.sob.Id);
+        	}
+            if (c.smsSelected) {
+                smsContactIds.add(c.sob.Id);
             }
         }
         
-        if (contactIds.size() == 0) {
+        if (emailContactIds.size() == 0 && smsContactIds.size() == 0) {
             ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'No-one has been selected to send to'));
             return null;
         }
-        if (message == null || message.trim().length() == 0) {
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Enter some message text to send'));
+        if (emailContactIds.size() > 0 && (emailMessage == null || emailMessage.trim().length() == 0)) {
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Enter some \"Email Body\" text to send'));
+            return null;
+        }
+        if (smsContactIds.size() > 0 && (smsMessage == null || smsMessage.trim().length() == 0)) {
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Enter some \"SMS Message\" text to send'));
             return null;
         }
         
-        try {
-            // Each SMS sent consumes one of the 10 HTTP calliuts available so process in batchaes of 10
-            if (!Test.isRunningTest()) {
-                Database.executeBatch(new SmsBatchable(contactIds, message), 10);
-            }
-        } catch (SmsBatchable.SmsException e) {
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, e.getMessage()));
-            return null;
+        if (emailContactIds.size() > 0) {
+        	try {
+        		Messaging.reserveSingleEmailCapacity(emailContactIds.size());
+        	} catch (Exception e) {
+        		ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Cannot send ' + emailContactIds.size() + ' emails: ' + e.getMessage()));
+        		return null;
+        	}
+        	String errors = sendEmail();
+        	if (errors != null) {
+        		ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, errors));
+        		return null;
+        	}
+        }
+        
+        if (smsContactIds.size() > 0) {
+	        try {
+	            // Each SMS sent consumes one of the 10 HTTP callouts available so process in batches of 10
+	            if (!Test.isRunningTest()) {
+	                Database.executeBatch(new SmsBatchable(smsContactIds, smsMessage), 10);
+	            }
+	        } catch (SmsBatchable.SmsException e) {
+	            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, e.getMessage()));
+	            return null;
+	        }
         }
         
         return new PageReference(ApexPages.currentPage().getParameters().get('retURL'));
@@ -234,5 +293,39 @@ public with sharing class SmsController {
     public PageReference cancel() {
         
         return new PageReference(ApexPages.currentPage().getParameters().get('retURL'));
+    }
+    
+    private String sendEmail() {
+    	
+    	Messaging.SingleEmailMessage[] messages = new Messaging.SingleEmailMessage[] {};
+    	Contact[] contactSobs = new Contact[] {};
+    	for (SelectableContact c : contacts) {
+            if (c.emailSelected) {
+            	contactSobs.add(c.sob);
+            	Messaging.SingleEmailMessage message = new Messaging.SingleEmailMessage();
+            	message.setTargetObjectId(c.sob.Id);
+                message.setSaveAsActivity(true);
+                message.setSubject(emailSubject);
+                message.setPlainTextBody(emailMessage);
+            	messages.add(message);
+            }
+        }
+        
+        String[] errors = new String[] {};
+        Messaging.SendEmailResult[] results = Messaging.sendEmail(messages, true);
+        for (Integer i = 0; i < results.size(); i++) {
+            Messaging.SendEmailResult result = results[i];
+        	if (!result.isSuccess()) {
+        		Contact contactSob = contactSobs[i];
+        		Messaging.SendEmailError[] emailErrors = result.getErrors();
+        		if (emailErrors != null) {
+	        		for (Messaging.SendEmailError emailError : emailErrors) {
+	        			errors.add('email to ' + contactSob.Name + ' using email address ' + contactSob.Email + ' - ' + emailError.getMessage()); 
+	        		}
+        		}
+        	}
+        }
+        
+        return errors.size() > 0 ? 'No emails sent as there were these errors: ' + String.join(errors, '; ') : null;
     }
 }

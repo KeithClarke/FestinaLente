@@ -1,10 +1,10 @@
 @isTest
 private class SmsControllerTest {
-
+	
     @isTest
     static void testContact() {
           
-        Contact c = new Contact(LastName = 'Doe', MobilePhone = '0861112222');
+        Contact c = new Contact(LastName = 'Doe', MobilePhone = '0861112222', Email = 'fake@fake.com');
         insert c;
         
         ApexPages.currentPage().getParameters().put('contactId', c.Id);
@@ -15,7 +15,7 @@ private class SmsControllerTest {
     @isTest
     static void testClass() {
         
-        Contact c = new Contact(LastName = 'Doe', MobilePhone = '0861112222');
+        Contact c = new Contact(LastName = 'Doe', MobilePhone = '0861112222', Email = 'fake@fake.com');
         insert c;
         
         Class__c clazz = new Class__c();
@@ -51,7 +51,7 @@ private class SmsControllerTest {
     
     private static void doTestFiltering(Boolean useContactId, Boolean matchingFilter) {
         
-        Contact c = new Contact(LastName = 'Doe', MobilePhone = '0861112222');
+        Contact c = new Contact(LastName = 'Doe', MobilePhone = '0861112222', Email = 'fake@face.com');
         insert c;
         
         Class__c clazz = new Class__c();
@@ -101,9 +101,15 @@ private class SmsControllerTest {
             SmsController.SelectableContact sc = controller.contacts[0];
             System.assertEquals('+353861112222', sc.cleanMobileNumber);
             
-            sc.selected = true;     
-            controller.message = 'Message text';
+            sc.smsSelected = true; 
+            controller.smsMessage = 'SMS message text';
+            
+            sc.emailSelected = true;    
+            controller.emailSubject = 'Email subject';
+            controller.emailMessage = 'Email message text';
+
             PageReference send = controller.send();
+            
             System.assertEquals('fakeRetURL', send.getUrl());
             
             PageReference cancel = controller.cancel();
@@ -159,7 +165,7 @@ private class SmsControllerTest {
         insert config;
 
         SmsController controller = new SmsController();
-        System.assertEquals(expectedMessage, controller.message);
+        System.assertEquals(expectedMessage, controller.smsMessage);
         System.assertEquals(expectedCaretPosition, controller.caretPosition);
     }
 }
