@@ -1,4 +1,6 @@
 public with sharing class PdfController {
+	
+	private static final String SPACES = '&nbsp;&nbsp;&nbsp;&nbsp;';
  
     public String format {
         get {
@@ -76,10 +78,22 @@ public with sharing class PdfController {
                         Class__r.TimeInMinutes__c,
                         Class__r.Level__c,
                         Class__r.Length__c,
+                        Class__r.Price__c,
                         Class__r.Coach__r.Id,
                         Class__r.Coach__r.Name,
                         Class__r.Coach__r.ColourCode__c,
-                        (select Booking__r.Client__r.Id, Booking__r.Client__r.Name from BookedDates__r)
+                        (
+                        select
+                                Booking__r.Client__r.Id,
+                                Booking__r.Client__r.Name,
+                                Booking__r.Client__r.Phone,
+                                Booking__r.Client__r.MobilePhone,
+                                Booking__r.Client__r.EmergencyContactName__c,
+                                Booking__r.Client__r.EmergencyContactPhone__c,
+                                Booking__r.Client__r.EmergencyContactRelationship__c
+                        from BookedDates__r
+                        order by Booking__r.Client__r.Name
+                        )
                 from AvailableDate__c
                 where Class__r.Type__c = :type
                 and Class__r.BookedDateCount__c > 0
@@ -315,6 +329,123 @@ public with sharing class PdfController {
                 c.colspan = t.getMaxColCount();
             }
 
+            return tableList;
+        }
+    }
+    
+    public List<Table> ponyCamps {
+        get {
+            List<Table> tableList = new List<Table>();
+            Map<Id, Table> tableMap = new Map<Id, Table>();
+            Map<Id, List<Date>> datesMap = new Map<Id, List<Date>>();
+            Map<Id, Class__c> classesMap = new Map<Id, Class__c>();
+            Map<Id, Set<Id>> contactIdsMap = new Map<Id, Set<Id>>();
+            Map<Id, List<Contact>> contactsMap = new Map<Id, List<Contact>>();
+            
+            AvailableDate__c[] ads = query('Pony Camp');
+            
+            // Create multiple tables
+            for (AvailableDate__c ad : ads) {
+            	
+            	Id classId = ad.Class__r.Id;
+            	
+            	classesMap.put(classId, ad.Class__r);
+            
+                Table t = tableMap.get(classId);
+                if (t == null) {
+                
+                    // Create table
+                    t = new Table();
+                    tableMap.put(classId, t);
+                    tableList.add(t);
+                    
+                    // Add header row (colspan set later)
+                    Row r = new Row();
+                    t.rows.add(r);
+                }
+                
+                List<Date> dates = datesMap.get(classId);
+                if (dates == null) {
+                	dates = new List<Date>();
+                	datesMap.put(classId, dates);
+                }
+                dates.add(ad.Date__c);
+                
+                Set<Id> contactIds = contactIdsMap.get(classId);
+                if (contactIds == null) {
+                    contactIds = new Set<Id>();
+                    contactIdsMap.put(classId, contactIds);
+                }
+                
+                List<Contact> contacts = contactsMap.get(classId);
+                if (contacts == null) {
+                	contacts = new List<Contact>();
+                	contactsMap.put(classId, contacts);
+                }
+                
+                for (BookedDate__c bd : ad.BookedDates__r) {
+                	if (bd.Booking__r != null && bd.Booking__r.Client__r != null) {
+                		Contact c = bd.Booking__r.Client__r;
+                		if (!contactIds.contains(c.Id)) {
+                			contactIds.add(c.Id);
+                			contacts.add(c);
+                		}
+                	}
+                }
+            }
+            
+            for (Id classId : tableMap.keySet()) {
+            	Table t = tableMap.get(classId);
+            	List<Date> dates = datesMap.get(classId);
+            	
+            	Row r = t.rows[0];
+                Cell heading = new Cell();
+                r.cells.add(heading);
+                
+                heading.styleClass = 'heading';
+                heading.colspan = 7;
+                
+                heading.text = '';
+                for (Date d : dates) {
+                	if (heading.text != '') {
+                		heading.text += ', ';
+                	}
+                	heading.text += Datetime.newInstance(d.year(), d.month(), d.day()).format('EEE d MMM');
+                }
+                Class__c clazz = classesMap.get(classId);
+                heading.text += '<br/>' + clazz.Time__c;
+                heading.text +=  (clazz.Level__c != null ? ' ' + clazz.Level__c : '');
+                heading.text += ' ' + clazz.Name;
+                heading.text += (clazz.Price__c != null ? ' &euro;' + clazz.Price__c : '');
+                
+                Row rr = new Row();
+                t.rows.add(rr);
+                rr.cells.add(new Cell('', 'subheading'));
+                rr.cells.add(new Cell('Name', 'subheading'));
+                rr.cells.add(new Cell('Phone', 'subheading'));
+                rr.cells.add(new Cell('Mobile', 'subheading'));
+                rr.cells.add(new Cell('Contact Name 1', 'subheading'));
+                rr.cells.add(new Cell('Contact Phone 1', 'subheading'));
+                rr.cells.add(new Cell('Notes', 'subheading'));
+                
+                Integer count = 0;
+                for (Contact contact : contactsMap.get(classId)) {
+                	count++;
+                	Row rrr = new Row();
+                	t.rows.add(rrr);
+                	rrr.cells.add(new Cell(String.valueOf(count)));
+                	rrr.cells.add(new Cell(contact.Name, 'name'));
+                	rrr.cells.add(new Cell(contact.Phone));
+                	rrr.cells.add(new Cell(contact.MobilePhone));
+                	rrr.cells.add(new Cell(''
+                	        + (contact.EmergencyContactName__c != null ? contact.EmergencyContactName__c : '')
+                	        + (contact.EmergencyContactRelationship__c != null ? ' (' + contact.EmergencyContactRelationship__c + ')' : '')
+                	        ));
+                	rrr.cells.add(new Cell(contact.EmergencyContactPhone__c));
+                	rrr.cells.add(new Cell(SPACES.repeat(8)));
+                }
+            }
+            
             return tableList;
         }
     }

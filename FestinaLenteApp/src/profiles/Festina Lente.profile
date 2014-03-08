@@ -1014,6 +1014,10 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>PonyCampPdf</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>Printing</apexPage>
         <enabled>true</enabled>
     </pageAccesses>

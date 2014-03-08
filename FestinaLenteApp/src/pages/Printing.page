@@ -49,7 +49,7 @@ span.flActionSpacer {
                 <apex:inputField value="{!printing.Saturday__c}" id="saturday"/>
                 <apex:inputField value="{!printing.Sunday__c}" id="sunday"/>
             </apex:pageBlockSection>
-        </apex:pageBlock>
+        </apex:pageBlock> type ' + 
     </apex:form>
 
 <script>
@@ -64,6 +64,10 @@ function flOpenSelected() {
         flOpenPage('/apex/PrivateLessonPdf');
     } else if (type.value == 'Term Timetable') {
         flOpenPage('/apex/TermRidingPdf');
+    } else if (type.value == 'Pony Camp Timetable') {
+        flOpenPage('/apex/PonyCampPdf');
+    } else {
+        alert('Unexpected type ' + type.value);
     }
     return false;
 }

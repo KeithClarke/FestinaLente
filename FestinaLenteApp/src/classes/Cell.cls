@@ -6,6 +6,11 @@ public class Cell {
     public Cell(String text) {
         this.text = text;
     }
+    
+    public Cell(String text, String styleClass) {
+        this.text = text;
+        this.styleClass = styleClass;
+    }
 
     public String text {get; set;}
     public String styleClass {get; set;}

@@ -99,6 +99,16 @@ private class PdfControllerTest {
     }
     
     @isTest
+    static void ponyCamps() {
+    
+        Fixture f = new Fixture('Pony Camp');
+        
+        PdfController c = new PdfController();
+        List<Table> tables = c.ponyCamps;
+        System.assertEquals(1, tables.size());
+    }
+    
+    @isTest
     static void termOther() {
     
         Fixture f = new Fixture('Term');

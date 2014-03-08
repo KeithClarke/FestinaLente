@@ -27,6 +27,9 @@ td.heading {
     text-align: left;
     background-color: #d9edf7;
 }
+td.subheading {
+    font-weight: bold;
+}
 td.time {
 }
 td.name {
