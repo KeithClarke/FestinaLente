@@ -32,30 +32,4 @@ trigger BookingAfter on Booking__c (after insert, after update) {
             insert bds;
         }
     }
-    
-    if (Trigger.isInsert || Trigger.isUpdate) {
-    
-        //
-        // When a client has a booking made, automatically change the status
-        //
-        
-        Set<Id> clientIds = new Set<Id>();
-        for (Booking__c b : Trigger.new) {
-            if (b.Client__c != null) {
-                clientIds.add(b.Client__c);
-            }
-        }
-        Contact[] clients = [
-                select Id
-                from Contact
-                where Id in :clientIds
-                and Status__c != 'Active'
-                ];
-        if (clients.size() > 0) {
-            for (Contact c : clients) {
-                c.Status__c = 'Active';
-            }
-            update clients;
-        }
-    }
 }

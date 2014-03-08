@@ -15,12 +15,10 @@ private class BookingAfterTest {
             insert ad = new AvailableDate__c(Class__c = clazz.Id);
             
             assertBookedDateCount(0);
-            assertContactStatus('Waiting');
             
             insert booking = new Booking__c(Class__c = clazz.Id, Client__c = contact.Id);
             
             assertBookedDateCount(1);
-            assertContactStatus('Active');
         }
         
         void assertBookedDateCount(Integer expected) {
@@ -28,10 +26,6 @@ private class BookingAfterTest {
                     expected,
                     [select Count() from BookedDate__c where AvailableDate__c = :ad.Id]
                     );
-        }
-        
-        void assertContactStatus(String expected) {
-            System.assertEquals(expected, [select Status__c from Contact where Id = :contact.Id].Status__c);
         }
     }
     
