@@ -3,6 +3,7 @@
     <customButtons>CloneIncludingAvailableDates</customButtons>
     <customButtons>CopyAllToNewDates</customButtons>
     <customButtons>SendSms</customButtons>
+    <customButtons>OpenPrintTimetable</customButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>true</customLabel>

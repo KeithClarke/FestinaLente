@@ -8,13 +8,14 @@ public with sharing class ContactInactiveSchedulable implements Schedulable {
         // - but not had one in the last 2 years
         Date d = Date.today().addYears(-2);
         Contact[] contacts = [
-                select Id
+                select Id, Name
                 from Contact
                 where Status__c != 'Inactive'
                 and RecordType.Name = 'Client'
                 and Id in (select Client__c from Booking__c)
                 and Id not in (select Client__c from Booking__c where LatestBookedDate__c > :d)
                 ];
+        System.debug('>>> contacts=' + contacts);
         for (Contact c : contacts) {
             c.Status__c = 'Inactive';
             c.InactiveSince__c = Date.today();

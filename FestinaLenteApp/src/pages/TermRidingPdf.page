@@ -10,7 +10,7 @@
 }
 @page {
     @bottom-right {
-        content: "Term {!formattedFrom} - {!formattedTo} Page " counter(page) " of " counter(pages);
+        content: "Term {!formattedFromTo} Page " counter(page) " of " counter(pages);
         font-family: sans-serif;
         font-size: 80%;
     }
@@ -28,7 +28,7 @@
   </div>
 
   <h1>Festina Lente Riding School</h1>
-  <h2>Term {!formattedFrom} - {!formattedTo}</h2>
+  <h2>Term {!formattedFromTo}</h2>
   
   <apex:repeat value="{!termRidings}" var="table">
   <div>&nbsp;</div>

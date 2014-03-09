@@ -15,23 +15,24 @@ public with sharing class PdfController {
             return s != null && s.length() > 0 ? s : 'landscape';
         }
     }
-
-    public String formattedFrom {
-        get {
-            return fromDate.format();
-        }
-    }
     
-    public String formattedTo {
+    public String formattedFromTo {
         get {
-            return toDate.format();
+            if (fromDate != null && toDate != null) {
+            	return fromDate.format() + ' - ' + toDate.format();
+            } else {
+            	return null;
+            }
         }
     }
 
     private Date fromDate {
         get {
             if (fromDate == null) {
-                fromDate = Date.parse(ApexPages.currentPage().getParameters().get('from'));
+            	String s = ApexPages.currentPage().getParameters().get('from');
+            	if (s != null && s.length() > 0) {
+                    fromDate = Date.parse(s);
+            	}
             }
             return fromDate;
         }
@@ -41,7 +42,10 @@ public with sharing class PdfController {
     private Date toDate {
         get {
             if (toDate == null) {
-                toDate = Date.parse(ApexPages.currentPage().getParameters().get('to'));
+            	String s = ApexPages.currentPage().getParameters().get('to');
+            	if (s != null && s.length() > 0) {
+                    toDate = Date.parse(s);
+            	}
             }
             return toDate;
         }
@@ -52,7 +56,7 @@ public with sharing class PdfController {
         get {
             if (days == null) {
                 String s = ApexPages.currentPage().getParameters().get('days');
-                if (s.length() > 0) {
+                if (s != null && s.length() > 0) {
                     days = s.split(',');
                 } else {
                     days = new List<String>();
@@ -63,7 +67,51 @@ public with sharing class PdfController {
         private set;
     }
     
+    public Set<Id> classIds {
+    	get {
+    		if (classIds == null) {
+    			classIds = new Set<Id>();
+    			String s = ApexPages.currentPage().getParameters().get('classIds');
+    			if (s != null && s.length() > 0) {
+    				for (String ss : s.split(',')) {
+    					classIds.add((Id) ss.trim());
+    				}
+    			}
+    		}
+    		return classIds;
+    	}
+    	private set;
+    }
+    
     private AvailableDate__c[] query(String type) {
+    	
+    	Set<Id> adIds = new Set<Id>();
+    	if (classIds.size() > 0) {
+    		// Use classIds parameter only
+    		for (AvailableDate__c ad : [
+    		        select Id
+    		        from AvailableDate__c
+    		        where Class__r.Id in :classIds
+    		        and Class__r.Type__c = :type
+                    and Class__r.BookedDateCount__c > 0
+    		        ]) {
+                adIds.add(ad.Id);
+    		}
+    	} else {
+    		// Use from/to/days parameters
+    		for (AvailableDate__c ad : [
+	    		    select Id
+	                from AvailableDate__c
+	                where Class__r.Type__c = :type
+	                and Class__r.BookedDateCount__c > 0
+	                and Date__c >= :fromDate
+	                and Date__c <= :toDate
+	                and DayOfWeek__c in :days
+                    ]) {
+                adIds.add(ad.Id);
+            }
+    	}
+    	
         return [
                 select
                         Date__c,
@@ -95,11 +143,7 @@ public with sharing class PdfController {
                         order by Booking__r.Client__r.Name
                         )
                 from AvailableDate__c
-                where Class__r.Type__c = :type
-                and Class__r.BookedDateCount__c > 0
-                and Date__c >= :fromDate
-                and Date__c <= :toDate
-                and DayOfWeek__c in :days
+                where Id in :adIds
                 order by Class__r.DayOfWeekNumber__c, Class__r.TimeInMinutes__c, Class__r.Coach__r.Name, Date__c
                 ];
     }

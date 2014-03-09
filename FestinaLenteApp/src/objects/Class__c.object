@@ -869,6 +869,30 @@ null
         <requireRowSelection>true</requireRowSelection>
     </webLinks>
     <webLinks>
+        <fullName>OpenPrintTimetable</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Open Print Timetable</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>var type = &apos;{!Class__c.Type__c}&apos;;
+var page = null;
+if (type== &apos;Pony Camp&apos;) {
+    page = &apos;PonyCampPdf&apos;;
+} else if (type== &apos;Private Lesson&apos;) {
+    page = &apos;PrivateLessonPdf&apos;;
+} else if (type== &apos;Term&apos;) {
+    page = &apos;TermRidingPdf&apos;;
+}
+
+if (page != null) {
+    window.open(&apos;/apex/&apos; + page + &apos;?classIds={!Class__c.Id}&apos;, &apos;_blank&apos;);
+} else {
+    alert(&apos;No &quot;Print Timetable&quot; for classes of type &quot;{!Class__c.Type__c}&quot;&apos;);
+}</url>
+    </webLinks>
+    <webLinks>
         <fullName>SendSms</fullName>
         <availability>online</availability>
         <displayType>button</displayType>
