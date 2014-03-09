@@ -157,6 +157,10 @@
         <label>Type</label>
         <picklist>
             <picklistValues>
+                <fullName>Pony Camp Timetable</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
                 <fullName>Private Lesson Timetable</fullName>
                 <default>true</default>
             </picklistValues>
