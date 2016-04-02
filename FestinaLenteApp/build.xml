@@ -2,9 +2,9 @@
 <project>
 	
 	<property name="sf.url" value="https://login.salesforce.com/"/>
-	<property name="sf.un" value="keith@festinalente.ie"/>
-    <property name="sf.pw" value="644y3K5rIQW0537A5"/>
-    <property name="sf.st" value="Ep4vU6kfV7HtWR7zguyqT19PH"/>
+	<property name="sf.un" value="????"/>
+    <property name="sf.pw" value="????"/>
+    <property name="sf.st" value="????"/>
 	
     <path id="classpath">
         <fileset dir="." includes="ant-salesforce.jar"/>
