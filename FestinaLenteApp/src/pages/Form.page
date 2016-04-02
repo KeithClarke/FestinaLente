@@ -215,13 +215,16 @@ In order to process this application the form must be completed thoroughly, than
     <apex:outputText />
     
     <apex:inputField value="{!c.MobilePhone}" required="true" styleClass="mobileMarker"/>
+    <apex:inputField value="{!c.MainContactName__c}" styleClass="mainMarker"/>
+    
+    <apex:inputField value="{!c.Email}" required="true" styleClass="emailMarker"/>
+    <apex:inputField value="{!c.MainContactRelationship__c}"/>
+    
     <apex:pageBlockSectionItem >
         <apex:outputLabel value="Landline Phone"/>
         <apex:inputField value="{!c.Phone}"/>
     </apex:pageBlockSectionItem>
-    
-    <apex:inputField value="{!c.Email}" required="true" styleClass="emailMarker"/>
-    <apex:inputField value="{!c.MainContactName__c}" styleClass="mainMarker"/>
+    <apex:outputText />
     
     <apex:inputField value="{!c.Birthdate}" required="true"/>
     <apex:inputField value="{!c.Gender__c}" required="true"/>

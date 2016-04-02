@@ -1686,6 +1686,60 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>MainContactRelationship__c</fullName>
+        <externalId>false</externalId>
+        <label>Main Contact Relationship</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Rider</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Parent</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Guardian/Foster Parent</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Spouse/Partner</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Grandparent</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sibling</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Key Worker</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Care Worker</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Aunt</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Uncle</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>MedicalConditionOrDisability__c</fullName>
         <externalId>false</externalId>
         <inlineHelpText>Has the applicant been diagnosed with a medical condition/disability? Please give details</inlineHelpText>
@@ -4033,6 +4087,53 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>MainContactRelationship__c</picklist>
+            <values>
+                <fullName>Aunt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Care Worker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Grandparent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Guardian%2FFoster Parent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Key Worker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sibling</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Spouse%2FPartner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Uncle</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Name</picklist>
             <values>
                 <fullName>Dr%2E</fullName>
@@ -5950,6 +6051,53 @@
             </values>
             <values>
                 <fullName>SI - Strong Intermediate</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>MainContactRelationship__c</picklist>
+            <values>
+                <fullName>Aunt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Care Worker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Grandparent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Guardian%2FFoster Parent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Key Worker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sibling</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Spouse%2FPartner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Uncle</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

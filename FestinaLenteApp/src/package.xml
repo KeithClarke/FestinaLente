@@ -35,34 +35,28 @@
         <members>Contact.CognitionDifficulties__c</members>
         <members>Contact.ColourCode__c</members>
         <members>Contact.CommunicationDifficulties__c</members>
-        <members>Contact.WaiverFormCompleted__c</members>
-        <members>Contact.WaiverFormCompletedBy__c</members>
-        <members>Contact.WaiverFormCompletedDate__c</members>
-        <members>Contact.EmergencyContactEmail__c</members>
-        <members>Contact.SecondEmergencyContactEmail__c</members>
-        <members>Contact.EmergencyContactName__c</members>
-        <members>Contact.SecondEmergencyContactName__c</members>
-        <members>Contact.EmergencyContactPhone__c</members>
-        <members>Contact.SecondEmergencyContactPhone__c</members>
-        <members>Contact.EmergencyContactRelationship__c</members>
-        <members>Contact.SecondEmergencyContactRelationship__c</members>
         <members>Contact.DoctorName__c</members>
         <members>Contact.DoctorPhone__c</members>
+        <members>Contact.EmergencyContactEmail__c</members>
+        <members>Contact.EmergencyContactName__c</members>
+        <members>Contact.EmergencyContactPhone__c</members>
+        <members>Contact.EmergencyContactRelationship__c</members>
         <members>Contact.EpilepticEpisodes__c</members>
         <members>Contact.FormName__c</members>
         <members>Contact.Gender__c</members>
         <members>Contact.HaveDoneAnEalSessionBefore__c</members>
         <members>Contact.Height__c</members>
         <members>Contact.HobbiesInterestsLikesDislikes__c</members>
-        <members>Contact.HowDidYouHearAboutUs__c</members>
         <members>Contact.HowDidYouHearAboutUsOther__c</members>
+        <members>Contact.HowDidYouHearAboutUs__c</members>
         <members>Contact.InactiveSince__c</members>
         <members>Contact.IntellectualDisability__c</members>
-        <members>Contact.Leader__c</members>
         <members>Contact.LeaderAndSideWalker__c</members>
         <members>Contact.LeaderAndTwoSideWalkers__c</members>
+        <members>Contact.Leader__c</members>
         <members>Contact.Level__c</members>
         <members>Contact.MainContactName__c</members>
+        <members>Contact.MainContactRelationship__c</members>
         <members>Contact.MedicalConditionOrDisability__c</members>
         <members>Contact.MedicalHistory__c</members>
         <members>Contact.Medication__c</members>
@@ -73,22 +67,29 @@
         <members>Contact.OtherFamilyMemberClients__c</members>
         <members>Contact.OtherInformation__c</members>
         <members>Contact.PhotoPermission__c</members>
-        <members>Contact.Physical__c</members>
         <members>Contact.PhysicalDifficulties__c</members>
+        <members>Contact.Physical__c</members>
         <members>Contact.PreferredHorse__c</members>
         <members>Contact.PsychosocialDifficulties__c</members>
-        <members>Contact.WaiverFormRelationshipToApplicant__c</members>
         <members>Contact.RidingHistory__c</members>
-        <members>Contact.RidingInjury__c</members>
         <members>Contact.RidingInLast12Months__c</members>
-        <members>Contact.Sensory__c</members>
+        <members>Contact.RidingInjury__c</members>
+        <members>Contact.SecondEmergencyContactEmail__c</members>
+        <members>Contact.SecondEmergencyContactName__c</members>
+        <members>Contact.SecondEmergencyContactPhone__c</members>
+        <members>Contact.SecondEmergencyContactRelationship__c</members>
         <members>Contact.SensoryDifficulties__c</members>
+        <members>Contact.Sensory__c</members>
         <members>Contact.SpecialNeedsDesiredClasses__c</members>
         <members>Contact.SpecialNeedsRidingCapabilities__c</members>
         <members>Contact.Status__c</members>
         <members>Contact.SupportedHelperDesiredClasses__c</members>
         <members>Contact.UseOfHoists__c</members>
         <members>Contact.WaitingSince__c</members>
+        <members>Contact.WaiverFormCompletedBy__c</members>
+        <members>Contact.WaiverFormCompletedDate__c</members>
+        <members>Contact.WaiverFormCompleted__c</members>
+        <members>Contact.WaiverFormRelationshipToApplicant__c</members>
         <members>Contact.Weight__c</members>
         <members>Contact.WorkWithHorses__c</members>
         <name>CustomField</name>
