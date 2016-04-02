@@ -3,8 +3,8 @@
 	
 	<property name="sf.url" value="https://login.salesforce.com/"/>
 	<property name="sf.un" value="keith@festinalente.ie"/>
-    <property name="sf.pw" value="????"/>
-    <property name="sf.st" value="????"/>
+    <property name="sf.pw" value="644y3K5rIQW0537A5"/>
+    <property name="sf.st" value="Ep4vU6kfV7HtWR7zguyqT19PH"/>
 	
     <path id="classpath">
         <fileset dir="." includes="ant-salesforce.jar"/>
@@ -16,9 +16,11 @@
 	    <sfdeploy username="${sf.un}" password="${sf.pw}${sf.st}" serverurl="${sf.url}" deployRoot="src" runalltests="true"/>
 	</target>
 	
+	<!--
 	<target name="remove">
 	    <taskdef name="sfdeploy" classname="com.salesforce.ant.DeployTask" classpathref="classpath"/>
 	    <sfdeploy username="${sf.un}" password="${sf.pw}${sf.st}" serverurl="${sf.url}" deployRoot="src-remove" runalltests="false"/>
 	</target>
+	-->
 	
 </project>

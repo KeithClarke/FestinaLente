@@ -144,19 +144,19 @@
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
     <miniLayout>
-        <fields>Type__c</fields>
-        <fields>AgeGroup__c</fields>
-        <fields>DayOfWeek__c</fields>
-        <fields>SpacesAvailable__c</fields>
-        <fields>Price__c</fields>
         <fields>Coach__c</fields>
+        <fields>Type__c</fields>
         <fields>Detail__c</fields>
+        <fields>AgeGroup__c</fields>
         <fields>Level__c</fields>
+        <fields>DayOfWeek__c</fields>
         <fields>Time__c</fields>
         <fields>Length__c</fields>
+        <fields>Price__c</fields>
+        <fields>SpacesBookedAvailable__c</fields>
         <fields>EarliestAvailableDate__c</fields>
         <fields>LatestAvailableDate__c</fields>
-        <fields>SpacesBookedAvailable__c</fields>
+        <fields>SpacesAvailable__c</fields>
     </miniLayout>
     <relatedLists>
         <customButtons>DeleteSelectedBookings</customButtons>

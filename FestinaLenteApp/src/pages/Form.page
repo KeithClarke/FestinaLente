@@ -1,0 +1,558 @@
+<apex:page id="p"
+    controller="FormController"
+    showHeader="false"
+    standardStylesheets="true"
+    sidebar="false"
+    cache="false"
+    tabStyle="Account"
+    title="Festina Lente - {!title}"
+    >
+
+<style>
+body {
+    padding: 20px;
+    font-size: 80%;
+}
+input, textarea, select {
+    font-size: 100%;
+}
+div.heading {
+    font-size: 200%;
+    font-weight: bold;
+}
+div.smallSeparator {
+    height: 5px;
+}
+div.largeSeparator {
+    height: 10px;
+}
+div.veryLargeSeparator {
+    height: 30px;
+}
+span.dateFormat {
+    display: none;
+}
+label {
+    font-weight: normal;
+    color: #000000;
+    font-size: 100%;
+}
+.labelCol {
+    font-size: 100% !important;
+}
+textarea.big {
+    width: 100%;
+    margin-top: 3px;
+}
+.hint {
+    font-size: 90%;
+}
+</style>
+
+<!-- Top right info -->
+<div style="float: right">
+
+<table><tr><td>
+<p>
+Festina Lente<br/>
+Old Connaught Avenue, Bray, Co. Wicklow<br/>
+<a href="http://www.festinalente.ie" target="_blank">www.festinalente.ie</a><br/>
+&nbsp;
+</p>
+
+</td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
+
+<apex:outputPanel rendered="{!form == NEW_RIDER_FORM || form == SPECIAL_NEEDS_FORM}">
+<p>
+Riding School Office: 01 272 0704 ext 201<br/>
+Yard No: 01 272 0184<br/>
+Email: <a href="mailTo:clodagh@festinalente.ie">clodagh@festinalente.ie</a><br/>
+&nbsp;
+</p>
+</apex:outputPanel>
+
+<apex:outputPanel rendered="{!form == SUPPORTED_HELPER_FORM}">
+<p>
+Supported Helper Coaches Mobile: 087 738 7263<br/>
+Riding School Office: 01 272 0704 ext 201<br/>
+Yard No: 01 272 0184<br/>
+Main email: <a href="mailTo:kirstin@festinalente.ie">kirstin@festinalente.ie</a>
+</p>
+</apex:outputPanel>
+
+</td></tr></table>
+
+</div>
+
+<apex:image value="{! URLFOR($Resource.Logo) }"/>
+<div class="veryLargeSeparator"/>
+
+<apex:outputPanel layout="block" styleClass="heading" rendered="{!status != DONE_STATUS}">{!title}</apex:outputPanel>
+
+<apex:pageMessages />
+
+<!-- autocomplete="off" avoids filled in form values when back button is used (and so reduces chances of multiple submissions) -->
+<apex:form id="f" rendered="{!status != DONE_STATUS}" html-autocomplete="off">
+
+<apex:outputPanel rendered="{!form == NEW_RIDER_FORM}">
+<p>
+This form is for children or adults who wish to become a client of Festina Lente Equestrian Centre.
+</p>
+<p>
+Please note there are separate forms for applicants who have special needs or medical needs who are applying
+for Therapeutic Riding, Riding Lessons for Special Needs Riders or Supported Helpers Programme. Access those forms
+using these links:
+</p>
+<ul>
+<li>
+<apex:outputLink value="{! URLFOR($Page.Form, null, [form=SPECIAL_NEEDS_FORM]) }">Special Needs or Therapeutic Rider Confidential Waiver &amp; Application Form</apex:outputLink>
+</li>
+<li>
+<apex:outputLink value="{! URLFOR($Page.Form, null, [form=SUPPORTED_HELPER_FORM]) }">Supported Helper Confidential Waiver &amp; Application Form</apex:outputLink>
+</li>
+</ul>
+</apex:outputPanel>
+
+<apex:outputPanel rendered="{!form == SPECIAL_NEEDS_FORM}">
+<p>
+This form is for applicants who have special needs or medical needs who are applying for Therapeutic Riding,
+Riding Lessons for Special Needs Riders, etc as this form will help us to address the specific needs of the applicant.
+Please note:
+</p>
+<ul>
+<li>All therapeutic riders must have a referral letter from their doctor prior to commencing therapeutic lessons
+with Festina Lente.
+</li>
+<li>
+Persons with Down Syndrome must also be tested for Atlantoaxial Instability.
+</li>
+</ul>
+</apex:outputPanel>
+
+<apex:outputPanel rendered="{!form == SUPPORTED_HELPER_FORM}">
+<p>
+This form is for applicants who have special needs or medical needs who are applying for the Festina Lente Supported Helper
+Programme as this form will help us to address the specific needs of the applicant.
+</p>
+</apex:outputPanel>
+
+<apex:outputPanel rendered="{!form == SPECIAL_NEEDS_FORM || form == SUPPORTED_HELPER_FORM}">
+<p>
+If a rider/helper is under the age of 16 or requires support when making decisions, the following form must be signed by one of
+the following, as appropriate:
+</p>
+<ul>
+<li>
+A parent of or a person with legal responsibility for a rider/helper under 16
+</li>
+<li>
+A parent of or a person with legal responsibility for riders/helpers over 16 who can act as a decision-making assistant,
+co-decision-maker or decision-making representative. Under The Assisted Decision-Making (Capacity) Act 2015 there is an
+obligation on a parent a person with legal responsibility for riders/helpers to explain this waiver statement and do everything
+possible to assist the rider/helper to understand what it’s about, how it will be used etc.  For more information a what a
+decision making assistant, co-decision maker or decision making representative is please go to Inclusion Ireland website as
+they have a short and easy-to-read explanation here:
+<a target="_none" href="http://www.inclusionireland.ie/sites/default/files/attach/basic-page/991/assisted-decision-making-act-factsheet.pdf">Assisted Decision-Making
+- What does it mean?</a>
+</li>
+</ul>
+</apex:outputPanel>
+
+<p>
+In order to process this application the form must be completed thoroughly, thank you.
+</p>
+
+<div class="largeSeparator"/>
+
+<apex:pageBlock id="b" title="{!title}" mode="edit">
+
+<apex:pageBlockButtons >
+    <apex:commandButton value="Submit Form" action="{!save}"/>
+</apex:pageBlockButtons>
+
+<apex:pageBlockSection id="t0" title="Lesson, camp or session the applicant wishes to participate in" columns="1">
+    <div class="smallSeparator"/>
+        <span class="message infoM3 hint">Select one or more of these:</span>
+    <div class="smallSeparator"/>
+</apex:pageBlockSection>
+<apex:pageBlockSection id="t1">
+    <apex:repeat id="r" value="{!desiredClassesList}" var="key">
+        <apex:inputCheckbox value="{!desiredClassesMap[key]}" label="{!key}" />
+    </apex:repeat>
+</apex:pageBlockSection>
+<apex:pageBlockSection id="t2" columns="1">
+    <apex:outputLabel value="{!$ObjectType.Contact.Fields.AdditionalBookingInformationOrRequests__c.inlineHelpText}:"/>
+    <apex:pageBlockSectionItem ><apex:inputField value="{!c.AdditionalBookingInformationOrRequests__c}" styleClass="big"/></apex:pageBlockSectionItem>
+</apex:pageBlockSection>   
+
+<apex:pageBlockSection id="a" title="Applicant information">
+
+    <apex:inputField value="{!c.FirstName}" required="true"/>
+    <apex:inputField value="{!c.LastName}" required="true"/>
+    
+    <apex:inputField value="{!c.MailingStreet}" required="true"/>
+    <apex:pageBlockSectionItem >
+        <apex:outputLabel value="Mailing Town/City"/>
+        <apex:outputPanel layout="block" styleClass="requiredInput">
+            <div class="requiredBlock"/>
+            <apex:inputField value="{!c.MailingCity}" required="true"/>
+        </apex:outputPanel>
+    </apex:pageBlockSectionItem>
+    <apex:pageBlockSectionItem >
+        <apex:outputLabel value="Mailing County"/>
+        <apex:selectList value="{!c.MailingState}" size="1" required="true">
+            <apex:selectOptions value="{!countyOptions}"/>
+        </apex:selectList>
+    </apex:pageBlockSectionItem>
+    
+    <apex:pageBlockSectionItem >
+        <apex:outputLabel value="Mailing Post Code"/>
+        <apex:inputField value="{!c.MailingPostalCode}"/>
+    </apex:pageBlockSectionItem>
+    <apex:selectList value="{!c.MailingCountry}" size="1" required="true">
+        <apex:selectOptions value="{!countryOptions}"/>
+    </apex:selectList>
+    <apex:outputText />
+    
+    <apex:inputField value="{!c.MobilePhone}" required="true" styleClass="mobileMarker"/>
+    <apex:pageBlockSectionItem >
+        <apex:outputLabel value="Landline Phone"/>
+        <apex:inputField value="{!c.Phone}"/>
+    </apex:pageBlockSectionItem>
+    
+    <apex:inputField value="{!c.Email}" required="true" styleClass="emailMarker"/>
+    <apex:inputField value="{!c.MainContactName__c}" styleClass="mainMarker"/>
+    
+    <apex:inputField value="{!c.Birthdate}" required="true"/>
+    <apex:inputField value="{!c.Gender__c}" required="true"/>
+    
+    <apex:inputField value="{!c.Height__c}" required="true"/>
+    <apex:inputField value="{!c.Weight__c}" required="true"/>
+    
+</apex:pageBlockSection>
+
+<apex:pageBlockSection id="e" title="Emergency contacts">
+    <apex:inputField value="{!c.EmergencyContactName__c}" required="true"/>
+    <apex:inputField value="{!c.EmergencyContactPhone__c}" required="true"/>
+    <apex:inputField value="{!c.EmergencyContactRelationship__c}" required="true"/>
+    <apex:inputField value="{!c.EmergencyContactEmail__c}"/>
+    <apex:inputField value="{!c.SecondEmergencyContactName__c}" required="true"/>
+    <apex:inputField value="{!c.SecondEmergencyContactPhone__c}" required="true"/>
+    <apex:inputField value="{!c.SecondEmergencyContactRelationship__c}" required="true"/>
+    <apex:inputField value="{!c.SecondEmergencyContactEmail__c}"/>
+</apex:pageBlockSection>
+
+<apex:pageBlockSection id="m" title="Medical history" columns="1">
+
+    <div class="smallSeparator"/>
+    <span class="message infoM3 hint">If a question does not apply please type in N/A:</span>
+    <div class="smallSeparator"/>
+
+    <apex:outputPanel layout="none" rendered="{!form == NEW_RIDER_FORM}">
+
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.MedicalHistory__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.MedicalHistory__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.RidingInjury__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.RidingInjury__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.Allergies__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.Allergies__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+    </apex:outputPanel>
+    
+    <apex:outputPanel layout="none" rendered="{!form == SPECIAL_NEEDS_FORM}">
+
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.MedicalConditionOrDisability__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.MedicalConditionOrDisability__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.EpilepticEpisodes__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.EpilepticEpisodes__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.AtlantoaxialInstability__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.AtlantoaxialInstability__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.PhysicalDifficulties__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.PhysicalDifficulties__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.SensoryDifficulties__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.SensoryDifficulties__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.CommunicationDifficulties__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.CommunicationDifficulties__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.CognitionDifficulties__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.CognitionDifficulties__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.PsychosocialDifficulties__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.PsychosocialDifficulties__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.Allergies__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.Allergies__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.Medication__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.Medication__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.BenefitsToApplicant__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.BenefitsToApplicant__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.HobbiesInterestsLikesDislikes__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.HobbiesInterestsLikesDislikes__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>  
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.OtherInformation__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.OtherInformation__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>   
+        
+    </apex:outputPanel>
+    
+    <apex:outputPanel layout="none" rendered="{!form == SUPPORTED_HELPER_FORM}">
+
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.MedicalConditionOrDisability__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.MedicalConditionOrDisability__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.EpilepticEpisodes__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.EpilepticEpisodes__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.PhysicalDifficulties__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.PhysicalDifficulties__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.SensoryDifficulties__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.SensoryDifficulties__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.CommunicationDifficulties__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.CommunicationDifficulties__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.CognitionDifficulties__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.CognitionDifficulties__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.PsychosocialDifficulties__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.PsychosocialDifficulties__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.Allergies__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.Allergies__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.Medication__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.Medication__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.BenefitsToApplicant__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.BenefitsToApplicant__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.HobbiesInterestsLikesDislikes__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.HobbiesInterestsLikesDislikes__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>  
+
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.WorkWithHorses__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.WorkWithHorses__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>
+        
+        <div class="largeSeparator"/>
+        <apex:outputLabel value="{!$ObjectType.Contact.Fields.OtherInformation__c.inlineHelpText}:"/>
+        <apex:pageBlockSectionItem ><apex:inputField value="{!c.OtherInformation__c}" styleClass="big" required="true"/></apex:pageBlockSectionItem>   
+        
+    </apex:outputPanel>
+    
+</apex:pageBlockSection>
+
+<apex:outputPanel layout="none" rendered="{! form == NEW_RIDER_FORM || form == SPECIAL_NEEDS_FORM}">
+<apex:pageBlockSection title="Riding history" id="h0" columns="1">
+    <apex:outputPanel layout="none">
+        <apex:outputLabel value="Has the applicant ever done riding lessons before? Where and how many times? If applying for the Educational Helpers Programme or Stable Management Lesson please list the applicant’s experience working in a yard or around horses:" rendered="{!form == NEW_RIDER_FORM}"/>
+        <apex:outputLabel value="Has the applicant ever done riding lessons or an EAL session before? Where and how many times:" rendered="{!form == SPECIAL_NEEDS_FORM}"/>
+    </apex:outputPanel>
+    <apex:pageBlockSectionItem ><apex:inputField value="{!c.RidingHistory__c}" styleClass="big"/></apex:pageBlockSectionItem>
+</apex:pageBlockSection>
+<apex:pageBlockSection id="h1">
+    <apex:inputField value="{!c.RidingInLast12Months__c}"/>
+    <apex:inputField value="{!c.HaveDoneAnEalSessionBefore__c}" rendered="{!form == NEW_RIDER_FORM}"/>
+</apex:pageBlockSection>
+<apex:pageBlockSection id="h2" columns="1">
+    What do you believe the applicant's riding capabilities on a horse to be:
+</apex:pageBlockSection>
+<apex:pageBlockSection id="h3">
+    <div class="smallSeparator"/>
+        <span class="message infoM3 hint">Select one or more of these:</span>
+    <div class="smallSeparator"/>
+</apex:pageBlockSection>
+<apex:pageBlockSection id="h4">
+    <apex:repeat id="r" value="{!ridingCapabilitiesList}" var="key">
+        <apex:inputCheckbox value="{!ridingCapabilitiesMap[key]}" label="{!key}"/>
+    </apex:repeat>
+</apex:pageBlockSection>
+<apex:pageBlockSection id="h5" columns="1">
+    <apex:outputLabel value="{!$ObjectType.Contact.Fields.AdditionalRidingHistory__c.inlineHelpText}:"/>
+    <apex:pageBlockSectionItem ><apex:inputField value="{!c.AdditionalRidingHistory__c}" styleClass="big"/></apex:pageBlockSectionItem>
+</apex:pageBlockSection>
+</apex:outputPanel>
+
+<apex:pageBlockSection id="c" title="Other family member clients" columns="1">
+    <apex:outputLabel value="{!$ObjectType.Contact.Fields.OtherFamilyMemberClients__c.inlineHelpText}:"/>
+    <apex:pageBlockSectionItem ><apex:inputField value="{!c.OtherFamilyMemberClients__c}" styleClass="big"/></apex:pageBlockSectionItem>
+</apex:pageBlockSection>
+
+<apex:pageBlockSection id="f0" title="How did you hear about Fetina Lente" columns="1">
+    <div class="smallSeparator"/>
+        <span class="message infoM3 hint">Select one or more of these:</span>
+    <div class="smallSeparator"/>
+</apex:pageBlockSection>
+<apex:pageBlockSection id="f1" columns="2">
+    <apex:repeat id="r" value="{!howDidYouHearAboutUsList}" var="key">
+        <apex:inputCheckbox value="{!howDidYouHearAboutUsMap[key]}" label="{!key}" />
+    </apex:repeat>
+</apex:pageBlockSection>
+<apex:pageBlockSection id="f2" columns="1">
+    <apex:outputLabel value="{!$ObjectType.Contact.Fields.HowDidYouHearAboutUsOther__c.inlineHelpText}:"/>
+    <apex:pageBlockSectionItem ><apex:inputField value="{!c.HowDidYouHearAboutUsOther__c}" styleClass="big"/></apex:pageBlockSectionItem>
+</apex:pageBlockSection>
+
+<apex:pageBlockSection id="p0" title="Photo permission" columns="1">
+    <apex:outputLabel value="PHOTO PERMISSION: Unless otherwise stated by you, Festina Lente will assume they may photograph you or your child whilst on our premises for the promotion of Festina Lente in future publications. Please tell us if it is ok for us to photograph you or your child:"/>
+</apex:pageBlockSection>
+<apex:pageBlockSection id="p1">
+    <apex:inputField value="{!c.PhotoPermission__c}" required="true"/>
+</apex:pageBlockSection>
+
+<apex:pageBlockSection id="w" title="Waiver statement" columns="1">
+
+<apex:outputPanel rendered="{!form == NEW_RIDER_FORM}">
+<p>
+I acknowledge THAT HORSE RIDING, THAT WORKING WITH HORSES, BEING AROUND HORSES AND BEING IN A STABLE YARD IS A
+RISK ACTIVITY AND HOLDS A POTENTIAL DANGER and that all horses may react unpredictably on occasions.
+I understand that I must obey the instructions of the instructor and must comply with the health &amp; safety requirements
+and policies of the establishment. I reserve the right not to ride or work a horse allocated to me and request a change
+of instructor. I confirm that to the best of my knowledge all the above details are correct. I have read and understand
+the lesson booking and cancellation policy and agree to abide by it at all times. A parent or person with legal
+responsibility of a rider/helper under the age of 16 must sign this form.
+</p>
+
+<p>
+RIDER OR HELPER AGED 16 YRS AND OVER: I confirm that the above self-assessed abilities are correct and I agree that
+I ride and that I work with horses and on the premises of Festina Lente entirely at my own risk entirely at my own risk.
+</p>
+
+<p>
+RIDER OR HELPER UNDER 16 YRS OF AGE: I accept full responsibility for the applicant and confirm that the above
+self-assessed abilities are correct. I agree that they ride and that they work with horses and on the premises of
+Festina Lente entirely at their own risk.
+</p>
+
+<p>
+DATA PROTECTION ACT Statement: I understand that the information I have given will be held in accordance with the
+Data Protection Act 1998 but may also be made available to Insurers and other parties in the event of any injury or
+incident. I understand that my details may be used by Festina Lente for communications to their clients but will not
+be sold or passed onto any third parties.
+</p>
+</apex:outputPanel>
+
+<apex:outputPanel rendered="{!form == SPECIAL_NEEDS_FORM || form=SUPPORTED_HELPER_FORM}">
+<p>
+I acknowledge THAT HORSE RIDING, THAT WORKING WITH HORSES, BEING AROUND HORSES AND BEING IN A STABLE YARD IS A RISK ACTIVITY AND HOLDS A
+POTENTIAL DANGER and that all horses may react unpredictably on occasions. I understand that I must obey the instructions of the instructor
+and must comply with the health &amp; safety requirements and policies of the establishment. I reserve the right not to ride or work a horse
+allocated to me and request a change of instructor. I confirm that to the best of my knowledge all the above details are correct. I have
+read and understand the lesson booking and cancellation policy and agree to abide by it at all times.
+</p>
+<p>
+I confirm that the above self-assessed abilities are correct and I agree that I ride and that I work with horses and on the premises of
+Festina Lente entirely at my own risk entirely at my own risk.
+</p>
+<p>
+DATA PROTECTION ACT Statement: I understand that the information I have given will be held in accordance with the Data Protection
+Act 1998 but may also be made available to Insurers and other parties in the event of any injury or incident. I understand that my details
+may be used by Festina Lente for communications to their clients but will not be sold or passed onto any third parties.
+</p>
+<p>
+I agree to all Festina Lente Terms and Conditions and Policies and I understand and agree to the above waiver statement.
+</p>
+<p>
+If the form is being signed by a parent of or a person with legal responsibility for riders/helpers over 16: I accept full responsibility
+for the applicant and confirm that the above self-assessed abilities are correct. I agree that they ride and that they work with horses
+and on the premises of Festina Lente entirely at their own risk and accept all Festina Lente Terms and Conditions and Policies and I understand
+and agree to the above waiver statement.
+</p>
+</apex:outputPanel>
+
+<p>
+By typing your name here you are agreeing to all Festina Lente Terms, Conditions and Policies and the above waiver statement:
+</p>
+</apex:pageBlockSection>
+<apex:pageBlockSection id="s">
+    <apex:inputField value="{!c.WaiverFormCompletedBy__c}" required="true"/>
+    <apex:inputField value="{!c.WaiverFormRelationshipToApplicant__c}" required="true"/>
+    <apex:inputField value="{!c.WaiverFormCompletedDate__c}" required="true"/>
+</apex:pageBlockSection>
+
+</apex:pageBlock>
+</apex:form>
+
+<script src="{!URLFOR($Resource.FullCalendarZip, 'fullcalendar-1.5.4/jquery/jquery-1.8.1.min.js')}"/>
+<script>
+(function($) {
+
+    function addYearsToDatePickers() {
+        var currentYear = $('select#calYearPicker > option:first-child').val();
+        for (var year = currentYear - 1; year >= 1900; year--) {
+            $('<option value="' + year + '">' + year + '</option>').prependTo('select#calYearPicker');
+        }
+    }
+    
+    $(document).ready(function() {
+    
+        function applyHint(selector, hint) {
+            $('<div class="smallSeparator"/><div class="message infoM3 hint">' + hint + '</div><div class="smallSeparator"/>').insertAfter(selector);
+        }
+    
+        // Extra hints
+        applyHint('input.mobileMarker', ''
+                + 'Mobile phone number that Festina Lente can use for communications; if applicant is under '
+                + '18 please list main contact person\'s mobile phone number. This will be the main contact number '
+                + 'we use for all communications including our financial communications.'
+                );
+        applyHint('input.emailMarker', ''
+                + 'Email Address that Festina Lente can use for all communications. If applicant is under '
+                + '18 please list the main contact person\'s email address. This will be the email address '
+                + 'we use for all communications including our financial communications.'
+                );
+        applyHint('input.mainMarker', ''
+                + 'If mobile phone number and email address do not belong directly to the applicant please '
+                + 'state the name of the owner.'
+                );
+     
+        // More dates in date picker so birthdate easier to select
+        addYearsToDatePickers();
+        
+        // Support apex:inputCheckbox label click: no id attribute on those so platform mechanism doesn;t work
+        $('label').click(function() {
+            var name = $(this).attr('for');
+            $('input[name="' + name + '"]:checkbox').not('[id]').click();
+        });
+    });
+    
+})(jQuery.noConflict());
+</script>
+
+</apex:page>

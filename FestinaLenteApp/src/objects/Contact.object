@@ -53,10 +53,6 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>MapHighlightAction</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
         <actionName>Merge</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -107,6 +103,7 @@
     </fields>
     <fields>
         <fullName>AccountId</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -116,6 +113,26 @@
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>AdditionalBookingInformationOrRequests__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Any additional booking information or requests</inlineHelpText>
+        <label>Additional Booking Information/Requests</label>
+        <length>1000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>AdditionalRidingHistory__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If you have any other information that you think will be useful to us please write it here</inlineHelpText>
+        <label>Additional Riding History</label>
+        <length>1000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
     </fields>
     <fields>
         <fullName>Age__c</fullName>
@@ -138,6 +155,7 @@
     <fields>
         <fullName>Allergies__c</fullName>
         <externalId>false</externalId>
+        <inlineHelpText>Does the applicant suffer from any allergies that we need to be aware of? If yes please describe and list any medications required in case of emergency</inlineHelpText>
         <label>Allergies</label>
         <length>1000</length>
         <trackFeedHistory>false</trackFeedHistory>
@@ -153,12 +171,32 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>AtlantoaxialInstability__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Atlantoaxial Instability - applicants with Down Syndrome: Has the applicant been assessed for Atlantoaxial Instability? Please give details of results &amp; recommendations</inlineHelpText>
+        <label>Atlantoaxial Instability</label>
+        <length>1000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
         <fullName>Autism__c</fullName>
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
         <label>Autism</label>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>BenefitsToApplicant__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please outline the benefits you would like the applicant to gain from attending the Supported Helper Programme</inlineHelpText>
+        <label>Benefits to Applicant</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
     </fields>
     <fields>
         <fullName>ClassType__c</fullName>
@@ -238,6 +276,16 @@
         <trackFeedHistory>false</trackFeedHistory>
         <type>MultiselectPicklist</type>
         <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CognitionDifficulties__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Does the applicant have a Cognition Difficulties in any of the following areas please specify: Understanding, Concentration, Memory (short or long term)</inlineHelpText>
+        <label>Cognition Difficulties</label>
+        <length>1000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
     </fields>
     <fields>
         <fullName>ColourCode__c</fullName>
@@ -838,6 +886,16 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>CommunicationDifficulties__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Does the applicant have a Communication Difficulties (expressive and receptive) in any of the following areas please specify: Verbal Skills, Listening, Ability to follow instruction? Does the applicant use sign language as a means to communicate</inlineHelpText>
+        <label>Communication Difficulties</label>
+        <length>1000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
         <fullName>DoctorName__c</fullName>
         <externalId>false</externalId>
         <label>Doctor Name</label>
@@ -854,6 +912,15 @@
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>EmergencyContactEmail__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Email 1</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Email</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>EmergencyContactName__c</fullName>
@@ -914,6 +981,56 @@
         </picklist>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>EpilepticEpisodes__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Has the applicant ever had epileptic episodes? If so, when did the last episode occur</inlineHelpText>
+        <label>Epileptic Episodes</label>
+        <length>1000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>FormName__c</fullName>
+        <externalId>false</externalId>
+        <label>Form Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Gender__c</fullName>
+        <externalId>false</externalId>
+        <label>Gender</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Female</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Male</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Prefer not to say</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>HaveDoneAnEalSessionBefore__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Have Done an EAL Session Before</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Height__c</fullName>
@@ -1346,6 +1463,121 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>HobbiesInterestsLikesDislikes__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>PERSONAL INFORMATION (Hobbies, interests, likes, dislikes)</inlineHelpText>
+        <label>Hobbies, Interests, Likes, Dislikes</label>
+        <length>1000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>HowDidYouHearAboutUsOther__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Other</inlineHelpText>
+        <label>How Did You Hear About Us Other</label>
+        <length>1000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>HowDidYouHearAboutUs__c</fullName>
+        <externalId>false</externalId>
+        <label>How Did You Hear About Us</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Festina Lente Website</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Festina Lente Facebook</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Festina Lente Twitter</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Festina Lente Newsletter</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>From friends and family</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>From another Festina Lente client</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>From another person that rides</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>From a gardener or a gardening group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>From my child/service user</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>From parents in my child&apos;s school/group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>From a teacher or school or service</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>From a Medical Person</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>From a Social Care Worker</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>AIRE Website</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>BHS Website</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Advertised in a magazine</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>At another Festina Lente event</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>At a Wonder Paws course</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EFETA/HETI</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other Website (please specify below)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other (please specify below)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>MultiselectPicklist</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
         <fullName>InactiveSince__c</fullName>
         <externalId>false</externalId>
         <label>Inactive Since</label>
@@ -1386,6 +1618,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1443,8 +1676,29 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>MainContactName__c</fullName>
+        <externalId>false</externalId>
+        <label>Main Contact Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MedicalConditionOrDisability__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Has the applicant been diagnosed with a medical condition/disability? Please give details</inlineHelpText>
+        <label>Medical Condition or Disability</label>
+        <length>1000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
         <fullName>MedicalHistory__c</fullName>
         <externalId>false</externalId>
+        <inlineHelpText>Please detail any medical conditions that may affect the ability to ride or which your instructor should be aware of in case of emergency (e.g. back problems, diabetes, pregnancy)</inlineHelpText>
         <label>Medical History</label>
         <length>1000</length>
         <trackFeedHistory>false</trackFeedHistory>
@@ -1454,6 +1708,7 @@
     <fields>
         <fullName>Medication__c</fullName>
         <externalId>false</externalId>
+        <inlineHelpText>Is the applicant on any medications that we need to be aware of</inlineHelpText>
         <label>Medication</label>
         <length>1000</length>
         <trackFeedHistory>false</trackFeedHistory>
@@ -1469,6 +1724,132 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>NewRiderDesiredClasses__c</fullName>
+        <externalId>false</externalId>
+        <label>New Rider Desired Classes</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Group (Term) Lessons</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Private Lessons</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Semi-private Lessons</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pony Camp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Equine Assisted Learning (EAL) Session</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Educational Helpers Programme</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>HHH Camp/Party/Group Equine Activity/School Tour</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Competition</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Adult Camp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Stable Management Lesson</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EALFP Student</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TCP Student</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Conference Attendee</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EFEP Session</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>MultiselectPicklist</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>NewRiderRidingCapabilities__c</fullName>
+        <externalId>false</externalId>
+        <label>New Rider Riding Capabilities</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Never Ridden Before</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Have sat on a horse and been led</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Riding at a walk on own</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Trotting with stirrups</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Trotting without stirrups</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cantering</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hacking</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Riding over jumps up to .5 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Riding over jumps higher than .5 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Riding over jumps .75 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Riding over cross country jumps</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Doing an EAL Session so questions n/a</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>MultiselectPicklist</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
         <fullName>Notes__c</fullName>
         <externalId>false</externalId>
         <label>Notes</label>
@@ -1478,8 +1859,57 @@
         <visibleLines>4</visibleLines>
     </fields>
     <fields>
+        <fullName>OtherFamilyMemberClients__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Full names of other family members who are or were clients of Festina Lente</inlineHelpText>
+        <label>Other Family Member Clients</label>
+        <length>1000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>OtherInformation__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If you have any other information that you think will be useful to us please write it here</inlineHelpText>
+        <label>Other Information</label>
+        <length>1000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
         <fullName>OwnerId</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PhotoPermission__c</fullName>
+        <externalId>false</externalId>
+        <label>Photo Permission</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>PhysicalDifficulties__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Does the applicant have a Physical Difficulties in any of the following areas please specify: Mobility, Balance, Posture, does the participant wear orthopaedic supports – e.g. back brace, splints, etc? Does the applicant need a hoist</inlineHelpText>
+        <label>Physical Difficulties</label>
+        <length>1000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
     </fields>
     <fields>
         <fullName>Physical__c</fullName>
@@ -1502,8 +1932,78 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>PsychosocialDifficulties__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Does the applicant have a Psychosocial Difficulties in any of the following areas please specify: Social Interaction, Self-esteem, Mood Disorders (depression, anxiety etc), OCD, Adjustment Disorder, etc</inlineHelpText>
+        <label>Psychosocial Difficulties</label>
+        <length>1000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
         <fullName>ReportsToId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>RidingHistory__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Has the applicant ever done riding lessons before? Where and how many times</inlineHelpText>
+        <label>Riding History</label>
+        <length>1000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>RidingInLast12Months__c</fullName>
+        <externalId>false</externalId>
+        <label>Riding in Last 12 Months</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Never ridden before</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Haven&apos;t ridden in the last 12 months</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Less than 15 times</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Between 15 &amp; 40 times</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>40 times plus</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>RidingInjury__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Has the applicant ever suffered serious injury or discomfort whilst riding? If yes please describe</inlineHelpText>
+        <label>Riding Injury</label>
+        <length>1000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>SecondEmergencyContactEmail__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Email 2</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Email</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>SecondEmergencyContactName__c</fullName>
@@ -1566,12 +2066,124 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>SensoryDifficulties__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Does the applicant have a Sensory Difficulties in any of the following areas please specify: Sight, Sound, Touch, Smell, Taste, Vestibular (balance and the sense of movement) and/or Proprioception (sense of body position in space)</inlineHelpText>
+        <label>Sensory Difficulties</label>
+        <length>1000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
         <fullName>Sensory__c</fullName>
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
         <label>Sensory</label>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SpecialNeedsDesiredClasses__c</fullName>
+        <externalId>false</externalId>
+        <label>Special Needs Desired Classes</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Special Needs Private Riding Lesson</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Therapeutic Lesson</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Special Needs Semi-private Lessons</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Equine Assisted Learning (EAL) Session</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Camp/Group Equine Activity/Party/School Tour</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Competition</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Special Olympics Club</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Stable Management Lesson</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>MultiselectPicklist</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>SpecialNeedsRidingCapabilities__c</fullName>
+        <externalId>false</externalId>
+        <label>Special Needs Riding Capabilities</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Never Ridden Before</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Done therapeutic riding lessons before</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Have sat on a horse and been led</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Riding at a walk on own</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Trotting with stirrups</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Trotting without stirrups</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cantering</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hacking</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Riding over jumps up to .5 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Riding over jumps higher than .5 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Riding over jumps .75 m</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Riding over cross country jumps</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>MultiselectPicklist</type>
+        <visibleLines>10</visibleLines>
     </fields>
     <fields>
         <fullName>Status__c</fullName>
@@ -1597,6 +2209,25 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>SupportedHelperDesiredClasses__c</fullName>
+        <externalId>false</externalId>
+        <label>Supported Helper Desired Classes</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Supported Helper Private 1-1 Session</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Supported Helper Group Session</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>MultiselectPicklist</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
         <fullName>UseOfHoists__c</fullName>
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
@@ -1613,9 +2244,19 @@
         <type>Date</type>
     </fields>
     <fields>
+        <fullName>WaiverFormCompletedBy__c</fullName>
+        <externalId>false</externalId>
+        <label>Completed By</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>WaiverFormCompletedDate__c</fullName>
         <externalId>false</externalId>
-        <label>Waiver Form Completed Date</label>
+        <label>Completed Date</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Date</type>
@@ -1624,9 +2265,63 @@
         <fullName>WaiverFormCompleted__c</fullName>
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
-        <label>Waiver Form Completed</label>
+        <label>Completed</label>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>WaiverFormRelationshipToApplicant__c</fullName>
+        <externalId>false</externalId>
+        <label>Relationship to Applicant</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Parent</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Guardian</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Spouse/Partner</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Grandparent</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sibling</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Key Worker</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Care Worker</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Foster Parent</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Aunt</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Uncle</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
     </fields>
     <fields>
         <fullName>Weight__c</fullName>
@@ -1913,6 +2608,16 @@
         </picklist>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>WorkWithHorses__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Has the applicant ever worked with or around horses and in a stable yard before? Where and how many times</inlineHelpText>
+        <label>Work with Horses</label>
+        <length>1000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
     </fields>
     <listViews>
         <fullName>All</fullName>
@@ -2749,6 +3454,21 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Gender__c</picklist>
+            <values>
+                <fullName>Female</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Male</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prefer not to say</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Height__c</picklist>
             <values>
                 <fullName>0%2E50 m</fullName>
@@ -3172,6 +3892,93 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>HowDidYouHearAboutUs__c</picklist>
+            <values>
+                <fullName>AIRE Website</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Advertised in a magazine</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>At a Wonder Paws course</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>At another Festina Lente event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BHS Website</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EFETA%2FHETI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Festina Lente Facebook</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Festina Lente Newsletter</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Festina Lente Twitter</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Festina Lente Website</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>From a Medical Person</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>From a Social Care Worker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>From a gardener or a gardening group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>From a teacher or school or service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>From another Festina Lente client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>From another person that rides</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>From friends and family</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>From my child%2Fservice user</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>From parents in my child%27s school%2Fgroup</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28please specify below%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other Website %28please specify below%29</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>LeadSource</picklist>
             <values>
                 <fullName>Other</fullName>
@@ -3241,6 +4048,150 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>NewRiderDesiredClasses__c</picklist>
+            <values>
+                <fullName>Adult Camp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Competition</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Conference Attendee</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EALFP Student</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EFEP Session</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Educational Helpers Programme</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Equine Assisted Learning %28EAL%29 Session</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group %28Term%29 Lessons</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HHH Camp%2FParty%2FGroup Equine Activity%2FSchool Tour</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pony Camp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Private Lessons</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Semi-private Lessons</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stable Management Lesson</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TCP Student</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>NewRiderRidingCapabilities__c</picklist>
+            <values>
+                <fullName>Cantering</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Doing an EAL Session so questions n%2Fa</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hacking</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Have sat on a horse and been led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Never Ridden Before</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riding at a walk on own</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riding over cross country jumps</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riding over jumps %2E75 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riding over jumps higher than %2E5 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riding over jumps up to %2E5 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trotting with stirrups</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trotting without stirrups</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PhotoPermission__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>RidingInLast12Months__c</picklist>
+            <values>
+                <fullName>40 times plus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Between 15 %26 40 times</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Haven%27t ridden in the last 12 months</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Less than 15 times</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Never ridden before</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>SecondEmergencyContactRelationship__c</picklist>
             <values>
                 <fullName>Care Worker</fullName>
@@ -3276,6 +4227,92 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>SpecialNeedsDesiredClasses__c</picklist>
+            <values>
+                <fullName>Camp%2FGroup Equine Activity%2FParty%2FSchool Tour</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Competition</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Equine Assisted Learning %28EAL%29 Session</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Special Needs Private Riding Lesson</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Special Needs Semi-private Lessons</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Special Olympics Club</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stable Management Lesson</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Therapeutic Lesson</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SpecialNeedsRidingCapabilities__c</picklist>
+            <values>
+                <fullName>Cantering</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Done therapeutic riding lessons before</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hacking</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Have sat on a horse and been led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Never Ridden Before</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riding at a walk on own</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riding over cross country jumps</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riding over jumps %2E75 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riding over jumps higher than %2E5 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riding over jumps up to %2E5 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trotting with stirrups</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trotting without stirrups</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Status__c</picklist>
             <values>
                 <fullName>Active</fullName>
@@ -3287,6 +4324,64 @@
             </values>
             <values>
                 <fullName>Waiting</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SupportedHelperDesiredClasses__c</picklist>
+            <values>
+                <fullName>Supported Helper Group Session</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Supported Helper Private 1-1 Session</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>WaiverFormRelationshipToApplicant__c</picklist>
+            <values>
+                <fullName>Aunt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Care Worker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Foster Parent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Grandparent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Guardian</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Key Worker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sibling</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Spouse%2FPartner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Uncle</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -4272,6 +5367,21 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Gender__c</picklist>
+            <values>
+                <fullName>Female</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Male</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prefer not to say</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Height__c</picklist>
             <values>
                 <fullName>0%2E50 m</fullName>
@@ -4695,6 +5805,93 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>HowDidYouHearAboutUs__c</picklist>
+            <values>
+                <fullName>AIRE Website</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Advertised in a magazine</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>At a Wonder Paws course</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>At another Festina Lente event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BHS Website</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EFETA%2FHETI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Festina Lente Facebook</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Festina Lente Newsletter</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Festina Lente Twitter</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Festina Lente Website</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>From a Medical Person</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>From a Social Care Worker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>From a gardener or a gardening group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>From a teacher or school or service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>From another Festina Lente client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>From another person that rides</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>From friends and family</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>From my child%2Fservice user</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>From parents in my child%27s school%2Fgroup</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28please specify below%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other Website %28please specify below%29</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>LeadSource</picklist>
             <values>
                 <fullName>Other</fullName>
@@ -4764,6 +5961,150 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>NewRiderDesiredClasses__c</picklist>
+            <values>
+                <fullName>Adult Camp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Competition</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Conference Attendee</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EALFP Student</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EFEP Session</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Educational Helpers Programme</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Equine Assisted Learning %28EAL%29 Session</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group %28Term%29 Lessons</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HHH Camp%2FParty%2FGroup Equine Activity%2FSchool Tour</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pony Camp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Private Lessons</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Semi-private Lessons</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stable Management Lesson</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TCP Student</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>NewRiderRidingCapabilities__c</picklist>
+            <values>
+                <fullName>Cantering</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Doing an EAL Session so questions n%2Fa</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hacking</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Have sat on a horse and been led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Never Ridden Before</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riding at a walk on own</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riding over cross country jumps</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riding over jumps %2E75 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riding over jumps higher than %2E5 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riding over jumps up to %2E5 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trotting with stirrups</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trotting without stirrups</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PhotoPermission__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>RidingInLast12Months__c</picklist>
+            <values>
+                <fullName>40 times plus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Between 15 %26 40 times</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Haven%27t ridden in the last 12 months</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Less than 15 times</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Never ridden before</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>SecondEmergencyContactRelationship__c</picklist>
             <values>
                 <fullName>Care Worker</fullName>
@@ -4799,6 +6140,92 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>SpecialNeedsDesiredClasses__c</picklist>
+            <values>
+                <fullName>Camp%2FGroup Equine Activity%2FParty%2FSchool Tour</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Competition</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Equine Assisted Learning %28EAL%29 Session</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Special Needs Private Riding Lesson</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Special Needs Semi-private Lessons</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Special Olympics Club</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stable Management Lesson</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Therapeutic Lesson</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SpecialNeedsRidingCapabilities__c</picklist>
+            <values>
+                <fullName>Cantering</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Done therapeutic riding lessons before</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hacking</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Have sat on a horse and been led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Never Ridden Before</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riding at a walk on own</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riding over cross country jumps</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riding over jumps %2E75 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riding over jumps higher than %2E5 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riding over jumps up to %2E5 m</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trotting with stirrups</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trotting without stirrups</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Status__c</picklist>
             <values>
                 <fullName>Active</fullName>
@@ -4806,6 +6233,64 @@
             </values>
             <values>
                 <fullName>Inactive</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SupportedHelperDesiredClasses__c</picklist>
+            <values>
+                <fullName>Supported Helper Group Session</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Supported Helper Private 1-1 Session</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>WaiverFormRelationshipToApplicant__c</picklist>
+            <values>
+                <fullName>Aunt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Care Worker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Foster Parent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Grandparent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Guardian</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Key Worker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sibling</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Spouse%2FPartner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Uncle</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
