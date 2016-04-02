@@ -1259,10 +1259,10 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <userLicense>Salesforce</userLicense>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>AllowViewKnowledge</name>
-    </userPermissions>
+
+
+
+
     <userPermissions>
         <enabled>true</enabled>
         <name>ApiEnabled</name>
@@ -1363,10 +1363,10 @@
         <enabled>true</enabled>
         <name>SendSitRequests</name>
     </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>SubmitMacrosAllowed</name>
-    </userPermissions>
+
+
+
+
     <userPermissions>
         <enabled>true</enabled>
         <name>ViewHelpLink</name>
