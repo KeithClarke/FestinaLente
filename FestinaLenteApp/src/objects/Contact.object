@@ -252,7 +252,11 @@
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Supported Helpers Programme</fullName>
+                <fullName>Supported Helper - Group Session</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Supported Helper - Private 1-1 Session</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
@@ -2276,11 +2280,11 @@
         <label>Supported Helper Desired Classes</label>
         <picklist>
             <picklistValues>
-                <fullName>Supported Helper Private 1-1 Session</fullName>
+                <fullName>Supported Helper - Private 1-1 Session</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Supported Helper Group Session</fullName>
+                <fullName>Supported Helper - Group Session</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -2869,7 +2873,11 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Supported Helpers Programme</fullName>
+                <fullName>Supported Helper - Group Session</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Supported Helper - Private 1-1 Session</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4447,11 +4455,11 @@
         <picklistValues>
             <picklist>SupportedHelperDesiredClasses__c</picklist>
             <values>
-                <fullName>Supported Helper Group Session</fullName>
+                <fullName>Supported Helper - Group Session</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Supported Helper Private 1-1 Session</fullName>
+                <fullName>Supported Helper - Private 1-1 Session</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -4834,10 +4842,6 @@
             </values>
             <values>
                 <fullName>Stable Management</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Supported Helpers Programme</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6403,11 +6407,11 @@
         <picklistValues>
             <picklist>SupportedHelperDesiredClasses__c</picklist>
             <values>
-                <fullName>Supported Helper Group Session</fullName>
+                <fullName>Supported Helper - Group Session</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Supported Helper Private 1-1 Session</fullName>
+                <fullName>Supported Helper - Private 1-1 Session</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

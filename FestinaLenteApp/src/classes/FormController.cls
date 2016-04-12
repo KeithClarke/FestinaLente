@@ -291,6 +291,77 @@ public with sharing class FormController {
             'Co Wicklow',
             'Not Applicable'
             };
+            
+    private static SObjectField[] FORM_FIELDS_TO_EMAIL = new SObjectField[] {
+            Contact.FormName__c,
+            
+            Contact.NewRiderDesiredClasses__c,
+            Contact.SpecialNeedsDesiredClasses__c,
+            Contact.SupportedHelperDesiredClasses__c,
+            Contact.AdditionalBookingInformationOrRequests__c,
+            
+            Contact.FirstName,
+            Contact.LastName,
+            Contact.MailingStreet,
+            Contact.MailingCity,
+            Contact.MailingState,
+            Contact.MailingPostalCode,
+            Contact.MailingCountry,
+            Contact.MobilePhone,
+            Contact.MainContactName__c,
+            Contact.Email,
+            Contact.MainContactRelationship__c,
+            Contact.Phone,
+            Contact.Birthdate,
+            Contact.Gender__c,
+            Contact.Height__c,
+            Contact.Weight__c,
+            Contact.EmergencyContactName__c,
+            Contact.EmergencyContactPhone__c,
+            Contact.EmergencyContactRelationship__c,
+            Contact.EmergencyContactEmail__c,
+            Contact.SecondEmergencyContactName__c,
+            Contact.SecondEmergencyContactPhone__c,
+            Contact.SecondEmergencyContactRelationship__c,
+            Contact.SecondEmergencyContactEmail__c,
+            
+            Contact.MedicalHistory__c,
+            Contact.RidingInjury__c,
+            
+            Contact.Allergies__c,
+            Contact.MedicalConditionOrDisability__c,
+            Contact.EpilepticEpisodes__c,
+            Contact.AtlantoaxialInstability__c,
+            Contact.PhysicalDifficulties__c,
+            Contact.SensoryDifficulties__c,
+            Contact.CommunicationDifficulties__c,
+            Contact.CognitionDifficulties__c,
+            Contact.PsychosocialDifficulties__c,
+            Contact.Medication__c,
+            Contact.BenefitsToApplicant__c,
+            Contact.HobbiesInterestsLikesDislikes__c,
+            Contact.OtherInformation__c,
+            
+            Contact.WorkWithHorses__c,
+            Contact.OtherInformation__c,
+            Contact.RidingHistory__c,
+            Contact.RidingInLast12Months__c,
+            Contact.HaveDoneAnEalSessionBefore__c,
+            Contact.NewRiderRidingCapabilities__c,
+            Contact.SpecialNeedsRidingCapabilities__c,
+            Contact.AdditionalRidingHistory__c,
+            
+            Contact.OtherFamilyMemberClients__c,
+            
+            Contact.HowDidYouHearAboutUs__c,
+            Contact.HowDidYouHearAboutUsOther__c,
+            
+            Contact.PhotoPermission__c,
+            Contact.WaiverFormCompletedBy__c,
+            Contact.WaiverFormRelationshipToApplicant__c,
+            Contact.WaiverFormCompletedDate__c,
+            Contact.WaiverFormCompleted__c
+            };
 
     public String form {get; private set;}
     public String title {get; private set;}
@@ -313,16 +384,19 @@ public with sharing class FormController {
         SObjectField desiredClassesField;
         SObjectField ridingCapabilitiesField;
         SObjectField howDidYouHearAboutUsField;
+        String[] emailAddresses;
         FormData(
                 String title,
                 SObjectField desiredClassesField,
                 SObjectField ridingCapabilitiesField,
-                SObjectField howDidYouHearAboutUsField
+                SObjectField howDidYouHearAboutUsField,
+                String[] emailAddresses
                 ) {
             this.title = title;
             this.desiredClassesField = desiredClassesField;
             this.ridingCapabilitiesField = ridingCapabilitiesField;
             this.howDidYouHearAboutUsField = howDidYouHearAboutUsField;
+            this.emailAddresses = emailAddresses;
         }
     }
     
@@ -381,6 +455,8 @@ public with sharing class FormController {
             c.WaiverFormCompleted__c = true;
             insert c;
             
+            if (f.emailAddresses.size() > 0) sendEmail(c, f.emailAddresses, 'Copy of Form Data: ' + f.title, new SObjectField[] {});
+            
             // Clear out contact data
             c = createContact();
             
@@ -389,6 +465,45 @@ public with sharing class FormController {
         }
         
         return null;
+    }
+    
+    // Just for test
+    @TestVisible private static String[] emailAddresses;
+    @TestVisible private static String emailPlainTextBody;
+    
+    private static void sendEmail(Contact c, String[] addresses, String subject, SObjectField[] fields) {
+    
+        emailAddresses = addresses;
+        emailPlainTextBody = createPlainTextBody(c, fields);
+    
+        Messaging.SingleEmailMessage message = new Messaging.SingleEmailMessage();
+        message.setSubject(subject);
+        message.setPlainTextBody(emailPlainTextBody);
+        message.setToAddresses(emailAddresses);
+        
+        // Nobody to send errors to so not checking...
+        Messaging.sendEmail(new Messaging.SingleEmailMessage[] {message});
+    }
+    
+    private static String createPlainTextBody(Contact c, SObjectField[] fields) {
+    
+        String[] parts = new String[] {};
+        for (SObjectField f : FORM_FIELDS_TO_EMAIL) {
+            Object o = c.get(f);
+            if (o != null) {
+                String label = f.getDescribe().getLabel();
+                parts.add(' '.repeat(40 - label.length()) + label + ': ' + format(o));
+            }
+        }
+        return String.join(parts, '\n');
+    }
+    
+    private static String format(Object o) {
+    
+        if (o instanceof Date) return ((Date) o).format();
+        else if (o instanceof DateTime) return ((DateTime) o).format();
+        else if (o instanceof Boolean) return ((Boolean) o) ? 'Yes' : 'No';
+        else return String.valueOf(o);
     }
     
     private static void addMessage(ApexPages.Severity severity, String message) {
@@ -431,34 +546,47 @@ public with sharing class FormController {
     
     private static FormData formData(String form) {
         // 3 variations
+        FormOptions__c options = FormOptions__c.getInstance();
         if (form == NEW_RIDER_FORM) {
             return new FormData(
                     'New Rider Confidential Waiver & Application Form',
                     Contact.NewRiderDesiredClasses__c,
                     Contact.NewRiderRidingCapabilities__c,
-                    Contact.HowDidYouHearAboutUs__c
+                    Contact.HowDidYouHearAboutUs__c,
+                    toArray(options.NewRiderEmail1__c, options.NewRiderEmail2__c)
                     );
         } else if (form == SPECIAL_NEEDS_FORM) {
             return new FormData(
                     'New Special Needs or Therapeutic Rider Confidential Waiver & Application Form',
                     Contact.SpecialNeedsDesiredClasses__c,
                     Contact.SpecialNeedsRidingCapabilities__c,
-                    Contact.HowDidYouHearAboutUs__c
+                    Contact.HowDidYouHearAboutUs__c,
+                    toArray(options.SpecialNeedsEmail1__c, options.SpecialNeedsEmail2__c)
                     );
         } else if (form == SUPPORTED_HELPER_FORM) {
             return new FormData(
                     'New Supported Helper Confidential Waiver & Application Form',
                     Contact.SupportedHelperDesiredClasses__c,
                     null,
-                    Contact.HowDidYouHearAboutUs__c
+                    Contact.HowDidYouHearAboutUs__c,
+                    toArray(options.SupportedHelperEmail1__c, options.SupportedHelperEmail2__c)
                     );
         } else {
             return new FormData(
                     'Unexpected form key ' + form,
                     null,
                     null,
-                    null
+                    null,
+                    new String[] {}
                     );
         }
+    }
+    
+    private static String[] toArray(String s1, String s2) {
+    
+        String[] ss = new String[] {};
+        if (!String.isEmpty(s1)) ss.add(s1);
+        if (!String.isEmpty(s2)) ss.add(s2);
+        return ss;
     }
 }

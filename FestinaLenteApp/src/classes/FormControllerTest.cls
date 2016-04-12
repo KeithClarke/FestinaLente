@@ -18,9 +18,18 @@ private class FormControllerTest {
     
     private static void test(String form) {
     
+        FormOptions__c options = FormOptions__c.getInstance();
+        options.NewRiderEmail1__c = 'nr1@acme.com';
+        options.NewRiderEmail2__c = 'nr2@acme.com';
+        options.SpecialNeedsEmail1__c = 'sn1@acme.com';
+        options.SpecialNeedsEmail2__c = 'sn2@acme.com';
+        options.SupportedHelperEmail1__c = 'sh1@acme.com';
+        options.SupportedHelperEmail2__c = 'sh2@acme.com';
+        upsert options;
+    
         Boolean nr = form == FormController.NEW_RIDER_FORM;
         Boolean sn = form == FormController.SPECIAL_NEEDS_FORM;
-        Boolean sh = form == FormController.SPECIAL_NEEDS_FORM;
+        Boolean sh = form == FormController.SUPPORTED_HELPER_FORM;
     
         ApexPages.currentPage().getParameters().put(FormController.FORM_PARAMETER, form);
     
@@ -49,6 +58,13 @@ private class FormControllerTest {
         
         System.assertEquals(null, c.save());
         
+        // Check email sent
+        if (nr) System.assertEquals(new String[] {'nr1@acme.com', 'nr2@acme.com'}, FormController.emailAddresses);
+        if (sn) System.assertEquals(new String[] {'sn1@acme.com', 'sn2@acme.com'}, FormController.emailAddresses);
+        if (sh) System.assertEquals(new String[] {'sh1@acme.com', 'sh2@acme.com'}, FormController.emailAddresses);
+        System.assertNotEquals(null, FormController.emailPlainTextBody);
+        
+        // Check Contact created
         Contact[] actuals = [
                 select NewRiderDesiredClasses__c, SpecialNeedsDesiredClasses__c,
                         NewRiderRidingCapabilities__c, SpecialNeedsRidingCapabilities__c,

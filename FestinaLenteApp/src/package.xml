@@ -101,6 +101,7 @@
         <members>Class__c</members>
         <members>Contact</members>
         <members>Filter__c</members>
+        <members>FormOptions__c</members>
         <members>Horse__c</members>
         <members>Printing__c</members>
         <members>Range__c</members>
