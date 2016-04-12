@@ -66,7 +66,8 @@ private class FormControllerTest {
         
         // Check Contact created
         Contact[] actuals = [
-                select NewRiderDesiredClasses__c, SpecialNeedsDesiredClasses__c,
+                select ClassType__c,
+                        NewRiderDesiredClasses__c, SpecialNeedsDesiredClasses__c,
                         NewRiderRidingCapabilities__c, SpecialNeedsRidingCapabilities__c,
                         HowDidYouHearAboutUs__c
                 from Contact
@@ -74,6 +75,7 @@ private class FormControllerTest {
         System.assertEquals(1, actuals.size());
         
         Contact actual = actuals[0];
+        System.assert(!String.isEmpty(actual.ClassType__c));
         if (nr) System.assert(!String.isEmpty(actual.NewRiderDesiredClasses__c));
         if (sn) System.assert(!String.isEmpty(actual.SpecialNeedsDesiredClasses__c));
         if (nr) System.assert(!String.isEmpty(actual.NewRiderRidingCapabilities__c));

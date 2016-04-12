@@ -449,9 +449,10 @@ public with sharing class FormController {
             else addMessage(ApexPages.Severity.ERROR, 'Please select one or more "How did you hear about Fetina Lente" section items');
         }
         
-        if (ApexPages.getmessages().size() == 0) {
+        if (ApexPages.getMessages().size() == 0) {
         
             c.FormName__c = f.title;
+            c.ClassType__c = joinedSelecteds(desiredClassesMap);
             c.WaiverFormCompleted__c = true;
             insert c;
             
